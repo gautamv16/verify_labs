@@ -36,7 +36,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Email<span class="required-star">*</span></label>
-                        <input value="{{ old('password')}}" name="email" type="" class="form-control" placeholder="">
+                        <input value="{{ old('password')}}" name="email" type="email" class="form-control" placeholder="">
                         <p class="invalid-field text-danger"><?php echo $errors->first('email'); ?></p>
                     </div> <!-- form-group end.// -->
                      <div class="form-group col-md-6">
@@ -56,7 +56,7 @@
                    
                     <div class="form-group col-md-6">
                         <label>Password<span class="required-star">*</span></label>
-                        <input value="{{ old('password')}}" name="password" type="" class="form-control" placeholder="">
+                        <input value="{{ old('password')}}" name="password" type="password" class="form-control" placeholder="">
                         <p class="invalid-field text-danger"><?php echo $errors->first('password'); ?></p>
                     </div> <!-- form-group end.// -->
                     <div class="form-group col-md-6">

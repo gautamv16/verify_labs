@@ -1,4 +1,4 @@
-
+setting
 @extends('admin.layouts.layoutinner')
 @section('content')
 <div class="py-3 bg-light mt-auto mb-3">

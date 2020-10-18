@@ -42,7 +42,7 @@ class UsersController extends Controller
     {
         try{
             $payload  = $request->all();
-            $payload['password'] = Hash::make('Admin@123');
+            $payload['password'] = Hash::make($payload['password']);
             $user = User::create($payload);
             return redirect()->to('/admin/users')->with('success','UAE User created successfully!');
         }catch(\Exception $e){

@@ -35,10 +35,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Email<span class="required-star">*</span></label>
-                        <input value="{{ old('password')}}" name="email" type="" class="form-control" placeholder="">
+                        <input value="{{ old('email')}}" name="email" type="email" class="form-control" placeholder="">
                         <p class="invalid-field text-danger"><?php echo $errors->first('email'); ?></p>
                     </div> <!-- form-group end.// -->
-                      <div class="form-group col-md-6">
+                      
+                     <div class="form-group col-md-6">
+                        <label>Password<span class="required-star">*</span></label>
+                        <input value="{{ old('password')}}" name="password" type="password" class="form-control" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('password'); ?></p>
+                    </div> <!-- form-group end.// -->
+                </div>
+                
+                <div class="form-row">
+                   <div class="form-group col-md-6">
                         <label>Role<span class="required-star">*</span></label>
                         <select name="role_id" id="inputState" class="form-control">
                         <option value=""> -- Select -- </option>
@@ -49,16 +58,14 @@
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('role_id'); ?></p>
                     </div> <!-- form-group end.// -->
-
-                </div>
-                
-                <div class="form-row">
-                   
                     <div class="form-group col-md-6">
                         <label>Contact Number<span class="required-star">*</span></label>
                         <input value="{{ old('contact_number')}}" name="contact_number" type="" class="form-control" placeholder="">
                         <p class="invalid-field text-danger"><?php echo $errors->first('contact_number'); ?></p>
                     </div> <!-- form-group end.// -->
+                    
+                </div>
+                <div class="form-row">
                      <div class="form-group col-md-6">
                         <label>Status<span class="required-star">*</span></label>
                         <select name="status" class="form-control">

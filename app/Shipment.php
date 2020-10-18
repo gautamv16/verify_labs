@@ -9,7 +9,7 @@ class Shipment extends Model
     protected $table = 'shipments';
     public $timestamps = false;
     protected $fillable = [
-        'importer_id','exporter_id','record_id','uae_firs_number','registration_location_id','record_id','created_date'
+        'importer_id','exporter_id','record_id','uae_firs_number','registration_location_id','qr_code','record_id','created_date'
     ];
 
      public function importer(){
@@ -19,6 +19,8 @@ class Shipment extends Model
      public function exporter(){
      	return $this->hasOne('\App\Exporter','id','exporter_id');
      }
+
+     
 
      public function registrationLocation(){
      	return $this->hasOne('\App\RegistrationLocations','id','registration_location_id');

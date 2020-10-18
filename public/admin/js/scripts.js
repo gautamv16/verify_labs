@@ -20,8 +20,7 @@
         $("body").toggleClass("sb-sidenav-toggled");
     });
 
-    $('#trumbowyg-demo').trumbowyg();
-
+   
     $(function () {
         $('[data-toggle="popover"]').popover()
       })

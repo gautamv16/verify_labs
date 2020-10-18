@@ -91,7 +91,9 @@ class ShipmentController extends Controller
     {
         try{
             $payload = $request->all();
-            $payload['record_id'] = "SHP-".random_int(4, 10);
+            $record_id = "SHP-".random_int(4, 10);
+            $payload['record_id'] = $record_id; 
+            $payload['qr_code'] = base64_encode($record_id);
             $shipment = Shipment::create($payload);
         return redirect()->to('/admin/shipments')->with('success','Register Location created successfully!');
         }catch(\Exception $e){
