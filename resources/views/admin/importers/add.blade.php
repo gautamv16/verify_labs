@@ -7,9 +7,6 @@ setting
             <div class="text-muted">
                 <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Add User</h4>
             </div>
-            <div class="pull-right">
-                <!-- <a href="#" class="btn btn-info btn-sm" role="button" aria-disabled="true"><i class="fas fa-plus"></i>&nbsp;Add Pharmacy</a> -->
-            </div>
         </div>
     </div>
 </div>
@@ -58,7 +55,7 @@ setting
                         <select name="country" class="form-control">
                             <option value=""> -- Select -- </option>
                             @foreach(\App\Country::all() as $country)
-                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                <option value="{{$country->short_code}}">{{ucwords(strtolower($country->name))}}</option>
                             @endforeach
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('country'); ?></p>

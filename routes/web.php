@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
- Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web']], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/searchreport','HomeController@search_report')->name('searchreport');
 });
@@ -84,6 +84,15 @@ Route::group(['prefix' => 'admin'], function () {
 	   Route::get('supervision_locations/getedit/{id}','Admin\SupervisionLocationController@edit')->name('admin.supervision_locations.edit');
 	   Route::post('supervision_locations/update/{id}','Admin\SupervisionLocationController@update')->name('admin.supervision_locations.update');
 	   Route::delete('supervision_locations/{id}/delete','Admin\SupervisionLocationController@destroy')->name('admin.supervision_locations.delete');
+
+
+	   // Office Location	    
+	   Route::get('office_locations','Admin\OfficeLocationController@index')->name('admin.office_locations');
+	   Route::get('office_locations/getadd','Admin\OfficeLocationController@create')->name('admin.office_locations.getadd');
+	   Route::post('office_locations/store','Admin\OfficeLocationController@store')->name('admin.office_locations.store');
+	   Route::get('office_locations/getedit/{id}','Admin\OfficeLocationController@edit')->name('admin.office_locations.edit');
+	   Route::post('office_locations/update/{id}','Admin\OfficeLocationController@update')->name('admin.office_locations.update');
+	   Route::delete('office_locations/{id}/delete','Admin\OfficeLocationController@destroy')->name('admin.office_locations.delete');
 
 
 	   // Shipments 

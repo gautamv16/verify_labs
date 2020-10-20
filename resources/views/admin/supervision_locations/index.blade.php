@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span> Locations</h4>
+                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span>Supervision Locations</h4>
             </div>
             <div class="pull-right">
                 <a href="{{route('admin.supervision_locations.getadd')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Location</a>
@@ -29,7 +29,7 @@
                         @foreach($locations as $location)
                         <tr>
                             <td>{{$location->name}}</td>
-                            <td>{{ucwords($location->status)}}</td>
+                            <td>{{($location->status == 1) ? 'Active': 'Inactive'}}</td>
                             <td>
                              <a href="{{ route('admin.supervision_locations.edit',['id'=>$location->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Location"><i class="fa fa-pen"></i></a>
                             <button onclick="ondelete({{$location->id}})" type="button" class="btn btn-sm btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Delete Location"><i class="fa fa-trash"></i></button>
