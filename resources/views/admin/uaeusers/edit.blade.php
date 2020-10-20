@@ -42,7 +42,7 @@
                       
                      <div class="form-group col-md-6">
                         <label>Password<span class="required-star">*</span></label>
-                        <input value="{{ old('password') ? old('password') : $user->password }}" name="password" type="password" class="form-control" placeholder="">
+                        <input readonly value="{{ old('password') ? old('password') : $user->password }}" name="password" type="password" class="form-control" placeholder="">
                         <p class="invalid-field text-danger"><?php echo $errors->first('password'); ?></p>
                     </div> <!-- form-group end.// -->
                 </div>

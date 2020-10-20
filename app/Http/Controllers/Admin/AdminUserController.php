@@ -55,7 +55,7 @@ class AdminUserController extends Controller
             'first_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
             'last_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
             'email' => 'required|email|unique:admin_users,email,'.$id,
-            'password' => 'required',
+            // 'password' => 'required',
             'role_id' => 'required',
             'primary_contact' => 'required',
             'secondary_contact' => 'required',
@@ -127,7 +127,7 @@ class AdminUserController extends Controller
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }
             $admin = AdminUser::find($id);
-            $admin->first_name          =  $payload['first_name'];
+            $admin->first_name          = $payload['first_name'];
             $admin->last_name           = $payload['last_name'];
             $admin->email               = $payload['email'];
             $admin->office_location_id  = $payload['office_location_id'];
