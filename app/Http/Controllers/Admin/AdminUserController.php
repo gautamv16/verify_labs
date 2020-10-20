@@ -6,6 +6,7 @@ use App\AdminUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminUserController extends Controller
 {
@@ -30,6 +31,23 @@ class AdminUserController extends Controller
         return view('admin.adminusers.add');
     }
 
+
+    protected function validator(array $data)
+    {
+        $message = [];
+        return Validator::make($data, [
+            'first_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'last_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'email' => 'required|unique:admin_users|email',
+            'password' => 'required',
+            'role_id' => 'required',
+            'primary_contact' => 'required',
+            'secondary_contact' => 'required',
+            'status' => 'required',  
+            'office_location_id'=>'required'          
+           ],$message);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -38,8 +56,13 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
+
         try{
             $payload  = $request->all();
+            $validator = $this->validator($payload);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $payload['password'] = Hash::make($payload['password']);
             $admin = AdminUser::create($payload);
             return redirect()->to('/admin/adminusers')->with('success','User created successfully!');
@@ -83,6 +106,10 @@ class AdminUserController extends Controller
     {
          try{
             $payload  = $request->all();
+            $validator = $this->validator($payload);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $admin = AdminUser::find($id);
             $admin->first_name          =  $payload['first_name'];
             $admin->last_name           = $payload['last_name'];

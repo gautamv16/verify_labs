@@ -65,6 +65,7 @@
                 </div> <!-- form-row.// -->
                 <div class="form-group">
                     <button class="btn btn-sm btn-primary">Save</button>
+                    <a class="btn btn-sm btn-danger" href="{{route('admin.shipments')}}">Cancel</a>
                 </div>
                 </div>
             </form>

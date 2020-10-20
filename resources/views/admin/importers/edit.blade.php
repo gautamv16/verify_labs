@@ -4,11 +4,9 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Edit User</h4>
+                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Edit Importer</h4>
             </div>
-            <div class="pull-right">
-                <!-- <a href="#" class="btn btn-info btn-sm" role="button" aria-disabled="true"><i class="fas fa-plus"></i>&nbsp;Add Pharmacy</a> -->
-            </div>
+            
         </div>
     </div>
 </div>
@@ -90,6 +88,7 @@
                 </div> <!-- form-row.// -->
                 <div class="form-group">
                     <button class="btn btn-sm btn-primary">Update User</button>
+                    <a class="btn btn-sm btn-danger" href="{{route('admin.importers')}}">Cancel</a>
                 </div>
                 </div>
                 

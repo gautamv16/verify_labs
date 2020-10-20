@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -22,6 +23,33 @@ class UsersController extends Controller
           return view('admin.uaeusers.index',compact('users','roles','status'));
     }
 
+     protected function validator(array $data)
+    {
+        $message = [];
+        return Validator::make($data, [
+            'first_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'last_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'email' => 'required|unique:users|email',
+            'password' => 'required',
+            'role_id' => 'required',
+            'contact_number' => 'required',
+            'status' => 'required',            
+           ],$message);
+    }
+
+    protected function updatevalidator(array $data,$id)
+    {
+        $message = [];
+        return Validator::make($data, [
+            'first_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'last_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'required',
+            'role_id' => 'required',
+            'contact_number' => 'required',
+            'status' => 'required',            
+           ],$message);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,6 +70,10 @@ class UsersController extends Controller
     {
         try{
             $payload  = $request->all();
+            $validator = $this->validator($payload);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $payload['password'] = Hash::make($payload['password']);
             $user = User::create($payload);
             return redirect()->to('/admin/users')->with('success','UAE User created successfully!');
@@ -83,16 +115,21 @@ class UsersController extends Controller
      */
     public function update(Request $request,$id )
     {
+
         try{
             $payload  = $request->all();
-            $exporter = User::find($id);
-            $exporter->first_name             = $payload['first_name'];
-            $exporter->last_name          = $payload['last_name'];
-            $exporter->email            = $payload['email'];
-            $exporter->contact_number  = $payload['contact_number'];
-            $exporter->role_id     = $payload['role_id'];
-            $exporter->status           = $payload['status'];    
-            $exporter->save();
+            $validator = $this->updatevalidator($payload,$id);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
+            $user = User::find($id);
+            $user->first_name      = $payload['first_name'];
+            $user->last_name       = $payload['last_name'];
+            $user->email           = $payload['email'];
+            $user->contact_number  = $payload['contact_number'];
+            $user->role_id         = $payload['role_id'];
+            $user->status          = $payload['status'];    
+            $user->save();
             return redirect()->to('/admin/users')->with('success','UAE User Updated successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());

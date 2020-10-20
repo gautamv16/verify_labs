@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span> Users</h4>
+                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span>Admin Users</h4>
             </div>
             <div class="pull-right">
                 <a href="{{route('admin.adduser')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add User</a>

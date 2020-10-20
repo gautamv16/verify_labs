@@ -5,7 +5,7 @@ setting
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Add User</h4>
+                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Add Importer</h4>
             </div>
         </div>
     </div>
@@ -88,11 +88,10 @@ setting
                 </div> <!-- form-row.// -->
                 <div class="form-group">
                     <button class="btn btn-sm btn-primary">Create Importer</button>
+                    <a class="btn btn-sm btn-danger" href="{{route('admin.importers')}}">Cancel</a>
                 </div>
                 </div>
                 
-               
-                <!-- <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small> -->
             </form>
         </div>
     </div>
