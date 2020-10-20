@@ -48,6 +48,22 @@ class AdminUserController extends Controller
            ],$message);
     }
 
+    protected function updatevalidator(array $data,$id)
+    {
+        $message = [];
+         return Validator::make($data, [
+            'first_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'last_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'email' => 'required|email|unique:admin_users,email,'.$id,
+            'password' => 'required',
+            'role_id' => 'required',
+            'primary_contact' => 'required',
+            'secondary_contact' => 'required',
+            'status' => 'required',  
+            'office_location_id'=>'required'          
+           ],$message);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -106,7 +122,7 @@ class AdminUserController extends Controller
     {
          try{
             $payload  = $request->all();
-            $validator = $this->validator($payload);
+            $validator = $this->updatevalidator($payload,$id);
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }
