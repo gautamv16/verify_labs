@@ -51,7 +51,7 @@ class OfficeLocationController extends Controller
     {
 
         $location = OfficeLocation::where('id','=',$id)->first();
-        return view('admin.office_locations.edit',compact('location'));
+        return view('admin.office_location.edit',compact('location'));
     }
 
     
