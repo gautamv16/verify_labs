@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\LabUser;
 
 use App\Exporter;
 use App\Http\Controllers\Controller;
@@ -17,7 +17,7 @@ class ExporterController extends Controller
      public function index()
     {
         $users = Exporter::where('status','=',1)->get();
-          return view('admin.exporters.index',compact('users'));
+          return view('labuser.exporters.index',compact('users'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ExporterController extends Controller
      */
     public function create()
     {
-        return view('admin.exporters.add');
+        return view('labuser.exporters.add');
     }
 
     /**
@@ -41,7 +41,7 @@ class ExporterController extends Controller
         try{
             $payload  = $request->all();
             $admin = Exporter::create($payload);
-            return redirect()->to('/admin/exporters')->with('success','Exporter created successfully!');
+            return redirect()->to('/lab/exporters')->with('success','Exporter created successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
@@ -63,7 +63,7 @@ class ExporterController extends Controller
     {
         $user = Exporter::where('id','=',$id)->first();
         
-        return view('admin.exporters.edit',compact('user'));
+        return view('labuser.exporters.edit',compact('user'));
     }
 
     
@@ -83,7 +83,7 @@ class ExporterController extends Controller
             $exporter->approved_farm    = $payload['approved_farm']; 
             $exporter->status           = $payload['status'];    
             $exporter->save();
-            return redirect()->to('/admin/exporters')->with('success','Exporter Updated successfully!');
+            return redirect()->to('/lab/exporters')->with('success','Exporter Updated successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
@@ -95,7 +95,7 @@ class ExporterController extends Controller
         try{
              $admin = Exporter::find($id);
              $admin->delete(); 
-            return redirect()->to('/admin/exporters')->with('success','Exporter Deleted successfully!');
+            return redirect()->to('/lab/exporters')->with('success','Exporter Deleted successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }

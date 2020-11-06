@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 
-class AdminAuthenticate 
+class LabsUserAuthenticate 
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
@@ -18,7 +18,7 @@ class AdminAuthenticate
              if (Auth::guard('admins')->check())
             {
 
-                if(Auth::guard('admins')->user()->role->role_key == 'admin')
+                if(Auth::guard('admins')->user()->role->role_key == 'lab_officer')
                 {
                     return $next($request);
                 }

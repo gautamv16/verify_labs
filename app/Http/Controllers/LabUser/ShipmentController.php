@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\LabUser;
 
 use App\Shipment;
 use App\ShipmentTest;
@@ -21,7 +21,7 @@ class ShipmentController extends Controller
     public function index()
     {
           $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result')->get();
-          return view('admin.shipment.index',compact('shipments'));
+          return view('labuser.shipment.index',compact('shipments'));
     }
 
     /**
@@ -32,18 +32,18 @@ class ShipmentController extends Controller
     public function create()
     {
 
-        return view('admin.shipment.add');
+        return view('labuser.shipment.add');
     }
 
 
     public function get_step_two($record_id){
         $shipment  = Shipment::where('record_id','=',$record_id)->first();
-        return view('admin.shipment.step_two',compact('shipment'));
+        return view('labuser.shipment.step_two',compact('shipment'));
     }
 
     public function get_step_three($record_id){
         $shipment  = Shipment::where('record_id','=',$record_id)->first();
-        return view('admin.shipment.step_three',compact('shipment'));
+        return view('labuser.shipment.step_three',compact('shipment'));
     }
 
     public function step_two(Request $request){
@@ -57,7 +57,7 @@ class ShipmentController extends Controller
                 $payload['uploaded_files']=$name;  
             }
             $step_two = ShipmentTest::create($payload);
-            return redirect()->to('/admin/shipments')->with('success','Step two registered successfully!');
+            return redirect()->to('/lab/shipments')->with('success','Step two registered successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
@@ -76,7 +76,7 @@ class ShipmentController extends Controller
                 $payload['report_upload']=$name;  
             }
             $step_two = ShipmentTestResult::create($payload);
-            return redirect()->to('/admin/shipments')->with('success','Step three registered successfully!');
+            return redirect()->to('/lab/shipments')->with('success','Step three registered successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
@@ -96,7 +96,7 @@ class ShipmentController extends Controller
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $payload['qr_code'] = base64_encode($record_id);
             $shipment = Shipment::create($payload);
-        return redirect()->to('/admin/shipments')->with('success','Register Location created successfully!');
+        return redirect()->to('/lab/shipments')->with('success','Register Location created successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }

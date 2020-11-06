@@ -20,6 +20,30 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/searchreport','HomeController@search_report')->name('searchreport');
 });
+Route::group(['prefix' => 'lab'], function () {
+	Route::group(['middleware' => ['labsuser']], function () {
+       Route::get('dashboard', 'LabUser\DashboardController@index')->name('lab.dashboard');
+         //lab exporters
+       Route::get('exporters','LabUser\ExporterController@index')->name('lab.exporters');
+	   Route::get('getaddexporters','LabUser\ExporterController@create')->name('lab.getaddexporters');
+	   Route::post('saveexporter','LabUser\ExporterController@store')->name('lab.saveexporter');
+	   Route::get('exporters/getedit/{id}','LabUser\ExporterController@edit')->name('lab.exporters.edit');
+	   Route::post('exporters/update/{id}','LabUser\ExporterController@update')->name('lab.exporters.update');
+	   Route::delete('exporters/{id}/delete','LabUser\ExporterController@destroy')->name('lab.exporters.delete');
+
+
+
+	   // Lab Shipments 
+	   Route::get('shipments','LabUser\ShipmentController@index')->name('lab.shipments');
+	   Route::get('getaddshipment','LabUser\ShipmentController@create')->name('lab.getaddshipment');
+	   Route::post('saveshipment','LabUser\ShipmentController@store')->name('lab.saveshipment');
+	   Route::get('shipments/get_step_two/{record_id}','LabUser\ShipmentController@get_step_two')->name('lab.shipment.get_step_two');
+	   Route::get('shipments/get_step_three/{record_id}','LabUser\ShipmentController@get_step_three')->name('lab.shipment.get_step_three');
+	   Route::post('shipments/step_two','LabUser\ShipmentController@step_two')->name('lab.shipment.step_two');
+	   Route::post('shipments/step_three','LabUser\ShipmentController@step_three')->name('lab.shipment.step_three');
+
+     });
+});
 Route::group(['prefix' => 'admin'], function () {
    Route::get('login', 'Admin\AuthController@index')->name('admin');
    Route::post('login', 'Admin\AuthController@login')->name('admin.login');

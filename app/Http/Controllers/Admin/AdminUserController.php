@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\AdminUser;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,8 +18,9 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = AdminUser::where('status','=',1)->get();
-          return view('admin.adminusers.index',compact('users'));
+        $users = AdminUser::with('role')->where('status','=',1)->get();
+         $status = ["1"=>"Active","0"=>'Inactive'];
+          return view('admin.adminusers.index',compact('users','status'));
     }
 
     /**

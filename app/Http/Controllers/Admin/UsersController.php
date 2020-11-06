@@ -17,10 +17,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-         $users = User::where('status','=',1)->get();
-         $roles = ["1"=>"Verifying Officer","2"=>'Helper'];
+         $users = User::with('role')->where('status','=',1)->get();
          $status = ["1"=>"Active","0"=>'Inactive'];
-          return view('admin.uaeusers.index',compact('users','roles','status'));
+          return view('admin.uaeusers.index',compact('users','status'));
     }
 
      protected function validator(array $data)

@@ -57,8 +57,8 @@
                         <label>Role<span class="required-star">*</span></label>
                         <select name="role_id" id="inputState" class="form-control">
                         <option value=""> -- Select -- </option>
-                            <?php $roles = ['1'=>'Admin','2'=>'Lab Officer']; foreach($roles as $key=>$value){ ?>
-                                <option value="<?php echo $key;?>" {{ $user->role_id == $key ? 'selected' : '' }}><?php echo ucwords($value);?></option>
+                            <?php foreach(\App\Roles::where('type','=','admin')->where('status','=',1)->get() as $key=>$value){ ?>
+                                <option value="<?php echo $value->id;?>" {{ $user->role_id == $value->id ? 'selected' : '' }}><?php echo ucwords($value->name);?></option>
                             <?php
                                 } ?>
                         </select>

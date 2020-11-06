@@ -12,4 +12,11 @@ class AdminUser extends Authenticatable
         'first_name','last_name',
         'email','password','office_location_id','role_id','primary_contact','secondary_contact','status'
     ];
+
+    public function role(){
+     	return $this->hasOne('\App\Roles','id','role_id');
+     }
+     public function office_location(){
+     	return $this->hasOne('\App\OfficeLocation','id','office_location_id');
+     }
 }

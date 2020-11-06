@@ -83,7 +83,7 @@ class AuthController extends Controller
         //$this->clearLoginAttempts($request);
 
         return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectTo);
+                ?: ($this->guard()->user()->role->role_key == 'lab_officer') ? redirect()->intended('/lab/dashboard') : redirect()->intended($this->redirectTo);
     }
 
    

@@ -53,8 +53,8 @@
                         <label>Role<span class="required-star">*</span></label>
                         <select name="role_id" id="inputState" class="form-control">
                         <option value=""> -- Select -- </option>
-                            <?php $roles = ['1'=>'Verifying Officer','2'=>'Helper']; foreach($roles as $key=>$value){ ?>
-                                <option value="<?php echo $key;?>" {{ old('role_id') == $key ? 'selected' : '' }}><?php echo ucwords($value);?></option>
+                            <?php foreach(\App\Roles::where('type','=','user')->where('status','=',1)->get() as $key=>$value){ ?>
+                                <option value="<?php echo $value->id;?>" {{ old('role_id') == $value->id ? 'selected' : '' }}><?php echo ucwords($value->name);?></option>
                             <?php
                                 } ?>
                         </select>

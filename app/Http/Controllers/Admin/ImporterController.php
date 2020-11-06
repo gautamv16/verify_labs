@@ -93,7 +93,7 @@ class ImporterController extends Controller
         try{
              $admin = Importer::find($id);
              $admin->delete(); 
-            return redirect()->to('/admin/adminusers')->with('success','Importer Deleted successfully!');
+            return redirect()->to('/admin/importers')->with('success','Importer Deleted successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
