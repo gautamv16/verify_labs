@@ -2,6 +2,11 @@
 @section('content')
 <div class="py-3 bg-light mt-auto mb-3">
     <div class="container-fluid">
+        <div class="shipment-hdr">Lab Shipments</div>
+    </div>
+</div>
+<div class="py-3 bg-light mt-auto mb-3">
+    <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
                 <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span> Shipments</h4>
@@ -54,6 +59,40 @@
                         @endforeach </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="searchBox">
+        <input type="text" placeholder="Search Shipment" />
+        <button class="btn btn-success">Search</button>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="d-flex flex-row flex-wrap">
+        <div class="card-body">
+            <div class="info mb-2">New</div>
+            <div class="lineA mb-2"></div>
+            <div class="lineA mb-2"></div>
+            <div class="lineB mb-2"></div>
+        </div>
+        <div class="card-body">
+            <div class="info mb-2"></div>
+            <div class="lineA mb-2"></div>
+            <div class="lineA mb-2"></div>
+            <div class="lineB mb-2"></div>
+        </div>
+        <div class="card-body">
+            <div class="info mb-2"></div>
+            <div class="lineA mb-2"></div>
+            <div class="lineA mb-2"></div>
+            <div class="lineB mb-2"></div>
+        </div>
+        <div class="card-body">
+            <div class="info mb-2"></div>
+            <div class="lineA mb-2"></div>
+            <div class="lineA mb-2"></div>
+            <div class="lineB mb-2"></div>
         </div>
     </div>
 </div>
