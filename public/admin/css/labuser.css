@@ -1,0 +1,41 @@
+.shipment-hdr{
+	text-align: center;
+	font-size: 30px;
+	color: #000;
+}
+.info{
+	background-color: #e6e6e6;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 49px;
+    padding-bottom: 70px;
+    padding-top: 20px;
+    height: 165px;
+    min-width: 150px;
+}
+.lineA, .lineB{
+	background-color: #e6e6e6;
+    border-radius: 4px;
+    height: 15px;
+}
+.lineB{
+	width: 50%;
+}
+.searchBox{
+	padding:0rem 1.25rem;
+	position: relative;
+}
+.searchBox input{
+	border: 1px solid #ccc;
+    height: 41px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 5px 15px;
+}
+.searchBox button{
+	position: absolute;
+    right: 20px;
+    height: 41px;
+    border-radius: 0px 4px 4px 0px;
+    padding: 0px 25px;
+}
