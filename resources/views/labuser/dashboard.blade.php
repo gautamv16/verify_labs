@@ -1,8 +1,10 @@
 @extends('labuser.layouts.layoutinner')
 @section('content')
-
-<section>
-
+  <div class="py-3 bg-light mt-auto mb-3">
+    <div class="container-fluid">
+        <div class="shipment-hdr">{{Auth::guard('admins')->user()->office_location->name}} Lab</div>
+    </div>
+</div>
   <!--Grid row-->
   <div class="col-md-12 mt-4">
 
@@ -17,7 +19,7 @@
 
           <p class="text-uppercase small mb-2"><strong>Total Shipment This Month</strong></p>
           <h5 class="font-weight-bold mb-0">
-             {{$shipments}}
+             {{count($shipments)}}
           </h5>
 
           <hr>
@@ -96,7 +98,6 @@
   </div>
   <!--Grid row-->
 
-</section>
 <!--Section: Block Content-->
 
 @stop

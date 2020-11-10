@@ -5,7 +5,7 @@
         <div class="shipment-hdr">Lab Shipments</div>
     </div>
 </div>
-<div class="py-3 bg-light mt-auto mb-3">
+<!-- <div class="py-3 bg-light mt-auto mb-3">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
@@ -16,8 +16,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container-fluid">
+</div> -->
+<!-- <div class="container-fluid">
     <div class="card mb-4 border-0">
         <div class="card-body">
             <div class="table-responsive">
@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="container-fluid">
     <div class="searchBox">
         <input type="text" placeholder="Search Shipment" />
@@ -71,12 +71,35 @@
 <div class="container-fluid">
     <div class="d-flex flex-row flex-wrap">
         <div class="card-body">
-            <div class="info mb-2">New</div>
+            <a href="{{route('lab.getaddshipment')}}">
+             <div class="info mb-2">New</div>
             <div class="lineA mb-2"></div>
             <div class="lineA mb-2"></div>
             <div class="lineB mb-2"></div>
+        </a>           
         </div>
+        @foreach($shipments as $shipment)
         <div class="card-body">
+            <div class="info mb-2"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->record_id}}</a></div>
+            <div>{{$shipment->registrationLocation->name}}</div>
+            <div>{{$shipment->created_date}}</div>
+            <div class="lineA mb-2">{{$shipment->importer->name}}</div>
+            <div class="lineA mb-2">{{$shipment->exporter->name}}</div>
+            <div class="lineB mb-2">{{$shipment->uae_firs_number}}</div>
+            <div>
+                 @if($shipment->exporter->approved_farm)
+                                    <p>Passed</p>
+                                @elseif(!$shipment->shipment_test)
+                                    <a href="{{ route('lab.shipment.get_step_two',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 2">Step 2</a>
+                                @elseif(!$shipment->shipment_test_result)
+                                    <a href="{{ route('lab.shipment.get_step_three',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 3">Step 3</a>
+                                @elseif($shipment->shipment_test && $shipment->shipment_test_result)
+                                    <span class="btn btn-sussess">{{($shipment->shipment_test_result->result == 1) ? "Pass": 'Fail'}}</span>
+                                @endif
+            </div>
+        </div>
+        @endforeach
+     <!--    <div class="card-body">
             <div class="info mb-2"></div>
             <div class="lineA mb-2"></div>
             <div class="lineA mb-2"></div>
@@ -87,13 +110,7 @@
             <div class="lineA mb-2"></div>
             <div class="lineA mb-2"></div>
             <div class="lineB mb-2"></div>
-        </div>
-        <div class="card-body">
-            <div class="info mb-2"></div>
-            <div class="lineA mb-2"></div>
-            <div class="lineA mb-2"></div>
-            <div class="lineB mb-2"></div>
-        </div>
+        </div> -->
     </div>
 </div>
 @stop

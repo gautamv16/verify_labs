@@ -20,8 +20,27 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-          $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result')->get();
+        $user = Auth::guard('admins')->user();
+        $user_location = $user->office_location;
+          $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
+          $shipments = [];
+          if(count($shipments_data) > 0){
+            foreach($shipments_data as $k=>$d){
+                if($d->shipment_user->office_location->id == $user_location->id){
+                    $shipments[] = $d;
+                }
+            }
+          }
           return view('labuser.shipment.index',compact('shipments'));
+    }
+
+    public function searchShipments(Request $request){
+        $text = $request->input('text');
+        $shipment = Shipment::where('uae_firs_number','LIKE',$text)->orWhere('record_id','LIKE',$text)->with('importer','exporter','registrationLocation')->with(['shipment_test'=>function($q){
+            return $q->with('supervisionLocation','labs');
+        }])->with(['shipment_test_result'=>function($q){
+            return $q->with('labs');
+        }])->first();
     }
 
     /**
@@ -108,42 +127,12 @@ class ShipmentController extends Controller
      * @param  \App\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminUser $adminUser)
+    public function show($record_id)
     {
-        //
+       $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
+       return view('labuser.shipment.show_shipment',compact('shipment'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\AdminUser  $adminUser
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AdminUser $adminUser)
-    {
-        //
-    }
+    
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AdminUser  $adminUser
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, AdminUser $adminUser)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\AdminUser  $adminUser
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(AdminUser $adminUser)
-    {
-        //
-    }
 }
