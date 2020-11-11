@@ -13,6 +13,7 @@
                 @if($shipment && isset($shipment->record_id))
                 <div class="row">
                     <!-- <fieldset> -->
+                <div class="outerPNL">
                     <legend class="text-primary"><h5>Shipment Detail</h5></legend>
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
@@ -40,10 +41,11 @@
                             <p class="float-left col-md-6">{{$shipment->created_date}}</p>
                         </div> <!-- form-group end.// -->
                     </div>
+                </div>
                 <!-- </fieldset> -->
-
                 <!-- <fieldset> -->
-                    <legend class="text-primary">Supervision & Sampling</legend>
+                <div class="outerPNL">
+                    <legend class="text-primary"><h5>Supervision & Sampling</h5></legend>
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Location Of Supervision</b></label>
@@ -66,10 +68,13 @@
                                 </p>
                         </div> <!-- form-group end.// -->
                     </div>
+                </div>
+                
                 <!-- </fieldset> -->
 
                 <!-- <fieldset> -->
-                    <legend class="text-primary">Testing Result</legend>
+                <div class="outerPNL">
+                    <legend class="text-primary"><h5>Testing Result</h5></legend>
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Result</b></label>
@@ -93,6 +98,8 @@
                             </p>
                         </div> <!-- form-group end.// -->
                     </div>
+                </div>
+                
                 </fieldset>
                 </div>
                 @else 

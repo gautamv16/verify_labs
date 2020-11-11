@@ -16,7 +16,8 @@
 .lineA, .lineB{
 	background-color: #e6e6e6;
     border-radius: 4px;
-    height: 15px;
+    font-size: 14px;
+    padding: 3px 8px;
 }
 .lineB{
 	width: 50%;
@@ -38,4 +39,33 @@
     height: 41px;
     border-radius: 0px 4px 4px 0px;
     padding: 0px 25px;
+}
+.lastBTN .btn{
+	font-size: 14px;
+	padding: 4px 10px;
+}
+.w-70{
+	width: 70%;
+}
+.w-60{
+	width: 60%;
+}
+.w-50{
+	width: 50%;
+}
+.outerPNL{
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	width: 100%;
+	border-radius: 4px;
+	margin-bottom: 20px;
+}
+.outerPNL legend{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	margin: 5px 0px 15px 0px;
+    padding: 0px 10px;
+}
+@media (max-width: 480px){
+.navbar-brand span{
+	display: none;
+}
 }

@@ -81,12 +81,12 @@
         @foreach($shipments as $shipment)
         <div class="card-body">
             <div class="info mb-2"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->record_id}}</a></div>
-            <div>{{$shipment->registrationLocation->name}}</div>
-            <div>{{$shipment->created_date}}</div>
-            <div class="lineA mb-2">{{$shipment->importer->name}}</div>
-            <div class="lineA mb-2">{{$shipment->exporter->name}}</div>
-            <div class="lineB mb-2">{{$shipment->uae_firs_number}}</div>
-            <div>
+            <div class="lineA mb-2">{{$shipment->registrationLocation->name}}</div>
+            <div class="lineA mb-2">{{$shipment->created_date}}</div>
+            <div class="lineB mb-2 w-70">{{$shipment->importer->name}}</div>
+            <div class="lineB mb-2 w-60">{{$shipment->exporter->name}}</div>
+            <div class="lineB mb-2 w-50">{{$shipment->uae_firs_number}}</div>
+            <div class="lastBTN">
                  @if($shipment->exporter->approved_farm)
                                     <p>Passed</p>
                                 @elseif(!$shipment->shipment_test)
@@ -94,7 +94,7 @@
                                 @elseif(!$shipment->shipment_test_result)
                                     <a href="{{ route('lab.shipment.get_step_three',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 3">Step 3</a>
                                 @elseif($shipment->shipment_test && $shipment->shipment_test_result)
-                                    <span class="btn btn-sussess">{{($shipment->shipment_test_result->result == 1) ? "Pass": 'Fail'}}</span>
+                                    <span class="btn btn-success">{{($shipment->shipment_test_result->result == 1) ? "Pass": 'Fail'}}</span>
                                 @endif
             </div>
         </div>
