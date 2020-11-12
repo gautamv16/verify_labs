@@ -80,12 +80,15 @@
         </div>
         @foreach($shipments as $shipment)
         <div class="card-body">
+            <div class="innerBody">
             <div class="info mb-2"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->record_id}}</a></div>
-            <div class="lineA mb-2">{{$shipment->registrationLocation->name}}</div>
-            <div class="lineA mb-2">{{$shipment->created_date}}</div>
-            <div class="lineB mb-2 w-70">{{$shipment->importer->name}}</div>
-            <div class="lineB mb-2 w-60">{{$shipment->exporter->name}}</div>
-            <div class="lineB mb-2 w-50">{{$shipment->uae_firs_number}}</div>
+            <ul class="cardUL">
+                <li>Loction: <span>{{$shipment->registrationLocation->name}}</span></li>
+                <li>Date: <span>{{$shipment->created_date}}</span></li>
+                <li>Importer: <span>{{$shipment->importer->name}}</span></li>
+                <li>Exporter:<span>{{$shipment->exporter->name}}</span></li>
+                <li>FINS NO: <span>{{$shipment->uae_firs_number}}</span></li>
+            </ul>
             <div class="lastBTN">
                  @if($shipment->exporter->approved_farm)
                                     <p>Passed</p>
@@ -96,6 +99,7 @@
                                 @elseif($shipment->shipment_test && $shipment->shipment_test_result)
                                     <span class="btn btn-success">{{($shipment->shipment_test_result->result == 1) ? "Pass": 'Fail'}}</span>
                                 @endif
+            </div>
             </div>
         </div>
         @endforeach
