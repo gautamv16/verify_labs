@@ -41,9 +41,18 @@
                             <p class="float-left col-md-6">{{$shipment->created_date}}</p>
                         </div> <!-- form-group end.// -->
                     </div>
+                    @if($shipment->exporter->approved_farm)
+                    <div class="col-md-12">
+                        <div class=" float-left col-md-6">
+                            <label class="float-left col-md-6"><b>Status</b></label>
+                            <p class="float-left col-md-6">Passed</p>
+                        </div> <!-- form-group end.// -->
+                    </div>
+                    @endif;
                 </div>
                 <!-- </fieldset> -->
                 <!-- <fieldset> -->
+                @if(!$shipment->exporter->approved_farm)
                 <div class="outerPNL">
                     <legend class="text-primary"><h5>Supervision & Sampling</h5></legend>
                     <div class="col-md-12">
@@ -99,7 +108,8 @@
                         </div> <!-- form-group end.// -->
                     </div>
                 </div>
-                
+
+                @endif;
                 </fieldset>
                 </div>
                 @else 
