@@ -26,7 +26,7 @@ class ShipmentController extends Controller
           $shipments = [];
           if(count($shipments_data) > 0){
             foreach($shipments_data as $k=>$d){
-                if($d->shipment_user->office_location->id == $user_location->id){
+                if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
                     $shipments[] = $d;
                 }
             }
