@@ -69,8 +69,8 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="d-flex flex-row flex-wrap">
-        <div class="card-body">
+    <div class="d-flex flex-row flex-wrap ">
+        <div class="card-body col-md-3">
             <a href="{{route('lab.getaddshipment')}}">
              <div class="info mb-2">New</div>
             <div class="lineA mb-2"></div>
@@ -79,7 +79,7 @@
         </a>           
         </div>
         @foreach($shipments as $shipment)
-        <div class="card-body">
+        <div class="card-body col-md-3">
             <div class="innerBody">
             <div class="info mb-2"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->record_id}}</a></div>
             <ul class="cardUL">
