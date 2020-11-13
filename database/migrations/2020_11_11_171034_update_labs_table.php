@@ -18,7 +18,7 @@ class UpdateLabsTable extends Migration
             $table->string('city');            
             $table->bigInteger('country');
             $table->string('contact_name');
-            $table->string('email')->unique();            
+            $table->string('email')->unique()->nullable();            
             $table->string('primary_contact');
             $table->string('secondary_contact');
         });
