@@ -52,13 +52,13 @@
                 </div>
                 <!-- </fieldset> -->
                 <!-- <fieldset> -->
-                @if(!$shipment->exporter->approved_farm)
+                @if(!$shipment->exporter->approved_farm && $shipment->shipment_test)
                 <div class="outerPNL">
                     <legend class="text-primary"><h5>Supervision & Sampling</h5></legend>
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Location Of Supervision</b></label>
-                            <p class="float-left col-md-6"></p>
+                            <p class="float-left col-md-6">{{$shipment->shipment_test->supervisionLocation->name}}</p>
                         </div> <!-- form-group end.// -->
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Racs Lab ID</b></label>
@@ -78,10 +78,11 @@
                         </div> <!-- form-group end.// -->
                     </div>
                 </div>
-                
+                @endif
                 <!-- </fieldset> -->
 
                 <!-- <fieldset> -->
+                    @if(!$shipment->exporter->approved_farm && $shipment->shipment_test_result)
                 <div class="outerPNL">
                     <legend class="text-primary"><h5>Testing Result</h5></legend>
                     <div class="col-md-12">
