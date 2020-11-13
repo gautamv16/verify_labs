@@ -26,7 +26,7 @@ class Shipment extends Model
      
 
      public function registrationLocation(){
-     	return $this->hasOne('\App\RegistrationLocations','id','registration_location_id');
+     	return $this->hasOne('\App\OfficeLocation','id','registration_location_id');
      }
      public function shipment_test(){
      	return $this->belongsTo('\App\ShipmentTest','record_id','record_id');
