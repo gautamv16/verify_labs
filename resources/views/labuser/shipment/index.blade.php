@@ -89,9 +89,9 @@
                 <li>Exporter:<span>{{$shipment->exporter->name}}</span></li>
                 <li>FINS NO: <span>{{$shipment->uae_firs_number}}</span></li>
             </ul>
-            <div class="lastBTN">
-                 @if($shipment->exporter->approved_farm)
-                                    <p>Passed</p>
+            <div class="lastBTN">{{$shipment->exporter->approved_farm}}
+                               @if($shipment->exporter->approved_farm)
+                                    <span class="btn btn-success">Passed</span>
                                 @elseif(!$shipment->shipment_test)
                                     <a href="{{ route('lab.shipment.get_step_two',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 2">Step 2</a>
                                 @elseif(!$shipment->shipment_test_result)
