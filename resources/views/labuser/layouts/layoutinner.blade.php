@@ -32,9 +32,9 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             <span>Summary</span>
                         </a>
-                       
+                       <!-- 
                         <a class="nav-link" href="{{route('lab.exporters')}}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div><span>Exporters</span></a>
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div><span>Exporters</span></a> -->
                         <a class="nav-link" href="{{route('lab.shipments')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div><span>Shipments</span></a>
                        
