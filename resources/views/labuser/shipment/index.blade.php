@@ -89,7 +89,7 @@
                 <li>Exporter:<span>{{$shipment->exporter->name}}</span></li>
                 <li>FINS NO: <span>{{$shipment->uae_firs_number}}</span></li>
             </ul>
-            <div class="lastBTN">{{$shipment->exporter->approved_farm}}
+            <div class="lastBTN">
                                @if($shipment->exporter->approved_farm)
                                     <span class="btn btn-success">Passed</span>
                                 @elseif(!$shipment->shipment_test)

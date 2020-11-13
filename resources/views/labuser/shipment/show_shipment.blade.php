@@ -48,7 +48,7 @@
                             <p class="float-left col-md-6">Passed</p>
                         </div> <!-- form-group end.// -->
                     </div>
-                    @endif;
+                    @endif
                 </div>
                 <!-- </fieldset> -->
                 <!-- <fieldset> -->
