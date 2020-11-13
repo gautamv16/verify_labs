@@ -26,8 +26,57 @@
                         <input name="name" value="{{ old('name')}}" type="text" class="form-control" placeholder="">
                         <p class="invalid-field text-danger"><?php echo $errors->first('name'); ?></p>
                     </div> <!-- form-group end.// -->
+                    <div class="form-group col-md-6">
+                        <label>Contact name<span class="required-star">*</span></label>
+                        <input name="contact_name" value="{{ old('contact_name')}}" type="text" class="form-control" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('contact_name'); ?></p>
+                    </div>
+                    
                 </div>
-               
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Email<span class="required-star">*</span></label>
+                        <input value="{{ old('email')}}" name="email" type="text" class="form-control" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('email'); ?></p>
+                    </div> <!-- form-group end.// -->
+                     <div class="form-group col-md-6">
+                        <label>Address<span class="required-star">*</span></label>
+                        <input name="address" type="text" value="{{ old('address')}}" class="form-control"  />                        
+                        <p class="invalid-field text-danger"><?php echo $errors->first('address'); ?></p>
+                    </div> <!-- form-group end.// -->
+
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-6">
+                        <label>City<span class="required-star">*</span></label>
+                        <input value="{{ old('city')}}" name="city" type="text" class="form-control" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('city'); ?></p>
+                    </div> <!-- form-group end.// -->
+                    <div class="form-group col-md-6">
+                        <label>Country<span class="required-star">*</span></label>
+                        <select name="country" class="form-control">
+                            <option value=""> -- Select -- </option>
+                            @foreach(\App\Country::all() as $country)
+                                <option value="{{$country->id}}">{{$country->name}}</option>
+                            @endforeach
+                        </select>
+                        <p class="invalid-field text-danger"><?php echo $errors->first('country'); ?></p>
+                    </div> <!-- form-group end.// -->
+                </div>
+                <div class="form-row">
+                   
+                    <div class="form-group col-md-6">
+                        <label>Primary Contact<span class="required-star">*</span></label>
+                        <input value="{{ old('primary_contact')}}" name="primary_contact" type="" class="form-control" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('primary_contact'); ?></p>
+                    </div> <!-- form-group end.// -->
+                   <div class="form-group col-md-6">
+                        <label>Secondary Contact<span class="required-star">*</span></label>
+                    <input value="{{ old('secondary_contact')}}" name="secondary_contact" type="" class="form-control" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('secondary_contact'); ?></p>
+                    </div> <!-- form-group end.// -->
+                </div>
                 <div class="form-row">
                    
                     <div class="form-group col-md-6">
