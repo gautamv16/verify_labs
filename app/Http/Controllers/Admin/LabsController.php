@@ -87,7 +87,14 @@ class LabsController extends Controller
             $payload  = $request->all();
             $labs = Labs::find($id);
             $labs->name              = $payload['name'];
-            $labs->status            = $payload['status'];     
+            $labs->address          = $payload['address'];
+            $labs->email            = $payload['email'];
+            $labs->primary_contact  = $payload['primary_contact'];
+            $labs->secondary_contact= $payload['secondary_contact'];
+            $labs->contact_name     = $payload['contact_name'];
+            $labs->city             = $payload['city'];  
+            $labs->country          = $payload['country'];                
+            $labs->status            = $payload['status'];
             $labs->save();
             return redirect()->to('/admin/labs')->with('success','Lab Updated successfully!');
         }catch(\Exception $e){

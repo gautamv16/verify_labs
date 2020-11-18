@@ -62,7 +62,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{route('admin.shipments')}}">Shipments</a>
                                  <a class="nav-link" href="{{route('admin.labs')}}">Labs</a>
-                                <a class="nav-link" href="{{route('admin.register_locations')}}">Registeration Locations</a>
+                                <!-- <a class="nav-link" href="{{route('admin.register_locations')}}">Registeration Locations</a> -->
                                 <a class="nav-link" href="{{route('admin.supervision_locations')}}">Supervision Locations</a>
                             </nav>
                         </div>

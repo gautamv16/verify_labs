@@ -123,6 +123,8 @@ Route::group(['prefix' => 'admin'], function () {
 	   // Shipments 
 	   Route::get('shipments','Admin\ShipmentController@index')->name('admin.shipments');
 	   Route::get('getaddshipment','Admin\ShipmentController@create')->name('admin.getaddshipment');
+	   Route::get('shipment/detail/{record_id}','Admin\ShipmentController@show')->name('admin.shipment.show');
+	 
 	   Route::post('saveshipment','Admin\ShipmentController@store')->name('admin.saveshipment');
 	   Route::get('shipments/get_step_two/{record_id}','Admin\ShipmentController@get_step_two')->name('admin.shipment.get_step_two');
 	   Route::get('shipments/get_step_three/{record_id}','Admin\ShipmentController@get_step_three')->name('admin.shipment.get_step_three');

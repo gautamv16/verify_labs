@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $shipments = [];
         if($shipments_for_location && count($shipments_for_location) > 0){
             foreach($shipments_for_location as $k=>$d){
-                if($d->shipment_user->office_location->id == $user_location->id){
+                if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
                     $shipments[] = $d;
                 }   
             }
@@ -36,7 +36,7 @@ class DashboardController extends Controller
         if($shipments && count($shipments) > 0){
             $shipment_data = \App\Shipment::with(['shipment_user'])->whereMonth('created_date', date('m'))->get();
             foreach ($shipment_data as $key => $value) {
-                if($value->shipment_user->office_location->id == $user_location->id){
+                if($value->shipment_user && $value->shipment_user->office_location->id == $user_location->id){
                         if($value->exporter->approved_farm){
                              $audited_shipment = $audited_shipment + 1;
                         }

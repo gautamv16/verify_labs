@@ -31,12 +31,12 @@
                     <tbody>
                         @foreach($shipments as $shipment)
                         <tr>
-                            <td>{{$shipment->record_id}}</td>
-                            <td>{{$shipment->importer->name}}</td>
-                            <td>{{$shipment->exporter->name}}</td>
-                            <td>{{$shipment->uae_firs_number}}</td>
-                            <td>{{$shipment->registrationLocation->name}}</td>
-                            <td>{{$shipment->created_date}} </td>
+                            <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->record_id}}</td>
+                            <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->importer->name}}</td>
+                            <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->exporter->name}}</td>
+                            <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->uae_firs_number}}</td>
+                            <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->registrationLocation->name}}</td>
+                            <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->created_date}} </td>
                             <td>
                                 @if($shipment->exporter->approved_farm)
                                     <p>Passed</p>
@@ -57,5 +57,10 @@
         </div>
     </div>
 </div>
+<script>
+    function openshipment(record_id){
+        window.location.href="<?php echo url('admin/shipment/detail');?>/"+record_id;
+    }
+</script>
 @stop
 
