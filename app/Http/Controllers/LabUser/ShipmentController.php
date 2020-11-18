@@ -100,6 +100,7 @@ class ShipmentController extends Controller
            $html.=' </div></div></div>';
          }
         }else{
+          if($text!='')
           $html="<div>No Data Found</div>";
         }
 
