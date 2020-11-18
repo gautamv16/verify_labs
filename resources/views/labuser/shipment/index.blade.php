@@ -64,12 +64,13 @@
 </div> -->
 <div class="container-fluid">
     <div class="searchBox">
-        <input type="text" placeholder="Search Shipment" />
-        <button class="btn btn-success">Search</button>
+            <input type="hidden" id="token" name="_token" value="{{csrf_token()}}" />
+            <input type="text" id="searchText" onkeyup="searchShipments()" placeholder="Search Shipment" />
+            <button onclick="searchShipments()" class="btn btn-success">Search</button>
     </div>
 </div>
 <div class="container-fluid">
-    <div class="d-flex flex-row flex-wrap ">
+    <div class="d-flex flex-row flex-wrap " id="searchResults">
         <div class="card-body col-md-3">
             <a href="{{route('lab.getaddshipment')}}">
              <div class="info mb-2">New</div>
@@ -117,5 +118,22 @@
         </div> -->
     </div>
 </div>
+<script>
+    
+    function searchShipments(){
+        var text = $('#searchText').val();
+        var csrf_token = $('#token').val();
+        var url = '<?php echo url("lab/shipment/search"); ?>';
+        $.ajax({
+            url:url,
+            method:'POST',
+            data:{"_token":csrf_token,"text":text},
+            success:function(data){
+                console.log('data');
+                $('#searchResults').html(data);
+            }
+        })
+    }
+</script>
 @stop
 

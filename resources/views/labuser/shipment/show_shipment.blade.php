@@ -16,6 +16,16 @@
                 <div class="outerPNL">
                     <legend class="text-primary"><h5>Shipment Detail</h5></legend>
                     <div class="col-md-12">
+                        <div class=" float-left col-md-6">
+                            <label class="float-left col-md-6"><b>Record ID</b></label>
+                            <p class="float-left col-md-6">{{$shipment->record_id}}</p>
+                        </div> <!-- form-group end.// -->
+                        <div class=" float-left col-md-6">
+                            <label class="float-left col-md-6"><b>Shipment Date</b></label>
+                            <p class="float-left col-md-6">{{$shipment->created_date}}</p>
+                        </div> <!-- form-group end.// -->
+                    </div>
+                    <div class="col-md-12">
                         <div class="float-left col-md-6">
                             <label class=" float-left col-md-6"><b>Importer</b></label>
                             <p class="float-left col-md-6">{{$shipment->importer->name}}</p>
@@ -35,12 +45,7 @@
                              <p class="float-left col-md-6">{{$shipment->registrationLocation->name}}</p>
                         </div> <!-- form-group end.// -->
                     </div>
-                    <div class="col-md-12">
-                        <div class=" float-left col-md-6">
-                            <label class="float-left col-md-6"><b>Shipment Date</b></label>
-                            <p class="float-left col-md-6">{{$shipment->created_date}}</p>
-                        </div> <!-- form-group end.// -->
-                    </div>
+                    
                     @if($shipment->exporter->approved_farm)
                     <div class="col-md-12">
                         <div class=" float-left col-md-6">

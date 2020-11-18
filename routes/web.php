@@ -40,6 +40,8 @@ Route::group(['prefix' => 'lab'], function () {
 	   Route::get('shipment/detail/{record_id}','LabUser\ShipmentController@show')->name('lab.shipment.show');
 	   Route::get('shipments/get_step_two/{record_id}','LabUser\ShipmentController@get_step_two')->name('lab.shipment.get_step_two');
 	   Route::get('shipments/get_step_three/{record_id}','LabUser\ShipmentController@get_step_three')->name('lab.shipment.get_step_three');
+	   
+	   Route::post('shipment/search','LabUser\ShipmentController@searchShipments')->name('lab.shipment.search');
 	   Route::post('shipments/step_two','LabUser\ShipmentController@step_two')->name('lab.shipment.step_two');
 	   Route::post('shipments/step_three','LabUser\ShipmentController@step_three')->name('lab.shipment.step_three');
 
