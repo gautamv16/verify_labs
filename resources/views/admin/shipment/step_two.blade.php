@@ -20,7 +20,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Record ID<span class="required-star">*</span></label>
-                        <input value="{{ $shipment->record_id}}" class="form-control" placeholder="" name="record_id" type=""/> 
+                        <input value="{{ $shipment->record_id}}" readonly class="form-control" placeholder="" name="record_id" type=""/> 
                         <p class="invalid-field text-danger"><?php echo $errors->first('record_id'); ?></p>
                     </div> <!-- form-group end.// -->
                     <div class="form-group col-md-6">

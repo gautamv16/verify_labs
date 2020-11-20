@@ -120,7 +120,7 @@ class ShipmentController extends Controller
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }
-            $record_id = "SHP-".random_int(4, 10);
+            $record_id = "SHP-".str_pad(rand(0, pow(10, 5)-1), 5, '0', STR_PAD_LEFT);
             $payload['record_id'] = $record_id; 
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $payload['qr_code'] = base64_encode($record_id);
