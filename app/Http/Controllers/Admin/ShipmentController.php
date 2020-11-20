@@ -8,6 +8,7 @@ use App\ShipmentTestResult;
 use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ShipmentController extends Controller
 {
@@ -49,6 +50,15 @@ class ShipmentController extends Controller
     public function step_two(Request $request){
         try{
             $payload = $request->all();
+            $validator = Validator::make($payload, [
+            'supervision_location_id' => 'required',
+            'lab_id' => 'required',
+            'supervision_date' => 'required',
+            'uploaded_files' => 'required',
+           ],[]);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $assetPath = "admin/files/testing";
             if($files = $request->file('uploaded_files')){
@@ -69,6 +79,15 @@ class ShipmentController extends Controller
         $assetPath = "admin/files/testing_result";
         try{
             $payload = $request->all();
+            $validator = Validator::make($payload, [
+            'result' => 'required',
+            'lab_id' => 'required',
+            'testing_date' => 'required',
+            'report_upload' => 'required',
+           ],[]);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             if($files = $request->file('report_upload')){
                 $name=$payload['record_id'].".".$files->getClientOriginalExtension();  
@@ -91,6 +110,16 @@ class ShipmentController extends Controller
     {
         try{
             $payload = $request->all();
+            $validator = Validator::make($payload, [
+            'importer_id' => 'required',
+            'exporter_id' => 'required',
+            'uae_firs_number' => 'required',
+            'registration_location_id' => 'required',
+            'created_date' => 'required'  
+           ],[]);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $record_id = "SHP-".random_int(4, 10);
             $payload['record_id'] = $record_id; 
             $payload['user_id'] = Auth::guard('admins')->user()->id;
