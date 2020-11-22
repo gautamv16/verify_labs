@@ -53,6 +53,12 @@
                             <label class="float-left col-md-6"><b>Shipment Date</b></label>
                             <p class="float-left col-md-6">{{$shipment->created_date}}</p>
                         </div> <!-- form-group end.// -->
+                        @if($shipment->exporter->approved_farm)
+                          <div class=" float-left col-md-6">
+                            <label class="float-left col-md-6"><b>Status</b></label>
+                            <p class="float-left col-md-6">Pass</p>
+                        </div> <!-- form-group end.// -->
+                        @endif
                     </div>
                 <!-- </fieldset> -->
 
