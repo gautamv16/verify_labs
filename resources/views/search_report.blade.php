@@ -57,6 +57,7 @@
                 <!-- </fieldset> -->
 
                 <!-- <fieldset> -->
+                    @if($shipment->shipment_test)
                     <legend class="text-primary">Supervision & Sampling</legend>
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
@@ -81,8 +82,9 @@
                         </div> <!-- form-group end.// -->
                     </div>
                 <!-- </fieldset> -->
-
+                @endif
                 <!-- <fieldset> -->
+                    @if($shipment->shipment_test_result)
                     <legend class="text-primary">Testing Result</legend>
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
@@ -108,6 +110,7 @@
                         </div> <!-- form-group end.// -->
                     </div>
                 </fieldset>
+                @endif
                 </div>
                 @else 
                     <div class="col-md-10">Record Does Not Exist</div>
