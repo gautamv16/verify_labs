@@ -88,6 +88,15 @@
                         </div> <!-- form-group end.// -->
                     </div>
                 <!-- </fieldset> -->
+                @else
+                <legend class="text-primary">Supervision & Sampling</legend>
+                <div class="col-md-12">
+                        <div class="float-left col-md-6">
+                            <label class="float-left col-md-6"><b>Status</b></label>
+                            <p class="float-left col-md-6">Step2 Pending</p>
+                        </div> <!-- form-group end.// -->
+                        
+                    </div>
                 @endif
                 <!-- <fieldset> -->
                     @if($shipment->shipment_test_result)
@@ -116,6 +125,15 @@
                         </div> <!-- form-group end.// -->
                     </div>
                 </fieldset>
+                @else
+                <legend class="text-primary">Testing Result</legend>
+                <div class="col-md-12">
+                        <div class="float-left col-md-6">
+                            <label class="float-left col-md-6"><b>Status</b></label>
+                            <p class="float-left col-md-6">Step3 Pending</p>
+                        </div> <!-- form-group end.// -->
+                        
+                    </div>
                 @endif
                 </div>
                 @else 
