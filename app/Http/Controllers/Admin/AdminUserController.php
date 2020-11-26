@@ -18,7 +18,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = AdminUser::with('role')->where('status','=',1)->get();
+        $users = AdminUser::with(['role','office_location'])->where('status','=',1)->get();
          $status = ["1"=>"Active","0"=>'Inactive'];
           return view('admin.adminusers.index',compact('users','status'));
     }
@@ -40,7 +40,7 @@ class AdminUserController extends Controller
         return Validator::make($data, [
             'first_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
             'last_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
-            'email' => 'required|unique:admin_users|email',
+            'email' => 'required|unique:admin_users|email:rfc,dns',
             'password' => 'required',
             'role_id' => 'required',
             'primary_contact' => 'required',

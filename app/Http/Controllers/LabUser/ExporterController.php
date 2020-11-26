@@ -5,6 +5,7 @@ namespace App\Http\Controllers\LabUser;
 use App\Exporter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ExporterController extends Controller
 {
@@ -19,6 +20,41 @@ class ExporterController extends Controller
         $users = Exporter::where('status','=',1)->get();
           return view('labuser.exporters.index',compact('users'));
     }
+
+    protected function validator(array $data)
+    {
+        $message = [];
+        return Validator::make($data, [
+            'name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'address' => 'required',
+            'email' => 'required|unique:exporters|email:rfc,dns',
+            'contact_name' => 'required',
+            'city' => 'required',
+            'approved_farm' => 'required',
+            'country' =>'required',
+            'primary_contact'=>'required',
+            'secondary_contact'=>'required',
+            'status' => 'required',            
+           ],$message);
+    }
+
+    protected function updatevalidator(array $data,$id)
+    {
+        $message = [];
+        return Validator::make($data, [
+             'name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'address' => 'required',
+            'email' => 'required|email|unique:exporters,email,'.$id,
+            'contact_name' => 'required',
+            'city' => 'required',
+            'approved_farm' => 'required',
+            'country' =>'required',
+            'primary_contact'=>'required',
+            'secondary_contact'=>'required',
+            'status' => 'required',          
+           ],$message);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,6 +76,10 @@ class ExporterController extends Controller
     {
         try{
             $payload  = $request->all();
+            $validator = $this->validator($payload);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $admin = Exporter::create($payload);
             return redirect()->to('/lab/exporters')->with('success','Exporter created successfully!');
         }catch(\Exception $e){
@@ -81,7 +121,11 @@ class ExporterController extends Controller
             $exporter->city             = $payload['city'];  
             $exporter->country          = $payload['country'];  
             $exporter->approved_farm    = $payload['approved_farm']; 
-            $exporter->status           = $payload['status'];    
+            $exporter->status           = $payload['status'];  
+            $validator = $this->updatevalidator($payload,$id);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }   
             $exporter->save();
             return redirect()->to('/lab/exporters')->with('success','Exporter Updated successfully!');
         }catch(\Exception $e){

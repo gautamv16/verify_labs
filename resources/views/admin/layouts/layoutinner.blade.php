@@ -48,7 +48,7 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{route('admin.users')}}">UAE users</a>
-                                <a class="nav-link" href="{{route('admin.adminusers')}}">Admin Users</a>
+                                <a class="nav-link" href="{{route('admin.adminusers')}}">Racs Users</a>
                                 <a class="nav-link" href="{{route('admin.importers')}}">Importers</a>
                                 <a class="nav-link" href="{{route('admin.exporters')}}">Exporters</a>
                             </nav>

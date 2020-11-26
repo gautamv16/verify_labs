@@ -80,7 +80,7 @@ setting
                         <label>Status<span class="required-star">*</span></label>
                         <select name="status" class="form-control">
                             <option value=""> -- Select -- </option>
-                            <option value="1" {{ old('status') == '1' ? 'selected' : '' }} >Active</option>
+                            <option value="1" {{ old('status') == '1' ? 'selected' : '' }} {{ old('status') == '' ? 'selected' : '' }} >Active</option>
                             <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Inactive</option>
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('status'); ?></p>

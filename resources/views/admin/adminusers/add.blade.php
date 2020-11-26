@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Add Admin User</h4>
+                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Add Racs User</h4>
             </div>
             <div class="pull-right">
                 <!-- <a href="#" class="btn btn-info btn-sm" role="button" aria-disabled="true"><i class="fas fa-plus"></i>&nbsp;Add Pharmacy</a> -->
@@ -90,7 +90,7 @@
                         <label>Status<span class="required-star">*</span></label>
                         <select name="status" class="form-control">
                             <option value=""> -- Select -- </option>
-                            <option value="1" {{ old('status') == '1' ? 'selected' : '' }} >Active</option>
+                            <option value="1" {{ old('status') == '1' ? 'selected' : '' }} {{old('status') == '' ? 'selected':''}} >Active</option>
                             <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Inactive</option>
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('status'); ?></p>

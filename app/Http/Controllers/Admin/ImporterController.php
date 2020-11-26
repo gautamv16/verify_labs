@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Importer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ImporterController extends Controller
 {
@@ -17,6 +18,39 @@ class ImporterController extends Controller
     {
         $users = Importer::where('status','=',1)->get();
           return view('admin.importers.index',compact('users'));
+    }
+
+
+    protected function validator(array $data)
+    {
+        $message = [];
+        return Validator::make($data, [
+           'name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'address' => 'required',
+            'email' => 'required|unique:importers|email:rfc,dns',
+            'contact_name' => 'required',
+            'city' => 'required',
+            'country' =>'required',
+            'primary_contact'=>'required',
+            'secondary_contact'=>'required',
+            'status' => 'required',           
+           ],$message);
+    }
+
+    protected function updatevalidator(array $data,$id)
+    {
+        $message = [];
+        return Validator::make($data, [
+            'name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
+            'address' => 'required',
+            'email' => 'required|email|unique:importers,email,'.$id,
+            'contact_name' => 'required',
+            'city' => 'required',
+            'country' =>'required',
+            'primary_contact'=>'required',
+            'secondary_contact'=>'required',
+            'status' => 'required',             
+           ],$message);
     }
 
     /**
@@ -39,6 +73,10 @@ class ImporterController extends Controller
     {
         try{
             $payload  = $request->all();
+            $validator = $this->validator($payload);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
             $admin = Importer::create($payload);
             return redirect()->to('/admin/importers')->with('success','Importer created successfully!');
         }catch(\Exception $e){
@@ -79,7 +117,11 @@ class ImporterController extends Controller
             $importer->contact_name      = $payload['contact_name'];
             $importer->city              = $payload['city'];  
             $importer->country           = $payload['country'];  
-            $importer->status            = $payload['status'];     
+            $importer->status            = $payload['status'];   
+            $validator = $this->updatevalidator($payload,$id);
+            if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }  
             $importer->save();
             return redirect()->to('/admin/importers')->with('success','Importer Updated successfully!');
         }catch(\Exception $e){

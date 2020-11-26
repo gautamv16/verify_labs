@@ -28,7 +28,7 @@ class UsersController extends Controller
         return Validator::make($data, [
             'first_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
             'last_name' => 'required|regex:/^[a-zA-Z ]*$/|string|max:100',
-            'email' => 'required|unique:users|email',
+            'email' => 'required|unique:users|email:rfc,dns',
             'password' => 'required',
             'role_id' => 'required',
             'contact_number' => 'required',
