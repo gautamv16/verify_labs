@@ -42,7 +42,7 @@
                         </div> <!-- form-group end.// -->
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Location Of Registration</b></label>
-                             <p class="float-left col-md-6">{{$shipment->registrationLocation->name}}</p>
+                             <p class="float-left col-md-6">{{($shipment->registrationLocation) ? $shipment->registrationLocation->name : ''}}</p>
                         </div> <!-- form-group end.// -->
                     </div>
                     

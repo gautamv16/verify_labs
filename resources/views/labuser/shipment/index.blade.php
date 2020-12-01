@@ -40,7 +40,6 @@
                             <td>{{$shipment->importer->name}}</td>
                             <td>{{$shipment->exporter->name}}</td>
                             <td>{{$shipment->uae_firs_number}}</td>
-                            <td>{{$shipment->registrationLocation->name}}</td>
                             <td>{{$shipment->created_date}} </td>
                             <td>
                                 @if($shipment->exporter->approved_farm)
@@ -84,7 +83,7 @@
             <div class="innerBody">
             <div class="info mb-2"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->record_id}}</a></div>
             <ul class="cardUL">
-                <li>Loction: <span>{{$shipment->registrationLocation->name}}</span></li>
+                <li>Loction: <span>{{($shipment->registrationLocation) ? $shipment->registrationLocation->name:''}}</span></li>
                 <li>Date: <span>{{$shipment->created_date}}</span></li>
                 <li>Importer: <span>{{$shipment->importer->name}}</span></li>
                 <li>Exporter:<span>{{$shipment->exporter->name}}</span></li>

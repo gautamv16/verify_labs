@@ -35,7 +35,7 @@
                             <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->importer->name}}</td>
                             <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->exporter->name}}</td>
                             <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->uae_firs_number}}</td>
-                            <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->registrationLocation->name}}</td>
+                            <td onclick="openshipment('{{$shipment->record_id}}')">{{($shipment->registrationLocation) ? $shipment->registrationLocation->name : ''}}</td>
                             <td onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->created_date}} </td>
                             <td>
                                 @if($shipment->exporter->approved_farm)

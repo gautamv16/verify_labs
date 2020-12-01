@@ -22,6 +22,7 @@ class ShipmentController extends Controller
     public function index()
     {
           $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result')->get();
+          
           return view('admin.shipment.index',compact('shipments'));
     }
 
