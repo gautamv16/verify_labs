@@ -19,6 +19,7 @@ Auth::routes();
 Route::group(['middleware' => ['web']], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/searchreport','HomeController@search_report')->name('searchreport');
+Route::get('/shipment_detail/{record_id}','HomeController@shipment_detail')->name('shipment_detail');
 });
 Route::group(['prefix' => 'lab'], function () {
 	Route::group(['middleware' => ['labsuser']], function () {
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'lab'], function () {
 	   Route::get('getaddshipment','LabUser\ShipmentController@create')->name('lab.getaddshipment');
 	   Route::post('saveshipment','LabUser\ShipmentController@store')->name('lab.saveshipment');
 	   Route::get('shipment/detail/{record_id}','LabUser\ShipmentController@show')->name('lab.shipment.show');
+	   Route::get('shipment/view/{record_id}','LabUser\ShipmentController@shipment_detail')->name('lab.shipment_detail');
 	   Route::get('shipments/get_step_two/{record_id}','LabUser\ShipmentController@get_step_two')->name('lab.shipment.get_step_two');
 	   Route::get('shipments/get_step_three/{record_id}','LabUser\ShipmentController@get_step_three')->name('lab.shipment.get_step_three');
 	   
@@ -114,18 +116,19 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 	   // Office Location	    
-	   Route::get('office_locations','Admin\OfficeLocationController@index')->name('admin.office_locations');
-	   Route::get('office_locations/getadd','Admin\OfficeLocationController@create')->name('admin.office_locations.getadd');
-	   Route::post('office_locations/store','Admin\OfficeLocationController@store')->name('admin.office_locations.store');
-	   Route::get('office_locations/getedit/{id}','Admin\OfficeLocationController@edit')->name('admin.office_locations.edit');
-	   Route::post('office_locations/update/{id}','Admin\OfficeLocationController@update')->name('admin.office_locations.update');
-	   Route::delete('office_locations/{id}/delete','Admin\OfficeLocationController@destroy')->name('admin.office_locations.delete');
+	   Route::get('locations','Admin\LocationController@index')->name('admin.locations');
+	   Route::get('locations/getadd','Admin\LocationController@create')->name('admin.locations.getadd');
+	   Route::post('locations/store','Admin\LocationController@store')->name('admin.locations.store');
+	   Route::get('locations/getedit/{id}','Admin\LocationController@edit')->name('admin.locations.edit');
+	   Route::post('locations/update/{id}','Admin\LocationController@update')->name('admin.locations.update');
+	   Route::delete('locations/{id}/delete','Admin\LocationController@destroy')->name('admin.locations.delete');
 
 
 	   // Shipments 
 	   Route::get('shipments','Admin\ShipmentController@index')->name('admin.shipments');
 	   Route::get('getaddshipment','Admin\ShipmentController@create')->name('admin.getaddshipment');
 	   Route::get('shipment/detail/{record_id}','Admin\ShipmentController@show')->name('admin.shipment.show');
+	   Route::get('shipment/view/{record_id}','Admin\ShipmentController@shipment_detail')->name('admin.shipment_detail');
 	 
 	   Route::post('saveshipment','Admin\ShipmentController@store')->name('admin.saveshipment');
 	   Route::get('shipments/get_step_two/{record_id}','Admin\ShipmentController@get_step_two')->name('admin.shipment.get_step_two');

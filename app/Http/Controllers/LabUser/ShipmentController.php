@@ -227,6 +227,11 @@ class ShipmentController extends Controller
        return view('labuser.shipment.show_shipment',compact('shipment'));
     }
 
+    public function shipment_detail($record_id){
+        $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
+        return view('labuser.shipment.shipment_detail',compact('shipment'));
+    }
+
     
 
 }

@@ -63,10 +63,10 @@
                                 <a class="nav-link" href="{{route('admin.shipments')}}">Shipments</a>
                                  <a class="nav-link" href="{{route('admin.labs')}}">Labs</a>
                                 <!-- <a class="nav-link" href="{{route('admin.register_locations')}}">Registeration Locations</a> -->
-                                <a class="nav-link" href="{{route('admin.supervision_locations')}}">Supervision Locations</a>
+                                <!-- <a class="nav-link" href="{{route('admin.supervision_locations')}}">Supervision Locations</a> -->
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="{{route('admin.office_locations')}}" ><div class="sb-nav-link-icon"><i class="fas fa-map-marker"></i></div> Office Locations</a>
+                        <a class="nav-link collapsed" href="{{route('admin.locations')}}" ><div class="sb-nav-link-icon"><i class="fas fa-map-marker"></i></div>Locations</a>
                     </div>
                 </div>
                 <!-- <div class="sb-sidenav-footer">

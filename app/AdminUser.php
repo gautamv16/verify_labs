@@ -17,6 +17,6 @@ class AdminUser extends Authenticatable
      	return $this->hasOne('\App\Roles','id','role_id');
      }
      public function office_location(){
-     	return $this->hasOne('\App\OfficeLocation','id','office_location_id');
+     	return $this->hasOne('\App\Location','id','office_location_id');
      }
 }

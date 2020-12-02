@@ -8,5 +8,5 @@ class RegistrationLocations extends Model
 {
     protected $table = 'registration_locations';
     public $timestamps = false;
-    protected $fillable = [ 'name','status'];
+    protected $fillable = [ 'name','country_id','status'];
 }

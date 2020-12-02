@@ -36,7 +36,11 @@ class HomeController extends Controller
         }])->with(['shipment_test_result'=>function($q){
             return $q->with('labs');
         }])->first();
-        //echo "<pre>"; print_r($shipment); die;
         return view('search_report',compact('shipment'));
+    }
+
+    public function shipment_detail($record_id){
+        $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
+        return view('shipment_detail',compact('shipment'));
     }
 }

@@ -144,5 +144,10 @@ class ShipmentController extends Controller
         return view('admin.shipment.show_shipment',compact('shipment'));
     }
 
+    public function shipment_detail($record_id){
+        $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
+        return view('admin.shipment.shipment_detail',compact('shipment'));
+    }
+
     
 }

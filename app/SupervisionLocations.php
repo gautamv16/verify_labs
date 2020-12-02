@@ -8,5 +8,5 @@ class SupervisionLocations extends Model
 {
    protected $table = 'supervision_locations';
    public $timestamps = false;
-   protected $fillable = [ 'name','status'];
+   protected $fillable = [ 'name','country_id','status'];
 }
