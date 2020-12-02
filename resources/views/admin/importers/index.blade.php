@@ -33,7 +33,7 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->contact_name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{ucwords($user->status)}}</td>
+                            <td>{{ucwords($status[$user->status])}}</td>
                             <td>
                              <a href="{{ route('admin.importers.edit',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>
                             <button onclick="ondelete({{$user->id}})" type="button" class="btn btn-sm btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Delete user"><i class="fa fa-trash"></i></button>

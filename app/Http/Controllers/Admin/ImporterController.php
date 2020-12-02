@@ -16,8 +16,9 @@ class ImporterController extends Controller
      */
      public function index()
     {
-        $users = Importer::where('status','=',1)->get();
-          return view('admin.importers.index',compact('users'));
+        $users = Importer::where('status','=',1)->get();        
+         $status = ["1"=>"Active","0"=>'Inactive'];
+          return view('admin.importers.index',compact('users','status'));
     }
 
 

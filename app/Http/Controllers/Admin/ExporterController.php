@@ -17,8 +17,9 @@ class ExporterController extends Controller
      */
      public function index()
     {
-        $users = Exporter::where('status','=',1)->get();
-          return view('admin.exporters.index',compact('users'));
+        $users = Exporter::with([])->where('status','=',1)->get();
+         $status = ["1"=>"Active","0"=>'Inactive'];
+          return view('admin.exporters.index',compact('users','status'));
     }
 
     protected function validator(array $data)
