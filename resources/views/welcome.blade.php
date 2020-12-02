@@ -61,6 +61,19 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .d-flex{
+                display:flex;
+            }
+            .align-items-center{
+                align-items: center;
+            }
+            .title img{
+                margin-right: 15px;
+            }
+            .title span{
+                margin-top: 20px;
+                color: #000;
+            }
         </style>
     </head>
     <body>
@@ -80,8 +93,9 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Verify Lab
+                <div class="title d-flex align-items-center">
+                    <img src="{{ asset('admin/assets/img/lab-verification-logo.png') }}" width="100">
+                    <span>Verify Lab</span>
                 </div>
             </div>
         </div>

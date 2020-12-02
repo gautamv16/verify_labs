@@ -10308,3 +10308,14 @@ legend{
   width: 60px;
   margin-right: 5px;
 }
+.mb-20{
+  margin-bottom: 20px;
+}
+.shipLabel{
+  background-color: #f5f5f5;
+  width: 100%;
+}
+.viewMore{
+  width: 100%;
+  text-align: center;
+}

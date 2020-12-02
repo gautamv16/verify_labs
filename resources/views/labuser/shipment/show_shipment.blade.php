@@ -9,6 +9,72 @@
 <div class="container-fluid">
     <div class="card mb-4 border-0">
         <div class="card-body">
+            <div class="passed">
+                <div class="col-md-12 text-center mb-20">
+                    <img src="{{ asset('admin/assets/img/passed.png') }}">
+                </div>
+                <div class="col-md-12">
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Exporter</b></label>
+                         <p>{{$shipment->exporter->name}}</p>
+                    </div>
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Country of Origin</b></label>
+                         <p>Canada</p>
+                    </div>
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Importer</b></label>
+                        <p>{{$shipment->importer->name}}</p>
+                    </div> <!-- form-group end.// -->
+                    <div class="float-left col-md-12 text-center">
+                        <a href="#" class="viewMore">View More</a>
+                    </div>    
+                </div>
+            </div>  
+            <div class="failed">
+                <div class="col-md-12 text-center mb-20">
+                    <img src="{{ asset('admin/assets/img/failed.png') }}" height="60">
+                </div>
+                <div class="col-md-12">
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Exporter</b></label>
+                         <p>{{$shipment->exporter->name}}</p>
+                    </div>
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Country of Origin</b></label>
+                         <p>Canada</p>
+                    </div>
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Importer</b></label>
+                        <p>{{$shipment->importer->name}}</p>
+                    </div> <!-- form-group end.// -->
+                    <div class="float-left col-md-12 text-center">
+                        <a href="#" class="viewMore">View More</a>
+                    </div>    
+                </div>
+            </div>    
+            <div class="pending">
+                <div class="col-md-12 text-center mb-20">
+                    <img src="{{ asset('admin/assets/img/pending.png') }}" height="60">
+                </div>
+                <div class="col-md-12">
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Exporter</b></label>
+                         <p>{{$shipment->exporter->name}}</p>
+                    </div>
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Country of Origin</b></label>
+                         <p>Canada</p>
+                    </div>
+                    <div class="float-left col-md-4 text-center">
+                        <label class="shipLabel"><b>Importer</b></label>
+                        <p>{{$shipment->importer->name}}</p>
+                    </div> <!-- form-group end.// -->
+                    <div class="float-left col-md-12 text-center">
+                        <a href="#" class="viewMore">View More</a>
+                    </div>    
+                </div>
+            </div>  
                 <div class="col-md-12">
                 @if($shipment && isset($shipment->record_id))
                 <div class="row">
