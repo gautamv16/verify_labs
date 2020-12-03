@@ -15,7 +15,7 @@ class LocationController extends Controller
      */
      public function index()
     {
-        $locations = Location::where('status','=',1)->get();
+        $locations = Location::with('country')->where('status','=',1)->get();
           return view('admin.locations.index',compact('locations'));
     }
 
@@ -61,7 +61,8 @@ class LocationController extends Controller
             $payload  = $request->all();
             $location = Location::find($id);
             $location->name              = $payload['name'];
-            $location->status            = $payload['status'];     
+            $location->status            = $payload['status']; 
+            $location->country_id        = $payload['country_id'];    
             $location->save();
             return redirect()->to('/admin/locations')->with('success','Location Updated successfully!');
         }catch(\Exception $e){

@@ -50,7 +50,7 @@
                         <label>Location Of Registration<span class="required-star">*</span></label>
                         <select name="registration_location_id" class="form-control">
                             <option value=""> -- Select -- </option>
-                            @foreach(\App\RegistrationLocations::all() as $location)
+                            @foreach(\App\Location::all() as $location)
                                 <option value="{{$location->id}}">{{$location->name}}</option>
                             @endforeach
                         </select>

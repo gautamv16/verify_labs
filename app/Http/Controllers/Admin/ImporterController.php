@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Importer;
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,7 +17,7 @@ class ImporterController extends Controller
      */
      public function index()
     {
-        $users = Importer::where('status','=',1)->get();        
+        $users = Importer::with(['countryName'])->where('status','=',1)->get();        
          $status = ["1"=>"Active","0"=>'Inactive'];
           return view('admin.importers.index',compact('users','status'));
     }
@@ -78,6 +79,7 @@ class ImporterController extends Controller
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }
+            $payload['user_id'] = Auth::guard('admins')->user()->id;
             $admin = Importer::create($payload);
             return redirect()->to('/admin/importers')->with('success','Importer created successfully!');
         }catch(\Exception $e){
@@ -123,6 +125,7 @@ class ImporterController extends Controller
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }  
+            $importer->user_id = Auth::guard('admins')->user()->id;
             $importer->save();
             return redirect()->to('/admin/importers')->with('success','Importer Updated successfully!');
         }catch(\Exception $e){

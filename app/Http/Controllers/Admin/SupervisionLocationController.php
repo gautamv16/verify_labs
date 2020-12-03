@@ -72,6 +72,7 @@ class SupervisionLocationController extends Controller
             $payload  = $request->all();
             $location = SupervisionLocations::find($id);
             $location->name              = $payload['name'];
+            $location->country_id        = $payload['country_id'];
             $location->status            = $payload['status'];     
             $location->save();
             return redirect()->to('/admin/supervision_locations')->with('success','Location Updated successfully!');

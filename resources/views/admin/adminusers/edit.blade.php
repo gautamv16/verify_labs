@@ -43,7 +43,7 @@
                         <label>Office Location<span class="required-star">*</span></label>
                          <select name="office_location_id" id="inputState" class="form-control">
                         <option value=""> -- Select -- </option>
-                          <?php  foreach(\App\OfficeLocation::where('status','=',1)->get() as $key=>$value){ ?>
+                          <?php  foreach(\App\Location::where('status','=',1)->get() as $key=>$value){ ?>
                                 <option value="<?php echo $value->id;?>" {{ $value->id == $user->office_location_id ? 'selected' : '' }}><?php echo ucwords($value->name);?></option>
                             <?php
                                 } ?>

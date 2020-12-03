@@ -28,6 +28,19 @@
                    
                     
                 </div>
+                <div class="form-row">
+                 <div class="form-group col-md-6">
+                        <label>Country<span class="required-star">*</span></label>
+                        <select name="country_id" class="form-control">
+                            <option value=""> -- Select -- </option>
+                            @foreach(\App\Country::all() as $country)
+                                <option value="{{$country->id}}" {{  $location->country_id == $country->id ? 'selected' : '' }}>{{$country->name}}</option>
+                            @endforeach
+                        </select>
+                        <p class="invalid-field text-danger"><?php echo $errors->first('country_id'); ?></p>
+                    </div> <!-- form-group end.// -->
+                </div>
+                
                 
                 <div class="form-row">
                    

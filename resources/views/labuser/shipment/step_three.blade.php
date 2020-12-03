@@ -46,7 +46,7 @@
                         <label>Testing Lab ID<span class="required-star">*</span></label>
                         <select name="lab_id" class="form-control">
                             <option value=""> -- Select -- </option>
-                            @foreach(\App\Labs::all() as $lab)
+                            @foreach($labs as $lab)
                                 <option value="{{$lab->id}}">{{$lab->name}}</option>
                             @endforeach
                         </select>

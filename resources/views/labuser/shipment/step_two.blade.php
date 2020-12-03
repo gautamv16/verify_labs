@@ -27,7 +27,7 @@
                         <label>Location Of Supervision<span class="required-star">*</span></label>
                         <select name="supervision_location_id" class="form-control">
                             <option value=""> -- Select -- </option>
-                            @foreach(\App\SupervisionLocations::all() as $location)
+                            @foreach($locations as $location)
                                 <option value="{{$location->id}}">{{$location->name}}</option>
                             @endforeach
                         </select>
@@ -47,7 +47,7 @@
                         <label>Racs Lab ID<span class="required-star">*</span></label>
                         <select name="lab_id" class="form-control">
                             <option value=""> -- Select -- </option>
-                            @foreach(\App\Labs::all() as $lab)
+                            @foreach($labs as $lab)
                                 <option value="{{$lab->id}}">{{$lab->name}}</option>
                             @endforeach
                         </select>
@@ -59,7 +59,7 @@
                    
                     <div class="form-group col-md-6">
                         <label>Uploading Sampling Photos<span class="required-star">*</span></label>
-                         <input  name="uploaded_files" type="file" class="form-control" placeholder="">
+                         <input  name="uploaded_files" multiple type="file" class="form-control" placeholder="">
                        
                         <p class="invalid-field text-danger"><?php echo $errors->first('uploaded_files'); ?></p>
                     </div> <!-- form-group end.// -->

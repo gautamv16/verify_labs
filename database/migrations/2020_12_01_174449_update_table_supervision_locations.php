@@ -13,7 +13,9 @@ class UpdateTableSupervisionLocations extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('supervision_locations', function (Blueprint $table) {
+            $table->bigInteger('country_id');
+        });
     }
 
     /**

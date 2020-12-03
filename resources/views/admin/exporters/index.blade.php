@@ -35,8 +35,8 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->contact_name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->email}}</td>
+                            <td>{{ucwords(strtolower($user->countryName->name))}}</td>
+                            <td>{{ucwords($approved_farm[$user->approved_farm])}}</td>
                             <td>{{ucwords($status[$user->status])}}</td>
                             <td>
                              <a href="{{ route('admin.exporters.edit',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>

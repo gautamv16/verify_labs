@@ -22,7 +22,7 @@
                         <label>Importer<span class="required-star">*</span></label>
                         <select name="importer_id" class="form-control">
                             <option value=""> -- Select -- </option>
-                            @foreach(\App\Importer::all() as $importer)
+                            @foreach($importers as $importer)
                                 <option value="{{$importer->id}}">{{$importer->name}}</option>
                             @endforeach
                         </select>
@@ -32,7 +32,7 @@
                         <label>Exporter<span class="required-star">*</span></label>
                         <select name="exporter_id" class="form-control">
                             <option value=""> -- Select -- </option>
-                            @foreach(\App\Exporter::all() as $exporter)
+                            @foreach($exporters as $exporter)
                                 <option value="{{$exporter->id}}">{{$exporter->name}}</option>
                             @endforeach
                         </select>
@@ -50,7 +50,7 @@
                         <label>Location Of Registration<span class="required-star">*</span></label>
                         <select name="registration_location_id" class="form-control">
                             <option value=""> -- Select -- </option>
-                            @foreach(\App\OfficeLocation::all() as $location)
+                            @foreach($locations as $location)
                                 <option value="{{$location->id}}">{{$location->name}}</option>
                             @endforeach
                         </select>

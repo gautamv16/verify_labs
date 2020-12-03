@@ -20,6 +20,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Country</th>
                             <th>Status</th>
                             <th style="width: 50px;">Action</th>
 
@@ -29,6 +30,7 @@
                         @foreach($locations as $location)
                         <tr>
                             <td>{{$location->name}}</td>
+                            <td>{{ucwords(strtolower($location->country->name))}}</td>
                             <td>{{($location->status == 1) ? 'Active': 'Inactive'}}</td>
                             <td>
                              <a href="{{ route('admin.locations.edit',['id'=>$location->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Location"><i class="fa fa-pen"></i></a>

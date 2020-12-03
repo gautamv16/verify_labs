@@ -13,7 +13,7 @@ class UpdateTableOfficeLocations extends Migration
      */
     public function up()
     {
-        Schema::table('office_locations', function (Blueprint $table) {
+        Schema::table('locations', function (Blueprint $table) {
             $table->bigInteger('country_id');
         });
     }

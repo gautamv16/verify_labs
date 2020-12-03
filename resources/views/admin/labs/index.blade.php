@@ -21,6 +21,7 @@
                         <tr>
                             <th>Lab ID</th>
                             <th>Name</th>
+                            <th>Country</th>
                             <th>Status</th>
                             <th style="width: 50px;">Action</th>
 
@@ -31,7 +32,8 @@
                         <tr>
                             <td>{{$lab->lab_id}}</td>
                             <td>{{$lab->name}}</td>
-                            <td>{{ucwords($lab->status)}}</td>
+                            <td>{{$lab->countryName->name}}</td>
+                            <td>{{ucwords($status[$lab->status])}}</td>
                             <td>
                              <a href="{{ route('admin.labs.edit',['id'=>$lab->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>
                             <button onclick="ondelete({{$lab->id}})" type="button" class="btn btn-sm btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Delete user"><i class="fa fa-trash"></i></button>

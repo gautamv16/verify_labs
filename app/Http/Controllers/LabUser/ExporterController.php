@@ -4,6 +4,7 @@ namespace App\Http\Controllers\LabUser;
 
 use App\Exporter;
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,8 +18,10 @@ class ExporterController extends Controller
      */
      public function index()
     {
-        $users = Exporter::where('status','=',1)->get();
-          return view('labuser.exporters.index',compact('users'));
+        $users = Exporter::with(['countryName'])->where('status','=',1)->get();
+          $status=['1'=>'Active',"0"=>'Inactive'];
+          $approved_farm=['1'=>'Yes',"0"=>'No'];
+          return view('labuser.exporters.index',compact('users','status','approved_farm'));
     }
 
     protected function validator(array $data)
@@ -80,6 +83,7 @@ class ExporterController extends Controller
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }
+            $payload['user_id'] = Auth::guard('admins')->user()->id;
             $admin = Exporter::create($payload);
             return redirect()->to('/lab/exporters')->with('success','Exporter created successfully!');
         }catch(\Exception $e){
@@ -126,6 +130,7 @@ class ExporterController extends Controller
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }   
+            $exporter->user_id = Auth::guard('admins')->user()->id;
             $exporter->save();
             return redirect()->to('/lab/exporters')->with('success','Exporter Updated successfully!');
         }catch(\Exception $e){

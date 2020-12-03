@@ -116,19 +116,30 @@ class ShipmentController extends Controller
      */
     public function create()
     {
-
-        return view('labuser.shipment.add');
+        $user = Auth::guard('admins')->user();
+         $user_location = $user->office_location;
+         $importers = \App\Importer::where('country','=',$user_location->country_id)->get();
+         $exporters = \App\Exporter::where('country','=',$user_location->country_id)->get();
+         $locations = \App\Location::where('country_id','=',$user_location->country_id)->get();
+        return view('labuser.shipment.add',compact('importers','exporters','locations'));
     }
 
 
     public function get_step_two($record_id){
         $shipment  = Shipment::where('record_id','=',$record_id)->first();
-        return view('labuser.shipment.step_two',compact('shipment'));
+        $user = Auth::guard('admins')->user();
+         $user_location = $user->office_location;
+         $locations = \App\SupervisionLocations::where('country_id','=',$user_location->country_id)->get();
+         $labs = \App\Labs::where('country','=',$user_location->country_id)->get();
+        return view('labuser.shipment.step_two',compact('shipment','locations','labs'));
     }
 
     public function get_step_three($record_id){
-        $shipment  = Shipment::where('record_id','=',$record_id)->first();
-        return view('labuser.shipment.step_three',compact('shipment'));
+        $shipment  = Shipment::where('record_id','=',$record_id)->first();        
+         $user = Auth::guard('admins')->user();
+         $user_location = $user->office_location;
+         $labs = \App\Labs::where('country','=',$user_location->country_id)->get();
+        return view('labuser.shipment.step_three',compact('shipment','labs'));
     }
 
     public function step_two(Request $request){

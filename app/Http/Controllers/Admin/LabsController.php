@@ -15,8 +15,10 @@ class LabsController extends Controller
      */
      public function index()
     {
-        $labs = Labs::where('status','=',1)->get();
-          return view('admin.labs.index',compact('labs'));
+        $labs = Labs::with('countryName')->where('status','=',1)->get();
+        $status = ['1'=>'Active','0'=>'Inactive'];
+        // echo "<pre>"; print_r($labs); die;
+          return view('admin.labs.index',compact('labs','status'));
     }
 
     /**

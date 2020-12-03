@@ -70,7 +70,7 @@
                         </div>
                     </div> 
                     @endif
-                    @if(!$shipment->exporter->approved_farm && !$shipment->shipment_test && !$shipment->shipment_test_result)   
+                    @if(!$shipment->exporter->approved_farm && (!$shipment->shipment_test || !$shipment->shipment_test_result))   
                     <div class="pending">
                         <div class="col-md-12 text-center mb-20">
                             <img src="{{ asset('admin/assets/img/pending.png') }}" height="60">
