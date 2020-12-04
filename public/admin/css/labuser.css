@@ -1,7 +1,13 @@
 .shipment-hdr{
 	text-align: center;
-	font-size: 30px;
-	color: #000;
+    font-size: 30px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shipment-hdr img{
+    margin-right: 10px;
 }
 .innerBody{
 	border: 1px solid #e6e6e6;
@@ -32,7 +38,7 @@
 	width: 50%;
 }
 .searchBox{
-	padding:0rem 1.25rem;
+	padding:0px;
 	position: relative;
 }
 .searchBox input{
@@ -44,7 +50,7 @@
 }
 .searchBox button{
 	position: absolute;
-    right: 20px;
+    right: 0px;
     height: 41px;
     border-radius: 0px 4px 4px 0px;
     padding: 0px 25px;
@@ -112,4 +118,29 @@
 .navbar-brand span{
 	display: none;
 }
+}
+.table{
+    background-color: #ffffff;
+}
+.mt-15{
+    margin-top: 15px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+.mr-15{
+    margin-right: 15px;
+}
+.w-75{
+    width: 75%;
+}
+.New_Shipments img{
+    margin-right: 10px;
+}
+.New_Shipments span{
+    font-size: 18px;
+    min-width: 125px;
 }

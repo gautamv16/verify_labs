@@ -6,14 +6,110 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="searchBox">
+    <div class="col-sm-12 d-flex justify-content-between">
+        <div class="New_Shipments mr-15">
+            <a href="{{route('lab.getaddshipment')}}" class="d-flex align-items-center">
+                <img src="{{ asset('admin/assets/img/truck.png') }}"> 
+                <span>New Shipments</span>
+            </a>
+        </div>
+        <div class="searchBox w-75">
             <input type="hidden" id="token" name="_token" value="{{csrf_token()}}" />
             <input type="text" id="searchText" onkeyup="searchShipments()" placeholder="Search Shipment" />
             <button onclick="searchShipments()" class="btn btn-success">Search</button>
+        </div>
     </div>
 </div>
 <div class="container-fluid">
-    <div class="d-flex flex-row flex-wrap " id="searchResults">
+    <div class="col-md-12">
+        <h5 class="mt-20 mb-10">Pending Sampling & Testing</h5>
+        <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">FIRS#</th>
+                  <th scope="col">Exporter</th>
+                  <th scope="col">Importer</th>
+                  <th scope="col">Entry Date</th>
+                  <th scope="col">Days in Stage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Exporter</td>
+                  <td>Importer</td>
+                  <td>2020-10-09</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Exporter</td>
+                  <td>Importer</td>
+                  <td>2020-10-09</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Exporter</td>
+                  <td>Importer</td>
+                  <td>2020-10-09</td>
+                  <td>10</td>
+                </tr>
+              </tbody>
+            </table>    
+        </div>
+    </div> 
+    <div class="col-md-12">
+        <h5 class="mt-15">Pending Lab Testing</h5>
+        <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">FIRS#</th>
+                  <th scope="col">Exporter</th>
+                  <th scope="col">Importer</th>
+                  <th scope="col">Lab</th>
+                  <th scope="col">Entry Date</th>
+                  <th scope="col">Supervision Date</th>
+                  <th scope="col">Days in Stage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Exporter</td>
+                  <td>Importer</td>
+                  <td>SHP-6</td>
+                  <td>2020-10-09</td>
+                  <td>2020-10-09</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Exporter</td>
+                  <td>Importer</td>
+                  <td>SHP-6</td>
+                  <td>2020-10-09</td>
+                  <td>2020-10-09</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Exporter</td>
+                  <td>Importer</td>
+                  <td>SHP-6</td>
+                  <td>2020-10-09</td>
+                  <td>2020-10-09</td>
+                  <td>10</td>
+                </tr>
+              </tbody>
+            </table>    
+        </div>
+    </div>    
+</div>
+<div class="container-fluid">
+    <div class="d-flex flex-row flex-wrap row" id="searchResults">
         <div class="card-body col-md-3">
             <a href="{{route('lab.getaddshipment')}}">
              <div class="info mb-2">New</div>
