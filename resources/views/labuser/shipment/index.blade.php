@@ -21,6 +21,7 @@
     </div>
 </div>
 <div class="container-fluid">
+ 
     <div class="col-md-12">
         <h5 class="mt-20 mb-10">Pending Sampling & Testing</h5>
         <div class="table-responsive">
@@ -35,27 +36,17 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($shipments as $shipment)
+                @if(!$shipment->shipment_test)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Exporter</td>
-                  <td>Importer</td>
-                  <td>2020-10-09</td>
-                  <td>10</td>
+                  <th scope="row"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
+                  <td>{{$shipment->exporter->name}}</td>
+                  <td>{{$shipment->importer->name}}</td>
+                  <td>{{$shipment->created_date}}</td>
+                  <td>{{ $shipment->created_date}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Exporter</td>
-                  <td>Importer</td>
-                  <td>2020-10-09</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Exporter</td>
-                  <td>Importer</td>
-                  <td>2020-10-09</td>
-                  <td>10</td>
-                </tr>
+                @endif
+                @endforeach               
               </tbody>
             </table>    
         </div>
@@ -76,39 +67,63 @@
                 </tr>
               </thead>
               <tbody>
+                 @foreach($shipments as $shipment)
+                 @if($shipment->shipment_test && !$shipment->shipment_test_result)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Exporter</td>
-                  <td>Importer</td>
-                  <td>SHP-6</td>
-                  <td>2020-10-09</td>
-                  <td>2020-10-09</td>
-                  <td>10</td>
+                  <th scope="row"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
+                  <td>{{$shipment->exporter->name}}</td>
+                  <td>{{$shipment->importer->name}}</td>
+                  <td></td>
+                  <td>{{$shipment->created_date}}</td>
+                  <td>{{$shipment->shipment_test->supervision_date}}</td>
+                  <td>{{$shipment->shipment_test->supervision_date}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Exporter</td>
-                  <td>Importer</td>
-                  <td>SHP-6</td>
-                  <td>2020-10-09</td>
-                  <td>2020-10-09</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Exporter</td>
-                  <td>Importer</td>
-                  <td>SHP-6</td>
-                  <td>2020-10-09</td>
-                  <td>2020-10-09</td>
-                  <td>10</td>
-                </tr>
+                @endif
+                @endforeach
               </tbody>
             </table>    
         </div>
-    </div>    
+    </div>  
+     <div class="col-md-12">
+        <h5 class="mt-20 mb-10">Complete Shipments</h5>
+        <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">FIRS#</th>
+                  <th scope="col">Exporter</th>
+                  <th scope="col">Importer</th>
+                  <th scope="col">Entry Date</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($shipments as $shipment)
+                <tr>
+                  <th scope="row"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
+                  <td>{{$shipment->exporter->name}}</td>
+                  <td>{{$shipment->importer->name}}</td>
+                  <td>{{$shipment->created_date}}</td>
+                  <td>
+                    @if($shipment->exporter->approved_farm)
+                                    <span class="btn btn-success">Passed</span>
+                                @elseif(!$shipment->shipment_test)
+                                    <a href="{{ route('lab.shipment.get_step_two',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 2">Step 2</a>
+                                @elseif(!$shipment->shipment_test_result)
+                                    <a href="{{ route('lab.shipment.get_step_three',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 3">Step 3</a>
+                                @elseif($shipment->shipment_test && $shipment->shipment_test_result)
+                                    <span class="btn btn-success">{{($shipment->shipment_test_result->result == 1) ? "Pass": 'Fail'}}</span>
+                                @endif
+                  </td>
+                </tr>
+                  @endforeach
+               
+              </tbody>
+            </table>    
+        </div>
+    </div>   
 </div>
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="d-flex flex-row flex-wrap row" id="searchResults">
         <div class="card-body col-md-3">
             <a href="{{route('lab.getaddshipment')}}">
@@ -143,20 +158,8 @@
             </div>
         </div>
         @endforeach
-     <!--    <div class="card-body">
-            <div class="info mb-2"></div>
-            <div class="lineA mb-2"></div>
-            <div class="lineA mb-2"></div>
-            <div class="lineB mb-2"></div>
-        </div>
-        <div class="card-body">
-            <div class="info mb-2"></div>
-            <div class="lineA mb-2"></div>
-            <div class="lineA mb-2"></div>
-            <div class="lineB mb-2"></div>
-        </div> -->
     </div>
-</div>
+</div> -->
 <script>
     
     function searchShipments(){

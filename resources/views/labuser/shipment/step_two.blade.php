@@ -23,6 +23,27 @@
                         <input value="{{ $shipment->record_id}}" readonly class="form-control" placeholder="" name="record_id" type=""/> 
                         <p class="invalid-field text-danger"><?php echo $errors->first('record_id'); ?></p>
                     </div> <!-- form-group end.// -->
+                     <div class="form-group col-md-6">
+                        <label>FIRS NO<span class="required-star"></span></label>
+                        <input value="{{ $shipment->uae_firs_number}}" readonly class="form-control" placeholder=""  type=""/> 
+                    </div> <!-- form-group end.// -->   
+                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Exporter<span class="required-star"></span></label>
+                        <input value="{{ $shipment->exporter->name}}" readonly class="form-control" placeholder="" name="record_id" type=""/> 
+                    </div> <!-- form-group end.// -->
+                   <div class="form-group col-md-6">
+                        <label>Importer<span class="required-star"></span></label>
+                        <input value="{{ $shipment->importer->name}}" readonly class="form-control" placeholder=""  type=""/> 
+                    </div> <!-- form-group end.// -->                    
+                </div>
+                <div class="form-row">
+                     <div class="form-group col-md-6">
+                        <label>Entry Date<span class="required-star"></span></label>
+                        <input value="{{ $shipment->created_date}}" readonly class="form-control" placeholder="" name="record_id" type=""/> 
+                    </div> <!-- form-group end.// -->      
                     <div class="form-group col-md-6">
                         <label>Location Of Supervision<span class="required-star">*</span></label>
                         <select name="supervision_location_id" class="form-control">
@@ -33,7 +54,6 @@
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('supervision_location_id'); ?></p>
                     </div>
-                    
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
