@@ -64,7 +64,7 @@
                   <th scope="row" style="cursor: pointer;" onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->uae_firs_number}}</th>
                   <td>{{$shipment->exporter->name}}</td>
                   <td>{{$shipment->importer->name}}</td>
-                  <td></td>
+                  <td>{{$shipment->shipment_test->labs->name}}</td>
                   <td>{{$shipment->created_date}}</td>
                   <td>{{$shipment->shipment_test->supervision_date}}</td>
                   <td>{{$shipment->shipment_test->supervision_date}}</td>
