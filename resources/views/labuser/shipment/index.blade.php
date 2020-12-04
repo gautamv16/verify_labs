@@ -37,7 +37,7 @@
               </thead>
               <tbody>
                 @foreach($shipments as $shipment)
-                @if(!$shipment->shipment_test)
+                @if(!$shipment->shipment_test && !$shipment->exporter->approved_farm)
                 <tr>
                   <th scope="row"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
                   <td>{{$shipment->exporter->name}}</td>
@@ -68,7 +68,7 @@
               </thead>
               <tbody>
                  @foreach($shipments as $shipment)
-                 @if($shipment->shipment_test && !$shipment->shipment_test_result)
+                 @if($shipment->shipment_test && !$shipment->shipment_test_result && !$shipment->exporter->approved_farm)
                 <tr>
                   <th scope="row"><a href="{{ route('lab.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
                   <td>{{$shipment->exporter->name}}</td>
