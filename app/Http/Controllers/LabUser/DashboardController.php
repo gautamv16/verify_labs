@@ -41,10 +41,10 @@ class DashboardController extends Controller
                              $audited_shipment = $audited_shipment + 1;
                         }
 
-                        if(!$value->shipment_test){
+                        if(!$value->shipment_test && !$value->exporter->approved_farm){
                             $shipments_waiting_sampling = $shipments_waiting_sampling + 1;
                         }
-                        if(!$value->shipment_test_result){
+                        if(!$value->shipment_test_result && !$value->exporter->approved_farm){
                             $shipment_waiting_lab = $shipment_waiting_lab + 1;
                         }
                         if( $value->shipment_test && $value->shipment_test_result){

@@ -31,7 +31,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Exporter<span class="required-star"></span></label>
-                        <input value="{{ $shipment->exporter->name}}" readonly class="form-control" placeholder="" name="record_id" type=""/> 
+                        <input value="{{ $shipment->exporter->name}}" readonly class="form-control" placeholder=""  type=""/> 
                     </div> <!-- form-group end.// -->
                    <div class="form-group col-md-6">
                         <label>Importer<span class="required-star"></span></label>
@@ -41,7 +41,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Entry Date<span class="required-star"></span></label>
-                        <input value="{{ $shipment->created_date}}" readonly class="form-control" placeholder="" name="record_id" type=""/> 
+                        <input value="{{ $shipment->created_date}}" readonly class="form-control" placeholder=""  type=""/> 
                     </div> <!-- form-group end.// -->
                    <div class="form-group col-md-6">
                         <label>Supervision Location<span class="required-star"></span></label>

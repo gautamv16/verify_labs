@@ -161,7 +161,9 @@ class ShipmentController extends Controller
                 $files->move($assetPath,$name);  
                 $payload['uploaded_files']=$name;  
             }
-            $step_two = ShipmentTest::create($payload);
+              $step_two = ShipmentTest::create($payload);
+            
+            
             return redirect()->to('/lab/shipments')->with('success','Step two registered successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());

@@ -85,7 +85,7 @@
         </div>
     </div>  
      <div class="col-md-12">
-        <h5 class="mt-20 mb-10">Complete Shipments</h5>
+        <h5 class="mt-20 mb-10">Total Shipments</h5>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>
