@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="card LoginCARD">
             <div class="d-flex justify-content-center mb-35">
-                <img src="{{ asset('admin/assets/img/logo.png') }}" width="100">
+                <img src="{{ asset('admin/assets/img/logo.png') }}">
             </div>
 
             <div>
