@@ -1,25 +1,20 @@
 
 @extends('admin.layouts.layoutinner')
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
+<div class="mt-auto mb-3">
+    <div>
         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Add Racs User</h4>
-            </div>
-            <div class="pull-right">
-                <!-- <a href="#" class="btn btn-info btn-sm" role="button" aria-disabled="true"><i class="fas fa-plus"></i>&nbsp;Add Pharmacy</a> -->
-            </div>
+            <div class="shipment-hdr">Add Racs User</div>
         </div>
     </div>
 </div>
-<div class="container-fluid">
+<div>
     @include('common.messages')
-    <div class="card mb-4 border-0">
+    <div class="box mb-4 border-0">
         <div class="card-body">
             <form method="post" action="{{route('admin.saveuser')}}"> 
             @csrf
-                <div class="col-md-12">
+                <div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>First Name<span class="required-star">*</span></label>
@@ -97,7 +92,7 @@
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
                 <div class="form-group">
-                    <button class="btn btn-sm btn-primary">Create User</button>
+                    <button class="btn btn-sm text-white bg-theme-1">Create User</button>
                     <a class="btn btn-sm btn-danger" href="{{route('admin.adminusers')}}">Cancel</a>
                 </div>
                 </div>

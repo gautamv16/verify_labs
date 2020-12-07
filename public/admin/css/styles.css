@@ -10788,6 +10788,19 @@ button:focus{
   font-size: 10px;
   padding: 3px 6px;
 }
+.shipmentsHDR {
+    font-size: 18px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.tblbuttons .btn {
+    padding: 0px 8px;
+    font-size: 12px;
+}
 @media (min-width: 1280px){
 .xl\:flex {
     display: flex;

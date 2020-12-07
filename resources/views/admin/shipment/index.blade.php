@@ -1,20 +1,16 @@
 @extends('admin.layouts.layoutinner')
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span> Shipments</h4>
-            </div>
-            <div class="pull-right">
-                <a href="{{route('admin.getaddshipment')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Shipment</a>
-            </div>
+<div class="mt-auto mb-3">
+  <div class="d-flex justify-content-between">
+        <div class="shipment-hdr">Shipments</div>
+        <div class="New_Shipments">
+              <a href="{{route('admin.getaddshipment')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Shipment</a>
         </div>
     </div>
 </div>
-<div class="container-fluid">
-      <div class="col-md-12">
-        <h5 class="mt-20 mb-10">Pending Sampling & Testing</h5>
+<div>
+      <div>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Pending Sampling & Testing</h5>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -42,8 +38,8 @@
             </table>    
         </div>
     </div> 
-    <div class="col-md-12">
-        <h5 class="mt-15">Pending Lab Testing</h5>
+    <div>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Pending Lab Testing</h5>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -75,8 +71,8 @@
             </table>    
         </div>
     </div>  
-     <div class="col-md-12">
-        <h5 class="mt-20 mb-10">Total Shipments</h5>
+     <div>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Total Shipments</h5>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -95,7 +91,7 @@
                   <td>{{$shipment->exporter->name}}</td>
                   <td>{{$shipment->importer->name}}</td>
                   <td>{{$shipment->created_date}}</td>
-                  <td>
+                  <td class="tblbuttons">
                     @if($shipment->exporter->approved_farm)
                                     <span class="btn btn-success">Passed</span>
                                 @elseif(!$shipment->shipment_test)

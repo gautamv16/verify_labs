@@ -123,3 +123,6 @@
   margin-bottom: 10px;
   padding-left: 15px;
 }
+.LoginCARD img{
+	max-height:70px; 	
+}
