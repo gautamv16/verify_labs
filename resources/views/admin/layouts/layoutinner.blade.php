@@ -20,8 +20,8 @@
                       <a class="dropdown-item" href="{{route('admin.logout')}}">Logout</a>
                 </div>
             </li>
-        </ul> -->
-    </nav>
+        </ul> 
+    </nav>-->
     <div id="layoutSidenav" class="d-flex">
         <div id="layoutSidenav_nav">
             <div class="d-flex justify-content-between">
