@@ -1,21 +1,48 @@
 @extends('admin.layouts.layoutinner')
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span> UAE Users</h4>
-            </div>
-            <div class="pull-right">
-                <a href="{{route('admin.getadd')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add User</a>
-            </div>
+<div class="mt-auto mb-3">
+    <div class="d-flex justify-content-between">
+        <div class="shipment-hdr">UAE Users</div>
+        <div class="New_Shipments">
+            <a href="{{route('admin.getadd')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add User</a>
         </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="card mb-4 border-0">
-        <div class="card-body">
+<div>
+    <div class="mb-4 border-0">
+        <div>
             <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th style="width: 100px;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                 @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->first_name}}</td>
+                            <td>{{$user->last_name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->role->name}}</td>
+                            <td> {{ucwords($status[$user->status])}}</td>
+                            <td class="action_icons">
+                             <a href="{{ route('admin.users.edit',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>
+                            <button onclick="ondelete({{$user->id}})" type="button" class="btn btn-sm btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Delete user"><i class="fa fa-trash"></i></button>
+                        </td>
+
+                        </tr>
+                        @endforeach 
+              </tbody>                        
+            </table>    
+        </div>
+
+            <!-- <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -44,7 +71,7 @@
                         </tr>
                         @endforeach </tbody>
                 </table>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

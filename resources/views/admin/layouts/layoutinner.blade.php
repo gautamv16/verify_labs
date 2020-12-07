@@ -59,10 +59,10 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{route('admin.users')}}">UAE users</a>
-                                <a class="nav-link" href="{{route('admin.adminusers')}}">Racs Users</a>
-                                <a class="nav-link" href="{{route('admin.importers')}}">Importers</a>
-                                <a class="nav-link" href="{{route('admin.exporters')}}">Exporters</a>
+                                <a class="nav-link" href="{{route('admin.users')}}"><div class="sb-nav-link-icon"></div>UAE users</a>
+                                <a class="nav-link" href="{{route('admin.adminusers')}}"><div class="sb-nav-link-icon"></div>Racs Users</a>
+                                <a class="nav-link" href="{{route('admin.importers')}}"><div class="sb-nav-link-icon"></div>Importers</a>
+                                <a class="nav-link" href="{{route('admin.exporters')}}"><div class="sb-nav-link-icon"></div>Exporters</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShipmentLayouts" aria-expanded="false">
@@ -74,10 +74,10 @@
                          </a>
                          <div class="collapse" id="collapseShipmentLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{route('admin.shipments')}}">Shipments</a>
-                                 <a class="nav-link" href="{{route('admin.labs')}}">Labs</a>
+                                <a class="nav-link" href="{{route('admin.shipments')}}"><div class="sb-nav-link-icon"></div>Shipments</a>
+                                 <a class="nav-link" href="{{route('admin.labs')}}"><div class="sb-nav-link-icon"></div>Labs</a>
                                 <!-- <a class="nav-link" href="{{route('admin.register_locations')}}">Registeration Locations</a> -->
-                                <a class="nav-link" href="{{route('admin.supervision_locations')}}">Supervision Locations</a>
+                                <a class="nav-link" href="{{route('admin.supervision_locations')}}"><div class="sb-nav-link-icon"></div>Supervision Locations</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="{{route('admin.locations')}}" >

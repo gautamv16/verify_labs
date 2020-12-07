@@ -1685,6 +1685,7 @@ pre code {
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
+  font-size: 14px;
 }
 .table th,
 .table td {
@@ -1692,9 +1693,14 @@ pre code {
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
+.table tbody tr th, .table tbody tr td {
+    background-color: #ffffff;
+    border-top: none;
+    border-bottom: 5px solid #f1f5f8;
+}
 .table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
+  color: #616161;
+    border-bottom: none;
 }
 .table tbody + tbody {
   border-top: 2px solid #dee2e6;
@@ -10410,8 +10416,11 @@ legend{
 
 .shipment-hdr{
   text-align: center;
-  font-size: 30px;
-  color: #000;
+    font-size: 20px;
+    color: #000;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 .innerBody{
   border: 1px solid #e6e6e6;
@@ -10517,6 +10526,7 @@ legend{
 }
 #layoutSidenav_content main{
   z-index: 100;
+  margin-top: 30px;
 }
 .side-nav__devider {
     width: 100%;
@@ -10773,6 +10783,10 @@ button:focus{
     background-color: rgba(255,255,255,var(--bg-opacity));
     border-radius: .375rem;
     position: relative;
+}
+.action_icons a, .action_icons button{
+  font-size: 10px;
+  padding: 3px 6px;
 }
 @media (min-width: 1280px){
 .xl\:flex {
