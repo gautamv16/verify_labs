@@ -1,22 +1,18 @@
 
 @extends('labuser.layouts.layoutinner')
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Loading Supervision & Sampling</h4>
-            </div>
-        </div>
+<div class="mt-auto mb-3">
+    <div>
+        <div class="shipment-hdr">Loading Supervision & Sampling</div>
     </div>
 </div>
-<div class="container-fluid">
+<div>
     @include('common.messages')
-    <div class="card mb-4 border-0">
+    <div class="box mb-4 border-0">
         <div class="card-body">
             <form method="post" enctype="multipart/form-data" action="{{route('lab.shipment.step_two')}}"> 
             @csrf
-                <div class="col-md-12">
+                <div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Record ID<span class="required-star">*</span></label>
@@ -79,7 +75,7 @@
                    
                     <div class="form-group col-md-6">
                         <label>Uploading Sampling Photos<span class="required-star">*</span></label>
-                         <input  name="uploaded_files" multiple type="file" class="form-control" placeholder="">
+                         <input  name="uploaded_files" multiple type="file" placeholder="">
                        
                         <p class="invalid-field text-danger"><?php echo $errors->first('uploaded_files'); ?></p>
                     </div> <!-- form-group end.// -->

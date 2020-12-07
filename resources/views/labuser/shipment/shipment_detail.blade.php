@@ -2,7 +2,7 @@
 @extends('labuser.layouts.layoutinner')
 @section('content')
 <div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
+    <div>
         <div class="shipment-hdr">Lab Shipments</div>
     </div>
 </div>

@@ -1,31 +1,22 @@
 @extends('labuser.layouts.layoutinner')
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
+<div class="mt-auto mb-3">
+    <div class="d-flex justify-content-between">
         <div class="shipment-hdr">Lab Shipments</div>
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="col-sm-12 d-flex justify-content-between">
-        <div class="New_Shipments mr-15">
+        <div class="New_Shipments">
             <a href="{{route('lab.getaddshipment')}}" class="d-flex align-items-center">
-                <img src="{{ asset('admin/assets/img/truck.png') }}"> 
+                <img src="{{ asset('admin/assets/img/truck.svg') }}"> 
                 <span>New Shipments</span>
             </a>
         </div>
-        <div class="searchBox w-75">
-            <input type="hidden" id="token" name="_token" value="{{csrf_token()}}" />
-            <input type="text" id="searchText" onkeyup="searchShipments()" placeholder="Search Shipment" />
-            <button onclick="searchShipments()" class="btn btn-success">Search</button>
-        </div>
     </div>
 </div>
-<div class="container-fluid">
+<div>
  
-    <div class="col-md-12">
-        <h5 class="mt-20 mb-10">Pending Sampling & Testing</h5>
+    <div>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Pending Sampling & Testing</h5>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col">FIRS#</th>
@@ -51,10 +42,10 @@
             </table>    
         </div>
     </div> 
-    <div class="col-md-12">
-        <h5 class="mt-15">Pending Lab Testing</h5>
+    <div>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Pending Lab Testing</h5>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col">FIRS#</th>
@@ -84,10 +75,10 @@
             </table>    
         </div>
     </div>  
-     <div class="col-md-12">
-        <h5 class="mt-20 mb-10">Total Shipments</h5>
+     <div>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Total Shipments</h5>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col">FIRS#</th>
@@ -104,7 +95,7 @@
                   <td>{{$shipment->exporter->name}}</td>
                   <td>{{$shipment->importer->name}}</td>
                   <td>{{$shipment->created_date}}</td>
-                  <td>
+                  <td class="tblbuttons">
                     @if($shipment->exporter->approved_farm)
                                     <span class="btn btn-success">Passed</span>
                                 @elseif(!$shipment->shipment_test)
