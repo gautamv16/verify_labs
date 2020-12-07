@@ -4,7 +4,7 @@
 <section>
 
   <!--Grid row-->
-  <div class="col-md-12 mt-4">
+  <div class="mt-4">
 
   	<div class="row">
   				<!--Grid column-->
