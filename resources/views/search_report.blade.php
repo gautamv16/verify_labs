@@ -140,7 +140,7 @@
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Sampling Photos</b></label>
                                         <p class=" float-left col-md-6">
-                                            <a  href="/admin/files/testing/{{$shipment->shipment_test->uploaded_files}}">{{$shipment->shipment_test->uploaded_files}}</a>
+                                            <a  target="_blank" href="/admin/files/testing/{{$shipment->shipment_test->uploaded_files}}">{{$shipment->shipment_test->uploaded_files}}</a>
                                             </p>
                                     </div> <!-- form-group end.// -->
                                 </div>
@@ -164,7 +164,7 @@
                                         <label class="float-left col-md-6"><b>Lab Test Report</b></label>
 
                                         <p class="float-left col-md-6">
-                                        <a  href="/admin/files/testing_result/{{$shipment->shipment_test_result->report_upload}}">{{$shipment->shipment_test_result->report_upload}}</a>
+                                        <a target="_blank" href="/admin/files/testing_result/{{$shipment->shipment_test_result->report_upload}}">{{$shipment->shipment_test_result->report_upload}}</a>
                                         </p>
                                     </div> <!-- form-group end.// -->
                                 </div>
