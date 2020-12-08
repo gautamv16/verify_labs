@@ -1,4 +1,3 @@
-setting
 @extends('admin.layouts.layoutinner')
 @section('content')
 <div class="mt-auto mb-3">
@@ -53,7 +52,7 @@ setting
                         <select name="country" class="form-control">
                             <option value=""> -- Select -- </option>
                             @foreach(\App\Country::all() as $country)
-                                <option value="{{$country->short_code}}">{{ucwords(strtolower($country->name))}}</option>
+                                <option value="{{$country->id}}">{{ucwords(strtolower($country->name))}}</option>
                             @endforeach
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('country'); ?></p>

@@ -36,6 +36,8 @@ Route::group(['prefix' => 'lab'], function () {
 
 	   // Lab Shipments 
 	   Route::get('shipments','LabUser\ShipmentController@index')->name('lab.shipments');
+	   Route::get('pending_shipments','LabUser\ShipmentController@pending_shipments')->name('lab.pending_shipments');
+	   Route::get('failed_shipments','LabUser\ShipmentController@failed_shipments')->name('lab.failed_shipments');
 	   Route::get('getaddshipment','LabUser\ShipmentController@create')->name('lab.getaddshipment');
 	   Route::post('saveshipment','LabUser\ShipmentController@store')->name('lab.saveshipment');
 	   Route::get('shipment/detail/{record_id}','LabUser\ShipmentController@show')->name('lab.shipment.show');
@@ -125,7 +127,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 	   // Shipments 
-	   Route::get('shipments','Admin\ShipmentController@index')->name('admin.shipments');
+	   Route::get('shipments','Admin\ShipmentController@index')->name('admin.shipments');	   
+	   Route::get('pending_shipments','Admin\ShipmentController@pending_shipments')->name('admin.pending_shipments');
+	   Route::get('failed_shipments','Admin\ShipmentController@failed_shipments')->name('admin.failed_shipments');
 	   Route::get('getaddshipment','Admin\ShipmentController@create')->name('admin.getaddshipment');
 	   Route::get('shipment/detail/{record_id}','Admin\ShipmentController@show')->name('admin.shipment.show');
 	   Route::get('shipment/view/{record_id}','Admin\ShipmentController@shipment_detail')->name('admin.shipment_detail');

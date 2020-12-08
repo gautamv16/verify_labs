@@ -21,9 +21,48 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-          $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result')->get();
-          
+        $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
+        $shipments = [];
+        if(count($shipments_data) > 0){
+          foreach($shipments_data as $k=>$d){
+                  if($d->exporter->approved_farm){
+                      $shipments[] = $d;
+                  }elseif($d->shipment_test && $d->shipment_test_result && $d->shipment_test_result->result == 1){
+                      $shipments[] = $d;
+                  }
+          }
+        }
           return view('admin.shipment.index',compact('shipments'));
+    }
+
+    public function failed_shipments(){
+        $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
+        $failed_shipments = [];
+        if(count($shipments_data) > 0){
+          foreach($shipments_data as $k=>$d){
+                  if($d->shipment_test && $d->shipment_test_result && $d->shipment_test_result->result != 1){
+                      $failed_shipments[] = $d;
+                  }
+          }
+        }
+        return view('admin.shipment.failed_shipments',compact('failed_shipments'));
+    }
+
+    public function pending_shipments(){
+        $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
+        $sampling_shipments = [];
+        $test_shipments = [];
+        if(count($shipments_data) > 0){
+          foreach($shipments_data as $k=>$d){
+                  if(!$d->shipment_test && !$d->exporter->approved_farm){
+                      $sampling_shipments[] = $d;
+                  }                  
+                  if($d->shipment_test && !$d->shipment_test_result && !$d->exporter->approved_farm){
+                      $test_shipments[] = $d;
+                  }
+          }
+        }
+        return view('admin.shipment.pending_shipments',compact('sampling_shipments','test_shipments'));
     }
 
     /**
@@ -68,7 +107,7 @@ class ShipmentController extends Controller
                 $payload['uploaded_files']=$name;  
             }
             $step_two = ShipmentTest::create($payload);
-            return redirect()->to('/admin/shipments')->with('success','Step two registered successfully!');
+            return redirect()->to('/admin/pending_shipments')->with('success','Step two registered successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }

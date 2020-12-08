@@ -58,8 +58,7 @@
                         <p class="invalid-field text-danger"><?php echo $errors->first('country'); ?></p>
                     </div> <!-- form-group end.// -->
                 </div>
-                <div class="form-row">
-                   
+                <div class="form-row">                   
                     <div class="form-group col-md-6">
                         <label>Primary Contact<span class="required-star">*</span></label>
                         <input value="{{  $user->primary_contact}}" name="primary_contact" type="" class="form-control" placeholder="">

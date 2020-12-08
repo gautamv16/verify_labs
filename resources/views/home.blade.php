@@ -13,7 +13,7 @@
                 <form method="post" action="{{route('searchreport')}}">
                 @csrf
                     <i class="fa fa-search"></i>
-                   <input type="text" placeholder="Enter FINS No" name="fins_number"  class="form-control" />
+                   <input type="text" placeholder="Enter FIRS No" name="fins_number"  class="form-control" />
                    <button class="btn btn-search">Search</button>
                 </form>
             </div>

@@ -48,7 +48,7 @@
                             </div>
                             <span>Dashboard</span> 
                         </a>
-                        @endif;
+                        @endif
                         
                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon">
@@ -74,12 +74,13 @@
                          </a>
                          <div class="collapse" id="collapseShipmentLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{route('admin.shipments')}}"><div class="sb-nav-link-icon"></div>Shipments</a>
-                                 <a class="nav-link" href="{{route('admin.labs')}}"><div class="sb-nav-link-icon"></div>Labs</a>
-                                <!-- <a class="nav-link" href="{{route('admin.register_locations')}}">Registeration Locations</a> -->
-                                <a class="nav-link" href="{{route('admin.supervision_locations')}}"><div class="sb-nav-link-icon"></div>Supervision Locations</a>
+                                <a class="nav-link" href="{{route('admin.shipments')}}"><div class="sb-nav-link-icon"></div>Passed Shipments</a>
+                                 <a class="nav-link" href="{{route('admin.pending_shipments')}}"><div class="sb-nav-link-icon"></div>Pending Shipments</a>
+                                 <a class="nav-link" href="{{route('admin.failed_shipments')}}"><div class="sb-nav-link-icon"></div>Failed Shipments</a>
                             </nav>
                         </div>
+                        <a class="nav-link" href="{{route('admin.labs')}}"><div class="sb-nav-link-icon"></div>Labs</a>
+                       <a class="nav-link" href="{{route('admin.supervision_locations')}}"><div class="sb-nav-link-icon"></div>Supervision Locations</a>
                         <a class="nav-link collapsed" href="{{route('admin.locations')}}" >
                             <div class="sb-nav-link-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
