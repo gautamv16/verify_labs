@@ -79,7 +79,7 @@
                         <div class="col-md-12" id="less_detail_pending">
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Exporter</b></label>
-                                 <p><a target="_blank" href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a>/p>
+                                 <p><a target="_blank" href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Country of Origin</b></label>
