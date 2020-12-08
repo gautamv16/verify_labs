@@ -23,6 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                      @if(count($locations) > 0)
                         @foreach($locations as $location)
                         <tr>
                             <td>{{$location->name}}</td>
@@ -34,7 +35,13 @@
                         </td>
 
                         </tr>
-                        @endforeach </tbody>
+                        @endforeach
+                        @else
+                        <tr>
+                            <td colspan="4" style="text-align:center">No Record Exists</td>
+                        </tr>
+                        @endif
+                         </tbody>
                 </table>
             </div>
         </div>

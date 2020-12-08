@@ -26,6 +26,7 @@
                 </tr>
               </thead>
               <tbody>
+              @if(count($sampling_shipments) > 0)
                 @foreach($sampling_shipments as $shipment)
                 <tr>
                 <th scope="row"><a href="{{ route('lab.shipment.get_step_two',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
@@ -34,7 +35,12 @@
                   <td>{{$shipment->created_date}}</td>
                   <td>{{ $shipment->created_date}}</td>
                 </tr>
-                @endforeach               
+                @endforeach  
+                @else
+                        <tr>
+                            <td colspan="5" style="text-align:center">No Record Exists</td>
+                        </tr>
+                        @endif             
               </tbody>
             </table>    
         </div>

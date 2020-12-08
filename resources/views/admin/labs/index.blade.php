@@ -28,6 +28,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @if(count($labs) > 0)
                         @foreach($labs as $lab)
                         <tr>
                             <td>{{$lab->lab_id}}</td>
@@ -40,7 +41,13 @@
                         </td>
 
                         </tr>
-                        @endforeach </tbody>
+                        @endforeach 
+                        @else
+                        <tr>
+                            <td colspan="5" style="text-align:center">No Record Exists</td>
+                        </tr>
+                        @endif
+                        </tbody>
                 </table>
             </div>
         </div>

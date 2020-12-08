@@ -15,16 +15,19 @@
                 <table class="table" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Name</th>                            
+                            <th>Country</th>
                             <th>Status</th>
                             <th style="width: 100px;">Action</th>
 
                         </tr>
                     </thead>
                     <tbody>
+                      @if(count($locations) > 0)
                         @foreach($locations as $location)
                         <tr>
                             <td>{{$location->name}}</td>
+                            <td>{{ucwords(strtolower($location->country->name))}}</td>
                             <td>{{($location->status == 1) ? 'Active': 'Inactive'}}</td>
                             <td class="action_icons">
                              <a href="{{ route('admin.supervision_locations.edit',['id'=>$location->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Location"><i class="fa fa-pen"></i></a>
@@ -32,7 +35,13 @@
                         </td>
 
                         </tr>
-                        @endforeach </tbody>
+                        @endforeach 
+                        @else
+                        <tr>
+                            <td colspan="4" style="text-align:center">No Record Exists</td>
+                        </tr>
+                        @endif
+                        </tbody>
                 </table>
             </div>
         </div>

@@ -26,6 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                      @if(count($users) > 0)
                         @foreach($users as $user)
                         <tr>
                             <td>{{$user->name}}</td>
@@ -40,7 +41,13 @@
                         </td>
 
                         </tr>
-                        @endforeach </tbody>
+                        @endforeach
+                        @else
+                        <tr>
+                            <td colspan="7" style="text-align:center">No Record Exists</td>
+                        </tr>
+                        @endif
+                     </tbody>
                 </table>
             </div>
         </div>

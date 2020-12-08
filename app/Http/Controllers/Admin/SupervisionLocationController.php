@@ -15,7 +15,7 @@ class SupervisionLocationController extends Controller
      */
      public function index()
     {
-        $locations = SupervisionLocations::where('status','=',1)->get();
+        $locations = SupervisionLocations::with('country')->where('status','=',1)->get();
           return view('admin.supervision_locations.index',compact('locations'));
     }
 

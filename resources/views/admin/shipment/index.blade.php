@@ -26,6 +26,7 @@
                 </tr>
               </thead>
               <tbody>
+              @if(count($shipments) > 0)
                 @foreach($shipments as $shipment)
                 <tr>
                 <th scope="row"><a href="{{ route('admin.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
@@ -45,7 +46,11 @@
                   </td>
                 </tr>
                   @endforeach
-               
+                  @else
+                        <tr>
+                            <td colspan="5" style="text-align:center">No Record Exists</td>
+                        </tr>
+                        @endif
               </tbody>
             </table>    
         </div>
