@@ -29,7 +29,7 @@
                         <div class="col-md-12" id="less_detail_passed">
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Exporter</b></label>
-                                 <p><a target="_blank" href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Country of Origin</b></label>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Importer</b></label>
-                                <p><a  target="_blank" href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                <p><a   href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
                             </div> <!-- form-group end.// -->
                             <div class="float-left col-md-12 text-center">
                                 <a onClick="show_more('passed')" href="javascript:void(0);" class="viewMore">View More</a>
@@ -54,7 +54,7 @@
                         <div class="col-md-12" id="less_detail_failed">
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Exporter</b></label>
-                                 <p><a target="_blank" href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Country of Origin</b></label>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Importer</b></label>
-                                <p><a target="_blank" href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                <p><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
                             </div> <!-- form-group end.// -->
                             <div class="float-left col-md-12 text-center">
                                 <a onClick="show_more('failed')" href="javascript:void(0);" class="viewMore">View More</a>
@@ -79,7 +79,7 @@
                         <div class="col-md-12" id="less_detail_pending">
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Exporter</b></label>
-                                 <p><a target="_blank" href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Country of Origin</b></label>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Importer</b></label>
-                                <p><a target="_blank" href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                <p><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
                             </div> <!-- form-group end.// -->
                             <div class="float-left col-md-12 text-center">
                                 <a onClick="show_more('pending')" href="javascript:void(0);" class="viewMore">View More</a>
@@ -113,11 +113,11 @@
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Importer</b></label>
-                                            <p class="float-left col-md-6"><a target="_blank" href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                            <p class="float-left col-md-6"><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Exporter</b></label>
-                                            <p class="float-left col-md-6"><a target="_blank" href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                            <p class="float-left col-md-6"><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
                                         </div> <!-- form-group end.// -->                        
                                     </div>                   
                             </div>
@@ -140,7 +140,7 @@
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Sampling Photos</b></label>
                                         <p class=" float-left col-md-6">
-                                            <a target="_blank" href="/admin/files/testing/{{$shipment->shipment_test->uploaded_files}}">{{$shipment->shipment_test->uploaded_files}}</a>
+                                            <a  href="/admin/files/testing/{{$shipment->shipment_test->uploaded_files}}">{{$shipment->shipment_test->uploaded_files}}</a>
                                             </p>
                                     </div> <!-- form-group end.// -->
                                 </div>
@@ -164,7 +164,7 @@
                                         <label class="float-left col-md-6"><b>Lab Test Report</b></label>
 
                                         <p class="float-left col-md-6">
-                                        <a target="_blank" href="/admin/files/testing_result/{{$shipment->shipment_test_result->report_upload}}">{{$shipment->shipment_test_result->report_upload}}</a>
+                                        <a  href="/admin/files/testing_result/{{$shipment->shipment_test_result->report_upload}}">{{$shipment->shipment_test_result->report_upload}}</a>
                                         </p>
                                     </div> <!-- form-group end.// -->
                                 </div>
