@@ -164,7 +164,7 @@ class ShipmentController extends Controller
     {
         $user = Auth::guard('admins')->user();
          $user_location = $user->office_location;
-         $importers = \App\Importer::where('country','=',$user_location->country_id)->get();
+         $importers = \App\Importer::all();
          $exporters = \App\Exporter::where('country','=',$user_location->country_id)->get();
          $locations = \App\Location::where('country_id','=',$user_location->country_id)->get();
         return view('labuser.shipment.add',compact('importers','exporters','locations'));
