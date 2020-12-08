@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(count($users))
+                        @if(count($users) > 0)
                         @foreach($users as $user)
                         <tr>
                             <td>{{$user->first_name}}</td>
