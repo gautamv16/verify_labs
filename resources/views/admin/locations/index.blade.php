@@ -3,7 +3,7 @@
 <div class="mt-auto mb-3">
     <div class="d-flex justify-content-between">
         <div class="shipment-hdr">Office Locations</div>
-        <div class="New_Shipments">
+        <div class="pull-right">
              <a href="{{route('admin.locations.getadd')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Location</a>
         </div>
     </div>

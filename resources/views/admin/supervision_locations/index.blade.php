@@ -12,7 +12,7 @@
     <div class="mb-4 border-0">
         <div>
             <div class="table-responsive">
-                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <table class="table" id="dataTable" width="100%" cellspacing="0">>
                     <thead>
                         <tr>
                             <th>Name</th>                            
