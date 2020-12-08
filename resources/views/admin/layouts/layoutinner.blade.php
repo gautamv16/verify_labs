@@ -73,10 +73,10 @@
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                          </a>
                          <div class="collapse" id="collapseShipmentLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{route('admin.shipments')}}"><div class="sb-nav-link-icon"></div>Passed Shipments</a>
-                                 <a class="nav-link" href="{{route('admin.pending_shipments')}}"><div class="sb-nav-link-icon"></div>Pending Shipments</a>
-                                 <a class="nav-link" href="{{route('admin.failed_shipments')}}"><div class="sb-nav-link-icon"></div>Failed Shipments</a>
+                            <nav class="sb-sidenav-menu-nested nav">                                
+                                <a class="nav-link" href="{{route('admin.pending_shipments')}}"><div class="sb-nav-link-icon"></div>Pending</a>
+                                <a class="nav-link" href="{{route('admin.shipments')}}"><div class="sb-nav-link-icon"></div>Passed</a>
+                                 <a class="nav-link" href="{{route('admin.failed_shipments')}}"><div class="sb-nav-link-icon"></div>Failed</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="{{route('admin.labs')}}"><div class="sb-nav-link-icon"></div>Labs</a>

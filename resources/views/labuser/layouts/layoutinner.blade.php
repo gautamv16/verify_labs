@@ -45,9 +45,9 @@
                          </a>
                          <div class="collapse" id="collapseShipmentLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{route('lab.shipments')}}"><div class="sb-nav-link-icon"></div>Passed Shipments</a>
-                                 <a class="nav-link" href="{{route('lab.pending_shipments')}}"><div class="sb-nav-link-icon"></div>Pending Shipments</a>
-                                <a class="nav-link" href="{{route('lab.failed_shipments')}}"><div class="sb-nav-link-icon"></div>Failed Shipments</a>
+                                 <a class="nav-link" href="{{route('lab.pending_shipments')}}"><div class="sb-nav-link-icon"></div>Pending</a>
+                                <a class="nav-link" href="{{route('lab.shipments')}}"><div class="sb-nav-link-icon"></div>Passed</a>
+                                <a class="nav-link" href="{{route('lab.failed_shipments')}}"><div class="sb-nav-link-icon"></div>Failed</a>
                             </nav>
                         </div>
                         
