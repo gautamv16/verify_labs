@@ -44,7 +44,7 @@
                         @endforeach 
                         @else
                         <tr>
-                            <td colspan="4">No data</td>
+                            <td colspan="7" style="text-align:center">No Record Exists</td>
                         </tr>
                         @endif
                         </tbody>
