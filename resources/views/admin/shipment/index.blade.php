@@ -4,7 +4,10 @@
   <div class="d-flex justify-content-between">
         <div class="shipment-hdr">Shipments</div>
         <div class="New_Shipments">
-              <a href="{{route('admin.getaddshipment')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Shipment</a>
+        <a href="{{route('admin.getaddshipment')}}" class="d-flex align-items-center">
+                <img src="{{ asset('admin/assets/img/truck.svg') }}"> 
+                <span>New Shipments</span>
+            </a>
         </div>
     </div>
 </div>
