@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Shipment;
 use App\ShipmentTest;
 use App\ShipmentTestResult;
+use App\Exporter;
+use App\Importer;
 
 class HomeController extends Controller
 {
@@ -42,5 +44,13 @@ class HomeController extends Controller
     public function shipment_detail($record_id){
         $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
         return view('shipment_detail',compact('shipment'));
+    }
+    public function exporter_detail($id){
+        $exporter  = Exporter::with('countryName')->where('id','=',$id)->first(); 
+        return view('exporter_detail',compact('exporter'));
+    }
+    public function importer_detail($id){
+        $importer  = Importer::with('countryName')->where('id','=',$id)->first(); 
+        return view('importer_detail',compact('importer'));
     }
 }

@@ -19,7 +19,6 @@ class ExporterController extends Controller
      public function index()
     {
         $users = Exporter::with(['countryName'])->where('status','=',1)->get();
-        // echo "<pre>"; print_r($users); die;
          $status = ["1"=>"Active","0"=>'Inactive'];
          $approved_farm = ["1"=>"Yes","0"=>"No"];
           return view('admin.exporters.index',compact('users','status','approved_farm'));

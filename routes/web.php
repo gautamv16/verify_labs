@@ -20,6 +20,8 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/searchreport','HomeController@search_report')->name('searchreport');
 Route::get('/shipment_detail/{record_id}','HomeController@shipment_detail')->name('shipment_detail');
+Route::get('/exporter_detail/{id}','HomeController@exporter_detail')->name('exporter_detail');
+Route::get('/importer_detail/{id}','HomeController@importer_detail')->name('importer_detail');
 });
 Route::group(['prefix' => 'lab'], function () {
 	Route::group(['middleware' => ['labsuser']], function () {
