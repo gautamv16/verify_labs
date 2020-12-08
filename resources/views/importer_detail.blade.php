@@ -3,7 +3,15 @@
 @section('content')
 <div class="py-3 bg-light mt-auto mb-3">
     <div class="container-fluid">
-        <div class="shipment-hdr">Importer</div>
+        <form method="post" action="{{route('searchreport')}}">
+        @csrf
+            <?php
+                $firs_no = (isset($_GET['val']) && $_GET['val'] !='') ? base64_decode($_GET['val']) : '';
+            ?>
+            <input type="hidden" placeholder="Enter FIRS No" name="fins_number" value="{{$firs_no}}"  class="form-control" />
+            <button class="btn btn-primary">Back to report</button>
+        </form>
+        <!-- <a href="{{url()->previous()}}" class="shipment-hdr btn btn-info">Back to report</a> -->
     </div>
 </div>
 <div class="container-fluid">

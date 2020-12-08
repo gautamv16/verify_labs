@@ -166,7 +166,14 @@
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Sampling Photos</b></label>
                              <p class=" float-left col-md-6">
-                                <a target="_blank" href="/admin/files/testing/{{$shipment->shipment_test->uploaded_files}}">{{$shipment->shipment_test->uploaded_files}}</a>
+                             <?php 
+                                $uploaded_files = explode(",",$shipment->shipment_test->uploaded_files);
+                             ?>
+                                @if(count($uploaded_files) > 0)
+                                @foreach($uploaded_files as $file)
+                                <a target="_blank" href="/admin/files/testing/{{$file}}">{{$file}}</a>
+                                @endforeach
+                                @endif
                                 </p>
                         </div> <!-- form-group end.// -->
                     </div>

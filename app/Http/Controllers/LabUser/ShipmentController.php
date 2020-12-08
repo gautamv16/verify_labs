@@ -204,11 +204,24 @@ class ShipmentController extends Controller
             }
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $assetPath = "admin/files/testing";
-            if($files = $request->file('uploaded_files')){
-                $name=$payload['record_id'].".".$files->getClientOriginalExtension();  
-                $files->move($assetPath,$name);  
-                $payload['uploaded_files']=$name;  
+            $uploaded_files='';
+            if ($request->hasfile('uploaded_files')) {
+                foreach ($request->file('uploaded_files') as $key=>$file) {
+                    $name=$payload['record_id']."_".($key+1).".".$file->getClientOriginalExtension();
+                    $file->move($assetPath,$name); 
+                    if($uploaded_files == ''){
+                        $uploaded_files = $name;
+                    }else{
+                        $uploaded_files = $uploaded_files.",".$name;
+                    }
+                }
+                $payload['uploaded_files']=$uploaded_files;
             }
+            // if($files = $request->file('uploaded_files')){
+            //     $name=$payload['record_id'].".".$files->getClientOriginalExtension();  
+            //     $files->move($assetPath,$name);  
+            //     $payload['uploaded_files']=$name;  
+            // }
               $step_two = ShipmentTest::create($payload);
             
             

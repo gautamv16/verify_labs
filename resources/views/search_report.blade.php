@@ -20,6 +20,7 @@
     <div class="card mb-4 border-0">
         <div class="card-body">
             @if($shipment && isset($shipment->record_id))
+                <?php $firs_no = base64_encode($shipment->uae_firs_number); ?>
                 <div class="col-md-12">
                      @if($shipment->exporter->approved_farm || ($shipment->shipment_test_result && $shipment->shipment_test_result->result == 1))
                     <div class="passed">
@@ -29,7 +30,7 @@
                         <div class="col-md-12" id="less_detail_passed">
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Exporter</b></label>
-                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a></p>
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Country of Origin</b></label>
@@ -37,7 +38,7 @@
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Importer</b></label>
-                                <p><a   href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                <p><a   href="{{route('importer_detail',['id'=>$shipment->importer->id])}}?val=<?php echo $firs_no ?>">{{$shipment->importer->name}}</a></p>
                             </div> <!-- form-group end.// -->
                             <div class="float-left col-md-12 text-center">
                                 <a onClick="show_more('passed')" href="javascript:void(0);" class="viewMore">View More</a>
@@ -54,7 +55,7 @@
                         <div class="col-md-12" id="less_detail_failed">
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Exporter</b></label>
-                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a></p>
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Country of Origin</b></label>
@@ -62,7 +63,7 @@
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Importer</b></label>
-                                <p><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                <p><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}?val=<?php echo $firs_no ?>">{{$shipment->importer->name}}</a></p>
                             </div> <!-- form-group end.// -->
                             <div class="float-left col-md-12 text-center">
                                 <a onClick="show_more('failed')" href="javascript:void(0);" class="viewMore">View More</a>
@@ -79,7 +80,7 @@
                         <div class="col-md-12" id="less_detail_pending">
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Exporter</b></label>
-                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                 <p><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a></p>
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Country of Origin</b></label>
@@ -87,7 +88,7 @@
                             </div>
                             <div class="float-left col-md-4 text-center">
                                 <label class="shipLabel"><b>Importer</b></label>
-                                <p><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                <p><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}?val=<?php echo $firs_no ?>">{{$shipment->importer->name}}</a></p>
                             </div> <!-- form-group end.// -->
                             <div class="float-left col-md-12 text-center">
                                 <a onClick="show_more('pending')" href="javascript:void(0);" class="viewMore">View More</a>
@@ -113,11 +114,11 @@
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Importer</b></label>
-                                            <p class="float-left col-md-6"><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
+                                            <p class="float-left col-md-6"><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}?val=<?php echo $firs_no ?>">{{$shipment->importer->name}}</a></p>
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Exporter</b></label>
-                                            <p class="float-left col-md-6"><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
+                                            <p class="float-left col-md-6"><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a></p>
                                         </div> <!-- form-group end.// -->                        
                                     </div>                   
                             </div>
@@ -140,8 +141,15 @@
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Sampling Photos</b></label>
                                         <p class=" float-left col-md-6">
-                                            <a  target="_blank" href="/admin/files/testing/{{$shipment->shipment_test->uploaded_files}}">{{$shipment->shipment_test->uploaded_files}}</a>
-                                            </p>
+                                        <?php 
+                                            $uploaded_files = explode(",",$shipment->shipment_test->uploaded_files);
+                                        ?>
+                                            @if(count($uploaded_files) > 0)
+                                            @foreach($uploaded_files as $file)
+                                            <a target="_blank" href="/admin/files/testing/{{$file}}">{{$file}}</a>
+                                            @endforeach
+                                            @endif    
+                                         </p>
                                     </div> <!-- form-group end.// -->
                                 </div>
                             </div>
