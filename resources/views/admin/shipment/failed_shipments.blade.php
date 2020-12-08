@@ -30,8 +30,8 @@
                 @foreach($failed_shipments as $shipment)
                 <tr>
                 <th scope="row"><a href="{{ route('admin.shipment.show',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
-                  <td>{{$shipment->exporter->name}}</td>
-                  <td>{{$shipment->importer->name}}</td>
+                  <td><a href="{{route('admin.exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></td>
+                  <td><a href="{{route('admin.importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></td>
                   <td>{{$shipment->created_date}}</td>
                   <td>{{ $shipment->created_date}}</td>
                 </tr>

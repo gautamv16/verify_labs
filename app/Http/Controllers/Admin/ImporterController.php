@@ -87,15 +87,11 @@ class ImporterController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Importer  $importer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Importer $importer)
+  
+    public function show($id)
     {
-        //
+        $importer  = Importer::with('countryName')->where('id','=',$id)->first(); 
+        return view('admin.importers.detail',compact('importer'));
     }
 
     

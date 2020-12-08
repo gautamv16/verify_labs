@@ -30,8 +30,8 @@
                 @foreach($sampling_shipments as $shipment)
                 <tr>
                 <th scope="row"><a href="{{ route('lab.shipment.get_step_two',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
-                  <td>{{$shipment->exporter->name}}</td>
-                  <td>{{$shipment->importer->name}}</td>
+                  <td><a href="{{route('lab.exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></td>
+                  <td><a href="{{route('lab.importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></td>
                   <td>{{$shipment->created_date}}</td>
                   <td>{{ $shipment->created_date}}</td>
                 </tr>
@@ -64,8 +64,8 @@
                  @foreach($test_shipments as $shipment)
                 <tr>
                 <th scope="row"><a href="{{ route('lab.shipment.get_step_three',['id'=>$shipment->record_id])}}">{{$shipment->uae_firs_number}}</a></th>
-                  <td>{{$shipment->exporter->name}}</td>
-                  <td>{{$shipment->importer->name}}</td>
+                  <td><a href="{{route('lab.exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></td>
+                  <td><a href="{{route('lab.importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></td>
                   <td>{{$shipment->shipment_test->labs->name}}</td>
                   <td>{{$shipment->created_date}}</td>
                   <td>{{$shipment->shipment_test->supervision_date}}</td>

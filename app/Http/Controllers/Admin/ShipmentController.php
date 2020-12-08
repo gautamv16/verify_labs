@@ -165,7 +165,7 @@ class ShipmentController extends Controller
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $payload['qr_code'] = base64_encode($record_id);
             $shipment = Shipment::create($payload);
-        return redirect()->to('/admin/shipments')->with('success','Register Location created successfully!');
+        return redirect()->to('/admin/pending_shipments')->with('success','Shipment created successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }

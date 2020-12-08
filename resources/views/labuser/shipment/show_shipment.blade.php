@@ -116,11 +116,11 @@
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
                             <label class=" float-left col-md-6"><b>Importer</b></label>
-                            <p class="float-left col-md-6">{{$shipment->importer->name}}</p>
+                            <p class="float-left col-md-6"><a href="{{route('lab.importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></p>
                         </div> <!-- form-group end.// -->
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Exporter</b></label>
-                             <p class="float-left col-md-6">{{$shipment->exporter->name}}</p>
+                             <p class="float-left col-md-6"><a href="{{route('lab.exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></p>
                         </div> <!-- form-group end.// -->
                     </div>
                     <div class="col-md-12">
@@ -191,7 +191,7 @@
                     <div class="col-md-12">
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Testing Lab ID</b></label>
-                            <p class="float-left col-md-6">{{$shipment->shipment_test_result->labs->lab_id}}</p>
+                            <p class="float-left col-md-6">{{$shipment->shipment_test_result->labs->name}}</p>
                         </div> <!-- form-group end.// -->
                         <div class="float-left col-md-6">
                             <label class="float-left col-md-6"><b>Lab Test Result Report</b></label>

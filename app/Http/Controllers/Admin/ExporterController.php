@@ -90,15 +90,12 @@ class ExporterController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Importer  $importer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Exporter $exporter)
+   
+    public function show($id)
     {
-        //
+        $exporter  = Exporter::with('countryName')->where('id','=',$id)->first(); 
+        return view('admin.exporters.detail',compact('exporter'));
+        
     }
 
     

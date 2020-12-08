@@ -36,6 +36,7 @@
                             <td>{{ucwords($approved_farm[$user->approved_farm])}}</td>
                             <td>{{ucwords($status[$user->status])}}</td>
                             <td class="action_icons">
+                            <a href="{{ route('admin.exporter_detail',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="View user"><i class="fa fa-eye"></i></a>
                              <a href="{{ route('admin.exporters.edit',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>
                             <button onclick="ondelete({{$user->id}})" type="button" class="btn btn-sm btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Delete user"><i class="fa fa-trash"></i></button>
                         </td>

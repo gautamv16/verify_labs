@@ -9,6 +9,8 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Exporter;
+use App\Importer;
 
 class ShipmentController extends Controller
 {
@@ -238,7 +240,7 @@ class ShipmentController extends Controller
                 $payload['report_upload']=$name;  
             }
             $step_two = ShipmentTestResult::create($payload);
-            return redirect()->to('/lab/shipments')->with('success','Step three registered successfully!');
+            return redirect()->to('/lab/shipments')->with('success','Test reports added successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
@@ -268,7 +270,7 @@ class ShipmentController extends Controller
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $payload['qr_code'] = base64_encode($record_id);
             $shipment = Shipment::create($payload);
-        return redirect()->to('/lab/shipments')->with('success','Register Location created successfully!');
+        return redirect()->to('/lab/pending_shipments')->with('success','Shipment created successfully!');
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
@@ -289,6 +291,15 @@ class ShipmentController extends Controller
     public function shipment_detail($record_id){
         $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
         return view('labuser.shipment.shipment_detail',compact('shipment'));
+    }
+
+    public function exporter_detail($id){
+        $exporter  = Exporter::with('countryName')->where('id','=',$id)->first(); 
+        return view('labuser.shipment.exporter_detail',compact('exporter'));
+    }
+    public function importer_detail($id){
+        $importer  = Importer::with('countryName')->where('id','=',$id)->first(); 
+        return view('labuser.shipment.importer_detail',compact('importer'));
     }
 
     

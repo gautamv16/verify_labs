@@ -46,10 +46,11 @@ Route::group(['prefix' => 'lab'], function () {
 	   Route::get('shipment/view/{record_id}','LabUser\ShipmentController@shipment_detail')->name('lab.shipment_detail');
 	   Route::get('shipments/get_step_two/{record_id}','LabUser\ShipmentController@get_step_two')->name('lab.shipment.get_step_two');
 	   Route::get('shipments/get_step_three/{record_id}','LabUser\ShipmentController@get_step_three')->name('lab.shipment.get_step_three');
-	   
 	   Route::post('shipment/search','LabUser\ShipmentController@searchShipments')->name('lab.shipment.search');
 	   Route::post('shipments/step_two','LabUser\ShipmentController@step_two')->name('lab.shipment.step_two');
 	   Route::post('shipments/step_three','LabUser\ShipmentController@step_three')->name('lab.shipment.step_three');
+	   Route::get('exporter_detail/{id}','LabUser\ShipmentController@exporter_detail')->name('lab.exporter_detail');
+	   Route::get('importer_detail/{id}','LabUser\ShipmentController@importer_detail')->name('lab.importer_detail');
 
      });
 });
@@ -83,7 +84,8 @@ Route::group(['prefix' => 'admin'], function () {
 	   Route::post('saveimporter','Admin\ImporterController@store')->name('admin.saveimporter');
 	   Route::get('importers/getedit/{id}','Admin\ImporterController@edit')->name('admin.importers.edit');
 	   Route::post('importers/update/{id}','Admin\ImporterController@update')->name('admin.importers.update');
-	   Route::delete('importers/{id}/delete','Admin\ImporterController@destroy')->name('admin.importers.delete');
+	   Route::delete('importers/{id}/delete','Admin\ImporterController@destroy')->name('admin.importers.delete');	  
+	   Route::get('importer/detail/{id}','Admin\ImporterController@show')->name('admin.importer_detail');
 
 	   // Exporters
 
@@ -93,6 +95,7 @@ Route::group(['prefix' => 'admin'], function () {
 	   Route::get('exporters/getedit/{id}','Admin\ExporterController@edit')->name('admin.exporters.edit');
 	   Route::post('exporters/update/{id}','Admin\ExporterController@update')->name('admin.exporters.update');
 	   Route::delete('exporters/{id}/delete','Admin\ExporterController@destroy')->name('admin.exporters.delete');
+	  Route::get('exporters/detail/{id}','Admin\ExporterController@show')->name('admin.exporter_detail');
 
 	   // Labs users	    
 	   Route::get('labs','Admin\LabsController@index')->name('admin.labs');
