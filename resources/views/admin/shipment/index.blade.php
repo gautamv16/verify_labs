@@ -13,7 +13,7 @@
 </div>
 <div>
      <div>
-        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Total Shipments</h5>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Completed Shipments</h5>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -35,13 +35,13 @@
                   <td>{{$shipment->created_date}}</td>
                   <td class="tblbuttons">
                     @if($shipment->exporter->approved_farm)
-                                    <span class="btn btn-success">Passed</span>
+                                    <span class="btn btn-success">Auto Passed</span>
                                 @elseif(!$shipment->shipment_test)
                                     <a href="{{ route('lab.shipment.get_step_two',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 2">Sampling & Supervision</a>
                                 @elseif(!$shipment->shipment_test_result)
                                     <a href="{{ route('lab.shipment.get_step_three',['id'=>$shipment->record_id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 3">Lab Testing</a>
                                 @elseif($shipment->shipment_test && $shipment->shipment_test_result)
-                                    <span class="btn btn-success">{{($shipment->shipment_test_result->result == 1) ? "Pass": 'Fail'}}</span>
+                                    <span class="btn btn-success">{{($shipment->shipment_test_result->result == 1) ? "Passed": 'Fail'}}</span>
                                 @endif
                   </td>
                 </tr>
