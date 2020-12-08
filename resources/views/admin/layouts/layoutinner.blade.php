@@ -79,8 +79,18 @@
                                  <a class="nav-link" href="{{route('admin.failed_shipments')}}"><div class="sb-nav-link-icon"></div>Failed</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="{{route('admin.labs')}}"><div class="sb-nav-link-icon"></div>Labs</a>
-                       <a class="nav-link" href="{{route('admin.supervision_locations')}}"><div class="sb-nav-link-icon"></div>Supervision Locations</a>
+                        <a class="nav-link" href="{{route('admin.labs')}}">
+                        <div class="sb-nav-link-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            </div>
+                        <span>Labs</span>
+                        </a>
+                       <a class="nav-link" href="{{route('admin.supervision_locations')}}">
+                            <div class="sb-nav-link-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            </div>
+                            <span>Supervision Locations</span>
+                       </a>
                         <a class="nav-link collapsed" href="{{route('admin.locations')}}" >
                             <div class="sb-nav-link-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
