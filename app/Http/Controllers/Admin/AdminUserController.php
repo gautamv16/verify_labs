@@ -18,7 +18,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = AdminUser::with(['role','office_location'])->where('status','=',1)->get();
+        $users = AdminUser::with(['role','office_location'])->where('id','!=',1)->where('status','=',1)->get();
          $status = ["1"=>"Active","0"=>'Inactive'];
           return view('admin.adminusers.index',compact('users','status'));
     }
