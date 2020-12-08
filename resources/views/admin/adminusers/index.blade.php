@@ -26,6 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if(count($users))
                         @foreach($users as $user)
                         <tr>
                             <td>{{$user->first_name}}</td>
@@ -40,7 +41,9 @@
                         </td>
 
                         </tr>
-                        @endforeach </tbody>
+                        @endforeach 
+                        @endif
+                        </tbody>
                 </table>
             </div>
         </div>
