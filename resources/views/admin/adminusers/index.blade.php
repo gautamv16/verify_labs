@@ -33,7 +33,7 @@
                             <td>{{$user->last_name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->office_location->name}}</td>
-                            <td>{{$user->role->name}}</td>
+                            <!-- <td>{{$user->role->name}}</td> -->
                             <td>{{ucwords($status[$user->status])}}</td>
                             <td class="action_icons">
                              <a href="{{ route('admin.adminusers.edit',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>
