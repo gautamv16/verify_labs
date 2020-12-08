@@ -14,7 +14,7 @@
 </div>
 <div class="container-fluid">
     <div class="card mb-4 border-0">
-        <div class="card-body">
+        <div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
