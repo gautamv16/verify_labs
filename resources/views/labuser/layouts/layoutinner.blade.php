@@ -15,10 +15,17 @@
        <!-- </form>
         <!-- Navbar-->
     <!--</nav>-->
+    <div class="d-lg-none">
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="{{route('lab.dashboard')}}"> <img src="{{ asset('admin/assets/img/logo-white.png') }}"/></a>
+            <a id="sidebarToggle" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2 w-8 h-8 text-white transform rotate-90"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></a>
+        </div>
+        <div class="side-nav__devider my-6"></div>
+    </div> 
     <div id="layoutSidenav" class="d-flex">
-        <div id="layoutSidenav_nav">
+        <div id="layoutSidenav_nav" class="d-lg-block">
             <div class="d-flex justify-content-between">
-                <a class="navbar-brand" href="{{route('lab.dashboard')}}"> <img src="{{ asset('admin/assets/img/logo-white.png') }}"/></a>
+                <a class="navbar-brand mobile" href="{{route('lab.dashboard')}}"> <img src="{{ asset('admin/assets/img/logo-white.png') }}"/></a>
                <!-- <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button> -->
             </div>
             <div class="side-nav__devider my-6"></div>

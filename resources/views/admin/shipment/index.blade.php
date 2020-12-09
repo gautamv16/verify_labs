@@ -1,10 +1,10 @@
 @extends('admin.layouts.layoutinner')
 @section('content')
 <div class="mt-auto mb-3">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between align-items-center">
         <div class="shipment-hdr">Shipments</div>
         <div class="New_Shipments">
-        <a href="{{route('admin.getaddshipment')}}" class="d-flex align-items-center">
+            <a href="{{route('admin.getaddshipment')}}" class="d-flex align-items-center">
                 <img src="{{ asset('admin/assets/img/truck.svg') }}"> 
                 <span>New Shipments</span>
             </a>

@@ -22,11 +22,17 @@
             </li>
         </ul> 
     </nav>-->
+    <div class="d-lg-none">
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="{{route('lab.dashboard')}}"> <img src="{{ asset('admin/assets/img/logo-white.png') }}"/></a>
+            <a id="sidebarToggle" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2 w-8 h-8 text-white transform rotate-90"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></a>
+        </div>
+        <div class="side-nav__devider my-6"></div>
+    </div> 
     <div id="layoutSidenav" class="d-flex">
-        <div id="layoutSidenav_nav">
+        <div id="layoutSidenav_nav" class="d-lg-block">
             <div class="d-flex justify-content-between">
-                <a class="navbar-brand" href="{{route('lab.dashboard')}}"> <img src="{{ asset('admin/assets/img/logo-white.png') }}"/></a>
-               <!-- <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button> -->
+                <a class="navbar-brand mobile" href="{{route('lab.dashboard')}}"> <img src="{{ asset('admin/assets/img/logo-white.png') }}"/></a>
             </div>
             <div class="side-nav__devider my-6"></div>
             <nav class="sb-sidenav accordion" id="sidenavAccordion">
@@ -81,13 +87,13 @@
                         </div>
                         <a class="nav-link" href="{{route('admin.labs')}}">
                         <div class="sb-nav-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trello"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="9"></rect><rect x="14" y="7" width="3" height="5"></rect></svg>
                             </div>
                         <span>Labs</span>
                         </a>
                        <a class="nav-link" href="{{route('admin.supervision_locations')}}">
                             <div class="sb-nav-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-monitor report-box__icon text-theme-12"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                             </div>
                             <span>Supervision Locations</span>
                        </a>
@@ -107,7 +113,7 @@
                 </div> -->
             </nav>
         </div>
-        <div id="layoutSidenav_content">
+        <div id="layoutSidenav_content">   
              <div class="top-bar">
                     <!-- BEGIN: Breadcrumb -->
                     <div class="breadcrumb mr-auto"> <span>Application</span> 

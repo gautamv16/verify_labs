@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
+<div class="py-3 mt-auto">
+    <div>
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
                 <h4 class="mt-1"><span class="sb-nav-link-icon"></span> Verify Shipment</h4>
             </div>
             <div class="pull-right">
                 <form method="post" action="{{route('searchreport')}}">
-                            @csrf                            
-                           <input type="text" placeholder="Enter FIRS No" name="fins_number"  class="form-control" />
-                        </form>
+                    @csrf                            
+                   <input type="text" placeholder="Enter FIRS No" name="fins_number"  class="form-control" />
+                </form>
             </div>
         </div>
     </div>
 </div>
-<div class="container-fluid">
+<div class="reportStatus">
     <div class="card mb-4 border-0">
         <div class="card-body">
             @if($shipment && isset($shipment->record_id))
@@ -105,20 +105,20 @@
                                 <legend class="text-primary"><h5>Shipment Detail</h5></legend>
                                     <div class="col-md-12">
                                         <div class=" float-left col-md-6">
-                                            <label class="float-left col-md-6"><b>FIRS Number ID</b></label>
-                                            <p class="float-left col-md-6">{{$shipment->uae_firs_number}}</p>
+                                            <label class="float-left col-md-6 col-xs-6"><b>FIRS Number ID</b></label>
+                                            <span class="float-left col-md-6 col-xs-6">{{$shipment->uae_firs_number}}</span>
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Country</b></label>
-                                            <p class="float-left col-md-6">{{($shipment->registrationLocation) ? $shipment->registrationLocation->name : ''}}</p>
+                                            <span class="float-left col-md-6">{{($shipment->registrationLocation) ? $shipment->registrationLocation->name : ''}}</span>
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Importer</b></label>
-                                            <p class="float-left col-md-6"><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}?val=<?php echo $firs_no ?>">{{$shipment->importer->name}}</a></p>
+                                            <span class="float-left col-md-6"><a  href="{{route('importer_detail',['id'=>$shipment->importer->id])}}?val=<?php echo $firs_no ?>">{{$shipment->importer->name}}</a></span>
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Exporter</b></label>
-                                            <p class="float-left col-md-6"><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a></p>
+                                            <span class="float-left col-md-6"><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a></span>
                                         </div> <!-- form-group end.// -->                        
                                     </div>                   
                             </div>
@@ -130,17 +130,17 @@
                                 <div class="col-md-12">
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Location Of Supervision</b></label>
-                                        <p class="float-left col-md-6">{{$shipment->shipment_test->supervisionLocation->name}}</p>
+                                        <span class="float-left col-md-6">{{$shipment->shipment_test->supervisionLocation->name}}</span>
                                     </div> <!-- form-group end.// -->                       
                                 </div>
                                 <div class="col-md-12">
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Supervision Date</b></label>
-                                        <p class="float-left col-md-6">{{$shipment->shipment_test->supervision_date}}</p>
+                                        <span class="float-left col-md-6">{{$shipment->shipment_test->supervision_date}}</span>
                                     </div> <!-- form-group end.// -->
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Sampling Photos</b></label>
-                                        <p class=" float-left col-md-6">
+                                        <span class=" float-left col-md-6">
                                         <?php 
                                             $uploaded_files = explode(",",$shipment->shipment_test->uploaded_files);
                                         ?>
@@ -149,7 +149,7 @@
                                             <a target="_blank" href="/admin/files/testing/{{$file}}">{{$file}}</a>
                                             @endforeach
                                             @endif    
-                                         </p>
+                                         </span>
                                     </div> <!-- form-group end.// -->
                                 </div>
                             </div>
@@ -164,16 +164,15 @@
                                 
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Lab Testing Date</b></label>
-                                        <p class="float-left col-md-6">{{$shipment->shipment_test_result->testing_date}}</p>
+                                        <span class="float-left col-md-6">{{$shipment->shipment_test_result->testing_date}}</span>
                                     </div> <!-- form-group end.// -->
                                 </div>
                                 <div class="col-md-12">
                                     <div class="float-left col-md-6">
                                         <label class="float-left col-md-6"><b>Lab Test Report</b></label>
-
-                                        <p class="float-left col-md-6">
+                                        <span class="float-left col-md-6">
                                         <a target="_blank" href="/admin/files/testing_result/{{$shipment->shipment_test_result->report_upload}}">{{$shipment->shipment_test_result->report_upload}}</a>
-                                        </p>
+                                        </span>
                                     </div> <!-- form-group end.// -->
                                 </div>
                             </div>
