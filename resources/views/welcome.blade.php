@@ -74,6 +74,14 @@
                 margin-top: 20px;
                 color: #000;
             }
+            @media (max-width: 520px){
+            .title img{
+               max-width: 80px
+            }
+            .title span{
+                font-size: 46px;
+            } 
+            }
         </style>
     </head>
     <body>
