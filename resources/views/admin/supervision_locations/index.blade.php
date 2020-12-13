@@ -4,7 +4,8 @@
     <div class="d-flex justify-content-between">
         <div class="shipment-hdr">Supervision Locations</div>
         <div class="pull-right">
-             <a href="{{route('admin.supervision_locations.getadd')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Location</a>
+             <a href="{{route('admin.supervision_locations.getadd')}}" class="btn btn-sm btn-primary">
+                <i class="fa fa-plus"></i>&nbsp;Add Location</a>
         </div>
     </div>
 </div>
@@ -12,7 +13,7 @@
     <div class="mb-4 border-0">
         <div>
             <div class="table-responsive">
-                <table class="table" id="dataTable" width="100%" cellspacing="0">>
+                <table class="table" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>                            

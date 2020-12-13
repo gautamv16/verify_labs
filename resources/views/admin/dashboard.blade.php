@@ -8,7 +8,7 @@
 
   	<div class="row">
   				<!--Grid column-->
-    <div class="col-lg-4 col-md-12 mb-4">
+    <div class="col-lg-4 col-md-6 mb-4">
 
       <!-- Card -->
       <div class="outeReport">
@@ -23,7 +23,7 @@
           <hr>
 
           <p class="text-uppercase  small mb-2"><strong>Shipments from Audited Exporters</strong></p>
-          <h5 class="font-weight-bold  mb-0">
+          <h5 class="font-weight-bold mb-0">
             {{$audited_shipment}}
           </h5>
 
