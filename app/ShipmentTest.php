@@ -9,7 +9,7 @@ class ShipmentTest extends Model
     protected $table = 'shipment_test';
      public $timestamps = false;
      protected $fillable = [
-        'user_id','record_id','supervision_location_id','lab_id','supervision_date','uploaded_files'
+        'user_id','record_id','supervision_location_id','lab_id','inspection_checklist','samples_collected','supervision_date','uploaded_files'
     ];
 
      public function supervisionLocation(){

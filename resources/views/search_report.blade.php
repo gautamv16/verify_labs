@@ -118,7 +118,11 @@
                                         </div> <!-- form-group end.// --> 
                                         <div class=" float-left col-md-6">
                                             <label class="float-left col-md-6"><b>Exporter</b></label>
-                                            <p class="float-left col-md-6"><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a></p>
+                                            <p class="float-left col-md-6"><a  href="{{route('exporter_detail',['id'=>$shipment->exporter->id])}}?val=<?php echo $firs_no ?>">{{$shipment->exporter->name}}</a>
+                                            @if($shipment->exporter->approved_farm)
+                                            <span style="color:red;">{{($shipment->exporter->approved_farm)? 'Approved Farm':''}}</span>
+                                            @endif
+                                            </p>
                                         </div> <!-- form-group end.// -->                        
                                     </div>                   
                             </div>

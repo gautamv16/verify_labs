@@ -169,7 +169,8 @@ class ShipmentController extends Controller
          $importers = \App\Importer::all();
          $exporters = \App\Exporter::where('country','=',$user_location->country_id)->get();
          $locations = \App\Location::where('country_id','=',$user_location->country_id)->get();
-        return view('labuser.shipment.add',compact('importers','exporters','locations'));
+         $ports = \App\Ports::all();
+        return view('labuser.shipment.add',compact('importers','exporters','locations','ports'));
     }
 
 
@@ -179,7 +180,8 @@ class ShipmentController extends Controller
          $user_location = $user->office_location;
          $locations = \App\SupervisionLocations::where('country_id','=',$user_location->country_id)->get();
          $labs = \App\Labs::where('country','=',$user_location->country_id)->get();
-        return view('labuser.shipment.step_two',compact('shipment','locations','labs'));
+         $inspection_checklist = \App\InspectionChecklist::all();
+        return view('labuser.shipment.step_two',compact('shipment','locations','labs','inspection_checklist'));
     }
 
     public function get_step_three($record_id){
@@ -198,11 +200,17 @@ class ShipmentController extends Controller
             'lab_id' => 'required',
             'supervision_date' => 'required',
             'uploaded_files' => 'required',
+            'samples_collected' => 'required',
+            'inspection_checklist' => 'required',
            ],[]);
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }
             $payload['user_id'] = Auth::guard('admins')->user()->id;
+            $inspection_checklist= $payload['inspection_checklist'];
+            if(count($inspection_checklist) > 0){
+                $payload['inspection_checklist'] = implode(",",$inspection_checklist);
+            }
             $assetPath = "admin/files/testing";
             $uploaded_files='';
             if ($request->hasfile('uploaded_files')) {
@@ -217,11 +225,7 @@ class ShipmentController extends Controller
                 }
                 $payload['uploaded_files']=$uploaded_files;
             }
-            // if($files = $request->file('uploaded_files')){
-            //     $name=$payload['record_id'].".".$files->getClientOriginalExtension();  
-            //     $files->move($assetPath,$name);  
-            //     $payload['uploaded_files']=$name;  
-            // }
+          
               $step_two = ShipmentTest::create($payload);
             
             
@@ -273,6 +277,9 @@ class ShipmentController extends Controller
             'exporter_id' => 'required',
             'uae_firs_number' => 'required',
             'registration_location_id' => 'required',
+            'port_id' => 'required',
+            'uploaded_invoices' => 'required',
+            'uploaded_packaging_list' => 'required',
             'created_date' => 'required'  
            ],[]);
             if($validator->fails()){
@@ -282,6 +289,33 @@ class ShipmentController extends Controller
             $payload['record_id'] = $record_id; 
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $payload['qr_code'] = base64_encode($record_id);
+            $assetPath = "admin/files/shipment";
+            $uploaded_invoices='';
+            if ($request->hasfile('uploaded_invoices')) {
+                foreach ($request->file('uploaded_invoices') as $key=>$file) {
+                    $name=$payload['record_id']."_".($key+1).".".$file->getClientOriginalExtension();
+                    $file->move($assetPath,$name); 
+                    if($uploaded_invoices == ''){
+                        $uploaded_invoices = $name;
+                    }else{
+                        $uploaded_invoices = $uploaded_invoices.",".$name;
+                    }
+                }
+                $payload['uploaded_invoices']=$uploaded_invoices;
+            }
+            $uploaded_packaging_list='';
+            if ($request->hasfile('uploaded_packaging_list')) {
+                foreach ($request->file('uploaded_packaging_list') as $key=>$file) {
+                    $name=$payload['record_id']."_".($key+1).".".$file->getClientOriginalExtension();
+                    $file->move($assetPath,$name); 
+                    if($uploaded_packaging_list == ''){
+                        $uploaded_packaging_list = $name;
+                    }else{
+                        $uploaded_packaging_list = $uploaded_packaging_list.",".$name;
+                    }
+                }
+                $payload['uploaded_packaging_list']=$uploaded_packaging_list;
+            }
             $shipment = Shipment::create($payload);
         return redirect()->to('/lab/pending_shipments')->with('success','Shipment created successfully!');
         }catch(\Exception $e){

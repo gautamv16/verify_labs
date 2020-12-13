@@ -9,7 +9,7 @@ class Shipment extends Model
     protected $table = 'shipments';
     public $timestamps = false;
     protected $fillable = [
-        'importer_id','exporter_id','user_id','record_id','uae_firs_number','registration_location_id','qr_code','record_id','created_date'
+        'importer_id','exporter_id','user_id','record_id','port_id','uae_firs_number','registration_location_id','uploaded_packaging_list','uploaded_invoices','qr_code','record_id','created_date'
     ];
 
     public function shipment_user(){

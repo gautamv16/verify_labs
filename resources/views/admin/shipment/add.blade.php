@@ -12,7 +12,7 @@
     @include('common.messages')
     <div class="box mb-4 border-0">
         <div class="card-body">
-            <form method="post" action="{{route('admin.saveshipment')}}"> 
+            <form method="post" enctype="multipart/form-data"  action="{{route('admin.saveshipment')}}"> 
             @csrf
                 <div>
                 <div class="form-row">
@@ -57,6 +57,24 @@
 
                 </div>
                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Port Of Entry<span class="required-star">*</span></label>
+                        <select name="port_id" class="form-control">
+                            <option value=""> -- Select -- </option>
+                            @foreach(\App\Ports::all() as $port)
+                                <option value="{{$port->id}}">{{$port->name}}</option>
+                            @endforeach
+                        </select>
+                        <p class="invalid-field text-danger"><?php echo $errors->first('port_id'); ?></p>
+                    </div> <!-- form-group end.// -->
+                     <div class="form-group col-md-6 mt-5">
+                        <label>Upload Invoices<span class="required-star">*</span></label>                        
+                        <input  name="uploaded_invoices[]" multiple type="file" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('uploaded_invoices'); ?></p>
+                    </div> <!-- form-group end.// -->
+                </div>
+
+                <div class="form-row">
                    
                     <div class="form-group col-md-6">
                         <?php $current_date = date('Y-m-d'); ?>
@@ -64,6 +82,11 @@
                          <input value="{{ old('created_date')!='' ? old('created_date') : $current_date}}" name="created_date" type="" class="form-control" placeholder="">
                        
                         <p class="invalid-field text-danger"><?php echo $errors->first('created_date'); ?></p>
+                    </div> <!-- form-group end.// -->
+                    <div class="form-group col-md-6 mt-5">
+                        <label>Upload Packaging List<span class="required-star">*</span></label>                        
+                        <input  name="uploaded_packaging_list[]" multiple type="file" placeholder="">
+                        <p class="invalid-field text-danger"><?php echo $errors->first('uploaded_packaging_list'); ?></p>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
                 <div class="form-group">
