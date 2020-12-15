@@ -13,13 +13,14 @@
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                             A few more clicks to 
                             <br>
-                            sign in to your account.
+                            sign in to your account. 
                         </div>
                     </div>
                 </div>
                 <!-- END: Login Info -->
                 <!-- BEGIN: Login Form -->
                 <div class="h-screen flex">
+                            <a href="{{ route('customer.register') }}">Register Customer</a>
                     <div class="my-auto mx-auto bg-white loginArea">
                         <h2 class="loginHeader">
                             {{ __('Login') }}

@@ -54,6 +54,12 @@ Route::group(['prefix' => 'lab'], function () {
 
      });
 });
+Route::group(['prefix' => 'customer'], function () {
+	Route::get('signup', 'Customer\CustomerController@getSignup')->name('customer.register');
+	Route::post('register', 'Customer\CustomerController@create')->name('customer.createcustomer');
+});
+
+
 Route::group(['prefix' => 'admin'], function () {
    Route::get('login', 'Admin\AuthController@index')->name('admin');
    Route::post('login', 'Admin\AuthController@login')->name('admin.login');
