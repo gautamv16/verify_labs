@@ -10818,6 +10818,98 @@ button:focus{
 .h-8{
   height: 2rem;
 }
+.signUP{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 868px;
+  padding: 60px;
+}
+.font-24{
+  font-size: 24px;
+}
+.letter-02{
+  letter-spacing: 0.2px;
+}
+.pad-20{
+  padding: 0px 30px;
+}
+.column h6{
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-bottom: 10px;
+}
+.pad-vert-30{
+  padding: 30px 0px;
+}
+.column p{
+  font-size: 14px;
+  line-height: 20px;
+  color: #5f6a7d;
+}
+.signUPForm{
+  padding: 30px 0px;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}
+.signUPForm label{
+  display: block;
+  font-size: 13px;
+  line-height: 20px;
+  color: #5f6a7d;
+  margin-bottom: 3px;
+  margin-right: 15px;
+}
+.mtop-10{
+  margin-top: 10px;
+}
+.signUPForm .form-control{
+  height: 38px;
+  font-size: 14px;
+}
+.signUPForm .form-group{
+  position: relative;
+}
+.invalid-field.text-danger{
+  position: absolute;
+    right: 5px;
+    top: 0px;
+    font-size: 12px;
+    text-align: right;
+}
+.mr-10{
+  margin-right: 15px;
+}
+.signUPButtons{
+  border-top: 1px solid #ced4da;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+.signUPButtons .btn-register {
+    background-color: #005e98;
+    border-color: #005e98;
+    padding: .375rem .75rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    border-radius: .25rem;
+    width: 50%;
+}
+.signUPButtons .btn-register:hover {
+    background-color: #0273b9;
+}
+.signUPButtons .btn-cancel {
+    padding: .375rem .75rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    border-radius: .25rem;
+    width: 49%;
+    float: right;
+}
+.signUPForm input[type=radio]{
+  margin-right: 5px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
 @media (min-width: 1280px){
 .xl\:flex {
     display: flex;
@@ -10915,8 +11007,11 @@ body.sb-nav-fixed{
 .table th, .table td{
   white-space: nowrap;
 }
+.signUP{
+  padding: 60px 0px;
 }
-@media (max-width: 768px){
+}
+@media (max-width: 767px){
 .wrap-input100 input, .wrap-input100 select{
   width: 100%;
 }
@@ -10924,6 +11019,31 @@ body.sb-nav-fixed{
   padding: 30px;
   border-radius: 7px;
   width: 100%;
+}
+.signUP{
+  padding: 25px 0px;
+}
+.flex-column-mb{
+  flex-direction: column;
+}
+.flex-column-mb .column{
+  display: flex;
+  text-align:left;
+}
+.icon{
+  margin-right: 20px;
+}
+.shipment-hdr.font-24{
+  width:100%;
+  text-align: left;
+}
+p.letter-02{
+  text-align: left !important;
+  width:100%;
+}
+.column.pad-20{
+  padding: 0px;
+  margin: 15px 0px;
 }
 }
 @media (max-width: 625px){
@@ -10945,5 +11065,11 @@ body.sb-nav-fixed{
 }
 .New_Shipments img {
   height: 20px;
+}
+.signUPButtons .btn-register{
+  width: 60%;
+}
+.signUPButtons .btn-cancel{
+  width: 39%;
 }
 }

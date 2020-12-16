@@ -20,7 +20,6 @@
                 <!-- END: Login Info -->
                 <!-- BEGIN: Login Form -->
                 <div class="h-screen flex">
-                            <a href="{{ route('customer.register') }}">Register Customer</a>
                     <div class="my-auto mx-auto bg-white loginArea">
                         <h2 class="loginHeader">
                             {{ __('Login') }}
@@ -57,12 +56,13 @@
                                 </div>
                             </div>
 
-                            <div class="mb-0">
+                            <div class="mb-0 d-flex align-items-center justify-content-between">
                                 <div>
                                     <button type="submit" class="button button--lg text-white bg-theme-1">
                                         {{ __('Login') }}
                                     </button>
                                 </div>
+                                <a href="{{ route('customer.register') }}">Register Customer</a>
                             </div>
                         </form>
                         </div>
