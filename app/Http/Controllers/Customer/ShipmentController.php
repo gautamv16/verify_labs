@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Shipment;
+use APp\Revision;
 use App\ShipmentTest;
 use App\ShipmentTestResult;
 use Auth;
@@ -25,28 +26,14 @@ class ShipmentController extends Controller
     {
         $user = Auth::guard('admins')->user();
          $user_location = $user->office_location;
-          $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
-          $shipments = [];
-          if(count($shipments_data) > 0){
-            foreach($shipments_data as $k=>$d){
-                if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
-                    if($d->exporter->approved_farm){
-                        $shipments[] = $d;
-                    }elseif($d->shipment_test && $d->shipment_test_result && $d->shipment_test_result->result == 1){
-                        $shipments[] = $d;
-                    }
-
-                    
-                }
-            }
-          }
+          $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
           return view('customer.shipment.index',compact('shipments'));
     }
 
     public function failed_shipments(){
         $user = Auth::guard('admins')->user();
          $user_location = $user->office_location;
-          $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
+          $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
           $failed_shipments = [];
           if(count($shipments_data) > 0){
             foreach($shipments_data as $k=>$d){
@@ -63,7 +50,7 @@ class ShipmentController extends Controller
     public function pending_shipments(){
         $user = Auth::guard('admins')->user();
          $user_location = $user->office_location;
-          $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
+          $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
           $sampling_shipments = [];
           $test_shipments = [];
           if(count($shipments_data) > 0){
@@ -90,7 +77,7 @@ class ShipmentController extends Controller
          $html = "";
         $user_location = $user->office_location;
         if($text =='' || trim($text) == ''){
-            $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->get();
+            $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
             if(count($shipments_data) > 0){
               foreach($shipments_data as $k=>$d){
                   if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
@@ -164,13 +151,22 @@ class ShipmentController extends Controller
      */
     public function create()
     {
-        $user = Auth::guard('admins')->user();
+         $user = Auth::guard('admins')->user();
          $user_location = $user->office_location;
+         $customer_importer = \App\Importer::where('user_id','=',$user->id)->get();  
+         $customer_exporter = \App\Exporter::where('user_id','=',$user->id)->get();  
+         $is_importer_or_exporter = '';
+         if(count($customer_importer) > 0){
+            $is_importer_or_exporter = 'importer';
+         }else if(count($customer_exporter) > 0){
+            $is_importer_or_exporter = 'exporter';
+         }
+
          $importers = \App\Importer::all();
-         $exporters = \App\Exporter::where('country','=',$user_location->country_id)->get();
+         $exporters = \App\Exporter::all();
          $locations = \App\Location::where('country_id','=',$user_location->country_id)->get();
          $ports = \App\Ports::all();
-        return view('customer.shipment.add',compact('importers','exporters','locations','ports'));
+        return view('customer.shipment.add',compact('importers','exporters','locations','ports','customer_importer','customer_exporter','is_importer_or_exporter'));
     }
 
 
@@ -272,28 +268,39 @@ class ShipmentController extends Controller
     {
         try{
             $payload = $request->all();
+            //echo "<pre>"; print_r($payload); die;
             $validator = Validator::make($payload, [
             'importer_id' => 'required',
             'exporter_id' => 'required',
             'uae_firs_number' => 'required',
-            'registration_location_id' => 'required',
+            'zad_number' => 'required',
+            'export_country' => 'required',
             'port_id' => 'required',
+            'discharge_port' => 'required',
             'uploaded_invoices' => 'required',
             'uploaded_packaging_list' => 'required',
-            'created_date' => 'required'  
+            'arrival_date' => 'required',
+            'shipment_method'=>'required',
+            'shipment_method_type'=>'required',
+            'products_type'=>'required',
+            'invoice_number'=>'required',
+            'amount'=>'required',
+            'currency'=>'required',
+            'fob_value'=>'required',
+            'application_type'=>'required'
            ],[]);
             if($validator->fails()){
                 return back()->withErrors($validator->errors())->withInput($request->all());
             }
+           
             $record_id = "SHP-".str_pad(rand(0, pow(10, 5)-1), 5, '0', STR_PAD_LEFT);
-            $payload['record_id'] = $record_id; 
             $payload['user_id'] = Auth::guard('admins')->user()->id;
             $payload['qr_code'] = base64_encode($record_id);
             $assetPath = "admin/files/shipment";
             $uploaded_invoices='';
             if ($request->hasfile('uploaded_invoices')) {
                 foreach ($request->file('uploaded_invoices') as $key=>$file) {
-                    $name=$payload['record_id']."_".($key+1).".".$file->getClientOriginalExtension();
+                    $name=$record_id."_".($key+1).".".$file->getClientOriginalExtension();
                     $file->move($assetPath,$name); 
                     if($uploaded_invoices == ''){
                         $uploaded_invoices = $name;
@@ -306,7 +313,7 @@ class ShipmentController extends Controller
             $uploaded_packaging_list='';
             if ($request->hasfile('uploaded_packaging_list')) {
                 foreach ($request->file('uploaded_packaging_list') as $key=>$file) {
-                    $name=$payload['record_id']."_".($key+1).".".$file->getClientOriginalExtension();
+                    $name=$record_id."_".($key+1).".".$file->getClientOriginalExtension();
                     $file->move($assetPath,$name); 
                     if($uploaded_packaging_list == ''){
                         $uploaded_packaging_list = $name;
@@ -316,8 +323,16 @@ class ShipmentController extends Controller
                 }
                 $payload['uploaded_packaging_list']=$uploaded_packaging_list;
             }
-            $shipment = Shipment::create($payload);
-        return redirect()->to('/customer/pending_shipments')->with('success','Shipment created successfully!');
+            if($payload['application_type'] == 'new'){                
+                $payload['record_id'] = $record_id; 
+                $shipment = Shipment::create($payload);
+                return redirect()->to('/customer/pending_shipments')->with('success','Shipment created successfully!');
+            }else{
+                $revision = Revision::create($payload);
+                return redirect()->to('/customer/pending_shipments')->with('success','Revision created successfully!');
+            }
+            
+       
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }

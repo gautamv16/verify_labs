@@ -57,6 +57,14 @@ Route::group(['prefix' => 'lab'], function () {
 Route::group(['prefix' => 'customer'], function () {
 	Route::get('signup', 'Customer\CustomerController@getSignup')->name('customer.register');
 	Route::post('register', 'Customer\CustomerController@create')->name('customer.createcustomer');
+	Route::group(['middleware' => ['customer']], function () {
+		Route::get('dashboard', 'Customer\DashboardController@index')->name('customer.dashboard');
+		Route::get('shipments','Customer\ShipmentController@index')->name('customer.shipments');
+		Route::get('pending_shipments','Customer\ShipmentController@pending_shipments')->name('customer.pending_shipments');
+		Route::get('failed_shipments','Customer\ShipmentController@failed_shipments')->name('customer.failed_shipments');
+		Route::get('getaddshipment','Customer\ShipmentController@create')->name('customer.getaddshipment');
+		Route::post('saveshipment','Customer\ShipmentController@store')->name('customer.saveshipment');
+	});
 });
 
 

@@ -10,7 +10,7 @@ class Importer extends Model
     public $timestamps = false;
     protected $fillable = [
         'name','address','user_id',
-        'email','contact_name','city','country','primary_contact','secondary_contact','status'
+        'email','contact_name','city','country','primary_contact','commercial_registration_no','secondary_contact','status'
     ];
 
     public function countryName(){

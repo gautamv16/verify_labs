@@ -122,20 +122,20 @@
                                     </div> <!-- form-group end.// -->
                                 <div class="form-group col-md-6">
                                         <label>Telephone <span class="required-star">*</span></label>
-                                    <input value="{{ old('telephone')}}" name="telephone" type="" class="form-control" placeholder="">
-                                        <p class="invalid-field text-danger"><?php echo $errors->first('telephone'); ?></p>
+                                    <input value="{{ old('primary_contact')}}" name="primary_contact" type="" class="form-control" placeholder="">
+                                        <p class="invalid-field text-danger"><?php echo $errors->first('primary_contact'); ?></p>
                                     </div> <!-- form-group end.// -->
                                 </div>     
                                 <div class="form-row">                            
                                     <div class="form-group col-md-6">
                                         <label>Fax <span class="required-star">*</span></label>
-                                        <input value="{{ old('fax')}}" name="fax" type="" class="form-control" placeholder="">
-                                        <p class="invalid-field text-danger"><?php echo $errors->first('fax'); ?></p>
+                                        <input value="{{ old('secondary_contact')}}" name="secondary_contact" type="" class="form-control" placeholder="">
+                                        <p class="invalid-field text-danger"><?php echo $errors->first('secondary_contact'); ?></p>
                                     </div> <!-- form-group end.// -->
                                     <div class="form-group col-md-6">
                                         <label>Contact Person <span class="required-star">*</span></label>
-                                        <input value="{{ old('contact_person')}}" name="contact_person" type="" class="form-control" placeholder="">
-                                        <p class="invalid-field text-danger"><?php echo $errors->first('contact_person'); ?></p>
+                                        <input value="{{ old('contact_name')}}" name="contact_name" type="" class="form-control" placeholder="">
+                                        <p class="invalid-field text-danger"><?php echo $errors->first('contact_name'); ?></p>
                                     </div> 
                                 </div>   
                         

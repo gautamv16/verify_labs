@@ -2,18 +2,18 @@
 @section('content')
 <div class="mt-auto mb-3">
   <div class="d-flex justify-content-between">
-        <div class="shipment-hdr">Shipments</div>
+        <div class="shipment-hdr">Inspections</div>
         <div class="New_Shipments">
-            <a href="{{route('lab.getaddshipment')}}" class="d-flex align-items-center">
+            <a href="{{route('customer.getaddshipment')}}" class="d-flex align-items-center">
                 <img src="{{ asset('admin/assets/img/truck.svg') }}"> 
-                <span>New Shipments</span>
+                <span>Request New Inspection</span>
             </a>
         </div>
     </div>
 </div>
 <div>
       <div>
-        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Failed Shipments</h5>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Failed Inspections</h5>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>
