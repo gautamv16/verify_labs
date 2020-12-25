@@ -158,8 +158,8 @@
                     <div class="form-group col-md-6">
                         <label>Currency<span class="required-star">*</span></label>
                         <select name="currency" class="form-control">
-                            <option>Dinar</option>
-                            <option>US Dollar</option>
+                            <option value=aed"">AED</option>
+                            <option value="usd">USD</option>
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('currency'); ?></p>
                     </div> <!-- form-group end.// -->
