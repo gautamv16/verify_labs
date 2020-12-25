@@ -14,7 +14,7 @@
     @include('common.messages')
     <div class="card mb-4 border-0">
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data" action="{{route('lab.shipment.step_three')}}"> 
+            <form method="post" enctype="multipart/form-data" action="{{route('customer.shipment.step_three')}}"> 
             @csrf
                 <div class="col-md-12">
                 <div class="form-row">
@@ -94,7 +94,7 @@
                 </div> <!-- form-row.// -->
                 <div class="form-group">
                     <button class="btn btn-sm btn-primary">Save</button>
-                    <a class="btn btn-sm btn-danger" href="{{route('lab.pending_shipments')}}">Cancel</a>
+                    <a class="btn btn-sm btn-danger" href="{{route('customer.pending_shipments')}}">Cancel</a>
                 </div>
                 </div>
             </form>

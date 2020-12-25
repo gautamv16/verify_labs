@@ -107,7 +107,7 @@ class ShipmentController extends Controller
         </a>           
         </div>';
         }else{
-          $shipments_data = Shipment::where('uae_firs_number','LIKE',$text)->orWhere('record_id','LIKE',$text)->with('importer','exporter','registrationLocation')->with(['shipment_test'=>function($q){
+          $shipments_data = Shipment::where('uae_firs_number','LIKE','%'.$text.'%')->orWhere('record_id','LIKE','%'.$text.'%')->with('importer','exporter','registrationLocation')->with(['shipment_test'=>function($q){
             return $q->with('supervisionLocation','labs');
         }])->with(['shipment_test_result'=>function($q){
             return $q->with('labs');

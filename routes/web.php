@@ -60,10 +60,22 @@ Route::group(['prefix' => 'customer'], function () {
 	Route::group(['middleware' => ['customer']], function () {
 		Route::get('dashboard', 'Customer\DashboardController@index')->name('customer.dashboard');
 		Route::get('shipments','Customer\ShipmentController@index')->name('customer.shipments');
+		
+		Route::get('revisions','Customer\ShipmentController@revisions')->name('customer.revisions');
 		Route::get('pending_shipments','Customer\ShipmentController@pending_shipments')->name('customer.pending_shipments');
 		Route::get('failed_shipments','Customer\ShipmentController@failed_shipments')->name('customer.failed_shipments');
 		Route::get('getaddshipment','Customer\ShipmentController@create')->name('customer.getaddshipment');
 		Route::post('saveshipment','Customer\ShipmentController@store')->name('customer.saveshipment');
+
+		Route::get('shipment/detail/{record_id}','Customer\ShipmentController@show')->name('customer.shipment.show');
+		Route::get('shipment/view/{record_id}','Customer\ShipmentController@shipment_detail')->name('customer.shipment_detail');
+		Route::get('shipments/get_step_two/{record_id}','Customer\ShipmentController@get_step_two')->name('customer.shipment.get_step_two');
+		Route::get('shipments/get_step_three/{record_id}','Customer\ShipmentController@get_step_three')->name('customer.shipment.get_step_three');
+		Route::post('shipment/search','Customer\ShipmentController@searchShipments')->name('customer.shipment.search');
+		Route::post('shipments/step_two','Customer\ShipmentController@step_two')->name('customer.shipment.step_two');
+		Route::post('shipments/step_three','Customer\ShipmentController@step_three')->name('customer.shipment.step_three');
+		Route::get('exporter_detail/{id}','Customer\ShipmentController@exporter_detail')->name('customer.exporter_detail');
+		Route::get('importer_detail/{id}','Customer\ShipmentController@importer_detail')->name('customer.importer_detail');
 	});
 });
 

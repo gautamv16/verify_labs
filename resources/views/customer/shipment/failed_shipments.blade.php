@@ -30,8 +30,8 @@
                 @foreach($failed_shipments as $shipment)
                 <tr>
                   <th scope="row" style="cursor: pointer;" onclick="openshipment('{{$shipment->record_id}}')">{{$shipment->uae_firs_number}}</th>
-                  <td><a href="{{route('lab.exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></td>
-                  <td><a href="{{route('lab.importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></td>
+                  <td><a href="{{route('customer.exporter_detail',['id'=>$shipment->exporter->id])}}">{{$shipment->exporter->name}}</a></td>
+                  <td><a href="{{route('customer.importer_detail',['id'=>$shipment->importer->id])}}">{{$shipment->importer->name}}</a></td>
                   <td>{{$shipment->created_date}}</td>
                   <td>{{ $shipment->created_date}}</td>
                 </tr>
@@ -49,7 +49,7 @@
 </div>
 <script>
     function openshipment(record_id){
-        window.location.href="<?php echo url('admin/shipment/detail');?>/"+record_id;
+        window.location.href="<?php echo url('customer/shipment/detail');?>/"+record_id;
     }
 </script>
 @stop

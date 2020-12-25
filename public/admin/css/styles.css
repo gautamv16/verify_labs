@@ -11073,3 +11073,16 @@ p.letter-02{
   width: 39%;
 }
 }
+
+.search_results{
+  width: 98%;
+  position: absolute;
+  background: #fff8f8;
+  list-style-type: none;
+  cursor: pointer;
+  z-index: 1;
+}
+.shipment_firs_number{
+  list-style-type: none;
+  padding: 5px 0px;
+}

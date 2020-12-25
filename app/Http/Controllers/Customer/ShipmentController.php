@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Shipment;
-use APp\Revision;
+use App\Revision;
 use App\ShipmentTest;
 use App\ShipmentTestResult;
 use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use App\Exporter;
 use App\Importer;
 
@@ -28,6 +29,15 @@ class ShipmentController extends Controller
          $user_location = $user->office_location;
           $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
           return view('customer.shipment.index',compact('shipments'));
+    }
+
+    public function revisions(){
+        $user = Auth::guard('admins')->user();
+        $user_location = $user->office_location;
+         $revisions = Revision::with('importer','exporter','revision_user')->with(['shipment'=>function($q)use($user){
+             return $q->where('user_id','=',$user->id);
+         }])->where('user_id','=',$user->id)->get();
+         return view('customer.shipment.revisions',compact('revisions'));
     }
 
     public function failed_shipments(){
@@ -75,33 +85,29 @@ class ShipmentController extends Controller
         $user = Auth::guard('admins')->user();
         $shipments = [];
          $html = "";
-        $user_location = $user->office_location;
+        $user_id = $user->id;
         if($text =='' || trim($text) == ''){
-            $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
-            if(count($shipments_data) > 0){
-              foreach($shipments_data as $k=>$d){
-                  if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
-                      $shipments[] = $d;
+            $shipments_data = Shipment::where('user_id','=',$user->id)->with('importer','exporter','registrationLocation')->with(['shipment_test'=>function($q){
+                return $q->with('supervisionLocation','labs');
+            }])->with(['shipment_test_result'=>function($q){
+                return $q->with('labs');
+            }])->get();
+              if(count($shipments_data) > 0){
+                    foreach($shipments_data as $k=>$d){
+                        if(!$d->shipment_test_result && !$d->exporter->approved_farm ){
+                            $shipments[] = $d;
+                        }
+                    }
                   }
-              }
-            }
-          $html.=' <div class="card-body col-md-3">
-            <a href="'.route('lab.getaddshipment').'">
-             <div class="info mb-2">New</div>
-            <div class="lineA mb-2"></div>
-            <div class="lineA mb-2"></div>
-            <div class="lineB mb-2"></div>
-        </a>           
-        </div>';
         }else{
-          $shipments_data = Shipment::where('uae_firs_number','LIKE',$text)->orWhere('record_id','LIKE',$text)->with('importer','exporter','registrationLocation')->with(['shipment_test'=>function($q){
+          $shipments_data = Shipment::where('uae_firs_number','LIKE','%'.$text.'%')->where('user_id','=',$user_id)->with('importer','exporter','registrationLocation')->with(['shipment_test'=>function($q){
             return $q->with('supervisionLocation','labs');
         }])->with(['shipment_test_result'=>function($q){
             return $q->with('labs');
         }])->get();
           if(count($shipments_data) > 0){
                 foreach($shipments_data as $k=>$d){
-                    if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
+                    if(!$d->shipment_test_result && !$d->exporter->approved_farm ){
                         $shipments[] = $d;
                     }
                 }
@@ -110,34 +116,12 @@ class ShipmentController extends Controller
         
 
         if($shipments && count($shipments) > 0){
-           
-            foreach($shipments as $k=>$shipment){
-              $html.='<div class="card-body col-md-3">';
-            $html.='<div class="innerBody">';
-            $html.='<div class="info mb-2"><a href="'.route('lab.shipment.show',['id'=>$shipment->record_id]).'">'.$shipment->record_id.'</a></div>';
-            $html.='<ul class="cardUL">';
-            $html.='<li>Loction: <span>'.$shipment->registrationLocation->name.'</span></li>';
-            $html.='<li>Date: <span>'.$shipment->created_date.'</span></li>';
-            $html.='<li>Importer: <span>'.$shipment->importer->name.'</span></li>';
-            $html.='<li>Exporter:<span>'.$shipment->exporter->name.'</span></li>';
-            $html.='<li>FINS NO: <span>'.$shipment->uae_firs_number.'</span></li>';
-            $html.='</ul>';
-            $html.='<div class="lastBTN">';
-                               if($shipment->exporter->approved_farm){
-                                    $html.='<span class="btn btn-success">Passed</span>';
-                                }else if(!$shipment->shipment_test){
-                                   $html.='<a href="'.route('lab.shipment.get_step_two',['id'=>$shipment->record_id]).'" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 2">Step 2</a>';
-                                }else if(!$shipment->shipment_test_result){
-                                    $html.='<a href="'.route('lab.shipment.get_step_three',['id'=>$shipment->record_id]).'" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Complete Step 3">Step 3</a>';
-                               }else if($shipment->shipment_test && $shipment->shipment_test_result){
-                                   $html.=' <span class="btn btn-success">'.($shipment->shipment_test_result->result == 1) ? "Pass": "Fail".'</span>';
-                              }
-                                
-           $html.=' </div></div></div>';
+                       foreach($shipments as $k=>$shipment){
+              $html.='<li class="shipment_firs_number" id="'.$shipment->uae_firs_number.'" rel="'.$shipment->zad_number.'">'.$shipment->uae_firs_number.'</li>';
          }
         }else{
           if($text!='')
-          $html="<div>No Data Found</div>";
+          $html="<li>No Data Found</li>";
         }
 
         echo $html; 
@@ -268,7 +252,6 @@ class ShipmentController extends Controller
     {
         try{
             $payload = $request->all();
-            //echo "<pre>"; print_r($payload); die;
             $validator = Validator::make($payload, [
             'importer_id' => 'required',
             'exporter_id' => 'required',
@@ -295,7 +278,7 @@ class ShipmentController extends Controller
            
             $record_id = "SHP-".str_pad(rand(0, pow(10, 5)-1), 5, '0', STR_PAD_LEFT);
             $payload['user_id'] = Auth::guard('admins')->user()->id;
-            $payload['qr_code'] = base64_encode($record_id);
+           
             $assetPath = "admin/files/shipment";
             $uploaded_invoices='';
             if ($request->hasfile('uploaded_invoices')) {
@@ -323,11 +306,27 @@ class ShipmentController extends Controller
                 }
                 $payload['uploaded_packaging_list']=$uploaded_packaging_list;
             }
-            if($payload['application_type'] == 'new'){                
-                $payload['record_id'] = $record_id; 
+            if($payload['application_type'] == 'new'){  
+                 
+                $location = Location::where('country_id','=',$payload['country_id'])->get(); 
+                $location_id = null;
+                            
+                if(count($location)>0){
+                    $location_id = $location[0]->id;
+                }else{
+                    $locations = Location::all(); 
+                    if(count($locations)){
+                        $location_id = 1;
+                    }   
+                }       
+                $payload['registration_location_id'] = $location_id;   
+                $payload['record_id'] = $record_id;  
+                $payload['qr_code'] = base64_encode($record_id);
+                $payload['created_date'] = date('Y-m-d');
                 $shipment = Shipment::create($payload);
                 return redirect()->to('/customer/pending_shipments')->with('success','Shipment created successfully!');
             }else{
+                $payload['entry_port'] = $payload['port_id'];  
                 $revision = Revision::create($payload);
                 return redirect()->to('/customer/pending_shipments')->with('success','Revision created successfully!');
             }
@@ -347,21 +346,21 @@ class ShipmentController extends Controller
     public function show($record_id)
     {
        $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
-       return view('labuser.shipment.show_shipment',compact('shipment'));
+       return view('customer.shipment.show_shipment',compact('shipment'));
     }
 
     public function shipment_detail($record_id){
         $shipment  = Shipment::where('record_id','=',$record_id)->first(); 
-        return view('labuser.shipment.shipment_detail',compact('shipment'));
+        return view('customer.shipment.shipment_detail',compact('shipment'));
     }
 
     public function exporter_detail($id){
         $exporter  = Exporter::with('countryName')->where('id','=',$id)->first(); 
-        return view('labuser.shipment.exporter_detail',compact('exporter'));
+        return view('customer.shipment.exporter_detail',compact('exporter'));
     }
     public function importer_detail($id){
         $importer  = Importer::with('countryName')->where('id','=',$id)->first(); 
-        return view('labuser.shipment.importer_detail',compact('importer'));
+        return view('customer.shipment.importer_detail',compact('importer'));
     }
 
     

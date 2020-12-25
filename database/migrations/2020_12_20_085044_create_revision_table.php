@@ -15,7 +15,7 @@ class CreateRevisionTable extends Migration
     {
         Schema::create('revisions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('firs_number')->nullable();
+            $table->string('uae_firs_number')->nullable();
             $table->bigInteger('user_id')->nullable();
             $table->string('qr_code')->nullable();
             $table->string('zad_number')->nullable();
@@ -23,7 +23,7 @@ class CreateRevisionTable extends Migration
             $table->bigInteger('exporter_id')->nullable();
             $table->bigInteger('export_country')->nullable();
             $table->bigInteger('entry_port')->nullable();
-            $table->bigInteger('discharg_port')->nullable();
+            $table->bigInteger('discharge_port')->nullable();
             $table->date('arrival_date')->nullable();
             $table->string('shipment_method')->nullable();
             $table->string('shipment_method_type')->nullable();

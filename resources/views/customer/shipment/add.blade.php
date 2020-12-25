@@ -19,7 +19,7 @@
                     <div class="form-group col-md-6">
                         <label>Application Type<span class="required-star">*</span></label>
                          <div>
-                            <input type="radio" name="application_type" value="new" /> New
+                            <input type="radio" name="application_type" value="new" checked /> New
                             <input type="radio" name="application_type" value="revision" /> Revision
                          </div>
                         <p class="invalid-field text-danger"><?php echo $errors->first('application_type'); ?></p>
@@ -29,7 +29,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>UAE FIRS No<span class="required-star">*</span></label>
-                        <input value="{{ old('uae_firs_number')}}" name="uae_firs_number" type="" class="form-control" placeholder="">
+                        <input value="{{ old('uae_firs_number')}}" id="uae_firs_number" onkeyUp="searchFirsNumbers()" name="uae_firs_number" type="" class="form-control" placeholder="">
+                        <ul id="searchResults" class="search_results"></ul>
                         <p class="invalid-field text-danger"><?php echo $errors->first('uae_firs_number'); ?></p>
                     </div> <!-- form-group end.// -->
                     <div class="form-group col-md-6">
@@ -190,4 +191,34 @@
         </div>
     </div>
 </div>
+@stop
+@section('viewscripts')
+<script>
+ $(document).ready(function(){
+  $('#searchResults').on('click','li',function(){
+      var fins_number = $(this).attr('id');
+      var zad_number = $(this).attr('rel');
+      $('input[name="zad_number"]').val(zad_number);
+      $('input[name="uae_firs_number"]').val(fins_number);
+      $('#searchResults').html('');
+  })
+ });
+  function searchFirsNumbers(){
+            var application_type = $('input[name="application_type"]:checked').val();
+           if(application_type == 'revision'){
+                var csrf_token = '<?php echo csrf_token(); ?>';
+                var text = $('input[name="uae_firs_number"]').val();
+                var url = '<?php echo url("customer/shipment/search"); ?>';
+                $.ajax({
+                    url:url,
+                    method:'POST',
+                    data:{"_token":csrf_token,"text":text},
+                    success:function(data){
+                        $('#searchResults').html(data);
+                    }
+                })
+           }
+  }
+   
+</script>
 @stop

@@ -23,6 +23,9 @@ class Revision extends Model
      public function exporter(){
      	return $this->hasOne('\App\Exporter','id','exporter_id');
      }
+     public function shipment(){
+        return $this->hasOne('\App\Shipment','uae_firs_number','uae_firs_number');
+    }
 
      
      
