@@ -309,7 +309,7 @@ class ShipmentController extends Controller
             }
             if($payload['application_type'] == 'new'){  
                  
-                $location = Location::where('country_id','=',$payload['country_id'])->get(); 
+                $location = Location::where('country_id','=',$payload['export_country'])->get(); 
                 $location_id = null;
                             
                 if(count($location)>0){
