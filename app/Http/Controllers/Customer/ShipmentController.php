@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Exporter;
 use App\Importer;
+use App\Location;
 
 class ShipmentController extends Controller
 {
@@ -148,7 +149,7 @@ class ShipmentController extends Controller
 
          $importers = \App\Importer::all();
          $exporters = \App\Exporter::all();
-         $locations = \App\Location::where('country_id','=',$user_location->country_id)->get();
+         $locations = Location::where('country_id','=',$user_location->country_id)->get();
          $ports = \App\Ports::all();
         return view('customer.shipment.add',compact('importers','exporters','locations','ports','customer_importer','customer_exporter','is_importer_or_exporter'));
     }
