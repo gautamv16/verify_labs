@@ -23,7 +23,7 @@ class UpdateShipmentsTable extends Migration
             $table->string('products_type')->nullable();
             $table->string('invoice_number')->nullable();
             $table->string('amount')->nullable();
-            $table->bigInteger('currency')->nullable();
+            $table->string('currency')->nullable();
             $table->string('fob_value')->nullable();
         });
     }

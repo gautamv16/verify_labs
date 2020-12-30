@@ -30,7 +30,7 @@ class CreateRevisionTable extends Migration
             $table->string('products_type')->nullable();
             $table->string('invoice_number')->nullable();
             $table->string('amount')->nullable();
-            $table->bigInteger('currency')->nullable();
+            $table->string('currency')->nullable();
             $table->string('fob_value')->nullable();
             $table->string('uploaded_invoices')->nullable();
             $table->string('uploaded_packaging_list')->nullable();

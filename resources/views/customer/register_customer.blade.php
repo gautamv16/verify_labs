@@ -11,7 +11,16 @@
     <div class="signUP">
         <div class="d-flex align-items-center flex-column small">
             <div class="shipment-hdr font-24">Let’s create your account.</div>
-            <p class="letter-02 text-center">Signing up for Racs is fast and free — no commitments or long-term contracts.</p>
+            <p class="letter-02 text-center">Signing up to RACS is fast - Manage all UAE inspections in one place.
+             <p>Steps:</p>
+              <p>Create an account</p>
+
+                <p>Request an inspection</p>
+
+                <p>RACS team performs inspection and lab testing</p>
+
+                <p>Your Shipment is ready</p>
+            </p>
         </div>
         <div class="pad-vert-30">
           <div class="d-flex flex-column-mb justify-content-between text-center">
