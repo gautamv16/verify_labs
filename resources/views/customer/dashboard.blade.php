@@ -1,8 +1,8 @@
 @extends('customer.layouts.layoutinner')
 @section('content')
 <div class="mt-auto mb-3 ">
-  <div class="d-flex justify-content-between">
-        <div class="New_Shipments float-right">
+  <div class="d-flex justify-content-end">
+        <div class="New_Shipments">
             <a href="{{route('customer.getaddshipment')}}" class="d-flex align-items-center">
                 <img src="{{ asset('admin/assets/img/truck.svg') }}"> 
                 <span>Request New Inspection</span>

@@ -40,7 +40,11 @@
                                 <a class="nav-link" href="{{route('customer.failed_shipments')}}"><div class="sb-nav-link-icon"></div>Failed</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="{{route('customer.revisions')}}"><div class="sb-nav-link-icon"></div>Revisions</a>
+                        <a class="nav-link" href="{{route('customer.revisions')}}">
+                            <div class="sb-nav-link-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            </div>
+                            <span>Revisions</span></a>
                     </div>
                 </div>
             </nav>
@@ -62,8 +66,8 @@
                     <!-- END: Search -->
                     <!-- BEGIN: Account Menu -->
                     <div class="dropdown account">
-                        <div class="dropdown-toggle image-fit" data-toggle="dropdown">
-                        <p>{{Auth::guard('admins')->user()->first_name}} {{Auth::guard('admins')->user()->last_name}}</p>
+                        <div class="dropdown-toggle image-fit d-flex align-items-center" data-toggle="dropdown">
+                        <span class="userName">{{Auth::guard('admins')->user()->first_name}} {{Auth::guard('admins')->user()->last_name}}</span>
                             <!-- <img alt="" src="{{ asset('admin/assets/img/profile-2.jpg') }}"> -->
                         </div>
                         <div class="dropdown-box w-56 dropdown-menu dropdown-menu-right">
