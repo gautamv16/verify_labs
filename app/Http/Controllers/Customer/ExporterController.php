@@ -66,7 +66,7 @@ class ExporterController extends Controller
      */
     public function create()
     {
-        return view('labuser.exporters.add');
+        return view('customer.exporters.add');
     }
 
     /**

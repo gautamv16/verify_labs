@@ -1,22 +1,19 @@
-@extends('labuser.layouts.layoutinner')
+@extends('customer.layouts.layoutinner')
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
+<div class="mt-auto mb-3">
+    <div>
         <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Edit Exporter</h4>
-            </div>
-            
+            <div class="shipment-hdr">Edit Exporter</div>
         </div>
     </div>
 </div>
-<div class="container-fluid">
+<div>
     @include('common.messages')
-    <div class="card mb-4 border-0">
+    <div class="box mb-4 border-0">
         <div class="card-body">
-            <form method="post" action="{{route('lab.exporters.update',['id'=>$user->id])}}"> 
+            <form method="post" action="{{route('customer.exporters.update',['id'=>$user->id])}}"> 
             @csrf
-                  <div class="col-md-12">
+                  <div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Name<span class="required-star">*</span></label>
@@ -61,8 +58,7 @@
                         <p class="invalid-field text-danger"><?php echo $errors->first('country'); ?></p>
                     </div> <!-- form-group end.// -->
                 </div>
-                <div class="form-row">
-                   
+                <div class="form-row">                   
                     <div class="form-group col-md-6">
                         <label>Primary Contact<span class="required-star">*</span></label>
                         <input value="{{  $user->primary_contact}}" name="primary_contact" type="" class="form-control" placeholder="">
@@ -95,8 +91,8 @@
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
                 <div class="form-group">
-                    <button class="btn btn-sm btn-primary">Update User</button>
-                    <a class="btn btn-sm btn-danger" href="{{route('lab.exporters')}}">Cancel</a>
+                    <button class="btn btn-sm bg-theme-1 text-white">Update User</button>
+                    <a class="btn btn-sm btn-danger" href="{{route('customer.exporters')}}">Cancel</a>
                 </div>
                 </div>
                 

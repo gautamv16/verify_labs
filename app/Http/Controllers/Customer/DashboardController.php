@@ -6,6 +6,8 @@ use App\AdminUser;
 use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Exporter;
+use App\Ports;
 
 class DashboardController extends Controller
 {
@@ -62,6 +64,44 @@ class DashboardController extends Controller
         
 
         return view('customer/dashboard',compact('user','shipments','pending_shipment','failed_shipments','passed_shipments','shipments_waiting_sampling','shipment_waiting_lab'));
+    }
+
+    public function getExporters(Request $request){
+        $country_id = $request->input('country_id');
+        
+        $exporters = Exporter::where('country','=',$country_id)->get();
+        $html='';
+        if(count($exporters)){
+            $html="<option value=''>Please Select</option>";
+            foreach($exporters as $key=>$exporter){
+                $html.="<option value='".$exporter->id."'>".$exporter->name."</option>";
+            }
+        }else{
+            $html="<option value=''>Please Select</option>";
+            $html.="<option value='add_new'>Add New Exporter</option>";
+        }
+
+        echo $html;
+        exit;
+
+    }
+
+    public function getDischargePort(Request $request){
+        $country_id = $request->input('country_id');
+        $ports = Ports::where('country_id','=',$country_id)->get();
+        $html='';
+        if(count($ports)){
+            $html="<option value=''>Please Select</option>";
+            foreach($ports as $key=>$port){
+                $html.="<option value='".$port->id."'>".$port->name."</option>";
+            }
+        }else{
+            $html="<option value=''>No Ports Available</option>";
+        }
+
+        echo $html;
+        exit;
+
     }
 
     

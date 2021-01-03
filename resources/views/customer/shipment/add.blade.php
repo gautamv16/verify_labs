@@ -12,7 +12,7 @@
     @include('common.messages')
     <div class="box mb-4 border-0">
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data" action="{{route('customer.saveshipment')}}"> 
+            <form id="shipment_form" method="post" enctype="multipart/form-data" action="{{route('customer.saveshipment')}}"> 
             @csrf
                 <div>
                 <div class="form-row">
@@ -40,6 +40,16 @@
                     </div> <!-- form-group end.// -->
                 </div>
                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Country Of Export<span class="required-star">*</span></label>
+                        <select onChange="updateExporter(this)" name="export_country" class="form-control">
+                            <option value=""> -- Select -- </option>
+                            @foreach(\App\Country::all() as $country)
+                                <option value="{{$country->id}}">{{$country->name}}</option>
+                            @endforeach
+                        </select>
+                        <p class="invalid-field text-danger"><?php echo $errors->first('export_country'); ?></p>
+                    </div>
                     @if($is_importer_or_exporter == 'exporter')
                     <div class="form-group col-md-6">
                         <label>Importer<span class="required-star">*</span></label>
@@ -56,7 +66,7 @@
                     @if($is_importer_or_exporter == 'importer')
                     <div class="form-group col-md-6">
                         <label>Exporter<span class="required-star">*</span></label>
-                        <select name="exporter_id" class="form-control">
+                        <select id="exporter_list" name="exporter_id" class="form-control">
                             <option value=""> -- Select -- </option>
                             @foreach($exporters as $exporter)
                                 <option value="{{$exporter->id}}">{{$exporter->name}}</option>
@@ -66,17 +76,6 @@
                         <input type="hidden" name = "importer_id" value="{{$customer_importer[0]->id}}" />                 
                     </div>
                     @endif
-                    <div class="form-group col-md-6">
-                        <label>Country Of Export<span class="required-star">*</span></label>
-                        <select name="export_country" class="form-control">
-                            <option value=""> -- Select -- </option>
-                            @foreach(\App\Country::all() as $country)
-                                <option value="{{$country->id}}">{{$country->name}}</option>
-                            @endforeach
-                        </select>
-                        <p class="invalid-field text-danger"><?php echo $errors->first('export_country'); ?></p>
-                    </div>
-                    
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -91,7 +90,7 @@
                     </div> <!-- form-group end.// -->
                     <div class="form-group col-md-6">
                         <label>Discharge Port<span class="required-star">*</span></label>
-                        <select name="discharge_port" class="form-control">
+                        <select id="discharge_ports" name="discharge_port" class="form-control">
                             <option value=""> -- Select -- </option>
                             @foreach($ports as $port)
                                 <option value="{{$port->id}}">{{$port->name}}</option>
@@ -104,7 +103,7 @@
                     <div class="form-group col-md-6">
                         <?php $current_date = date('Y-m-d'); ?>
                         <label>Date Of Arrival<span class="required-star">*</span></label>
-                         <input value="{{ old('arrival_date')!='' ? old('arrival_date') : $current_date}}" name="arrival_date" type="" class="form-control" placeholder="">
+                         <input id="arrival_date" value="{{ old('arrival_date')!='' ? old('arrival_date') : $current_date}}" name="arrival_date" type="" class="form-control" placeholder="">
                        
                         <p class="invalid-field text-danger"><?php echo $errors->first('arrival_date'); ?></p>
                     </div> <!-- form-group end.// -->
@@ -132,10 +131,10 @@
                     <div class="form-group col-md-6">
                         <label>Types Of Products<span class="required-star">*</span></label>
                         <div>
-                            <input type="radio" name="products_type" value="frozen"> Frozen
-                            <input type="radio" name="products_type" value="canned"> Canned
-                            <input type="radio" name="products_type" value="dried"> Dried
-                            <input type="radio" name="products_type" value="dehydrated"> Dehydrated
+                            <input type="checkbox" name="products_type[]" value="frozen"> Frozen
+                            <input type="checkbox" name="products_type[]" value="canned"> Canned
+                            <input type="checkbox" name="products_type[]" value="dried"> Dried
+                            <input type="checkbox" name="products_type[]" value="dehydrated"> Dehydrated
                         </div>
                         
                         <p class="invalid-field text-danger"><?php echo $errors->first('products_type'); ?></p>
@@ -158,7 +157,7 @@
                     <div class="form-group col-md-6">
                         <label>Currency<span class="required-star">*</span></label>
                         <select name="currency" class="form-control">
-                            <option value=aed"">AED</option>
+                            <option value="aed">AED</option>
                             <option value="usd">USD</option>
                         </select>
                         <p class="invalid-field text-danger"><?php echo $errors->first('currency'); ?></p>
@@ -181,8 +180,15 @@
                         <p class="invalid-field text-danger"><?php echo $errors->first('uploaded_packaging_list'); ?></p>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
+                <div class="form-row">
+                    <div class="form-group">
+                            <input id="confirmation"  name="confirmation" type="checkbox" placeholder="">
+                            <label>Please cetrify that all the information added above is correct and accurate.</label> 
+                    </div>  
+                </div>
+               
                 <div class="form-group">
-                    <button class="btn btn-sm bg-theme-1 text-white">Create Inspection</button>
+                    <button  id="create_inspection" class="btn btn-sm bg-theme-1 text-white">Create Inspection</button>
                     <a class="btn btn-sm btn-danger" href="{{route('customer.shipments')}}">Cancel</a>
                 </div>
                 </div>
@@ -194,7 +200,23 @@
 @stop
 @section('viewscripts')
 <script>
+ $( "#arrival_date" ).datepicker();
+ $('#create_inspection').attr('disabled','disabled');
  $(document).ready(function(){
+     $('#shipment_form').submit(function(){
+        var confirmval = $("#confirmation:checked").val();
+        if(confirmval){
+            return true;
+        }
+        return false;
+     })
+    $('#confirmation').click(function(){
+        if($('#confirmation').prop('checked')){
+            $('#create_inspection').removeAttr('disabled');
+        }else{  
+            $('#create_inspection').attr('disabled','disabled');
+        }
+    })
   $('#searchResults').on('click','li',function(){
       var fins_number = $(this).attr('id');
       var zad_number = $(this).attr('rel');
@@ -203,6 +225,34 @@
       $('#searchResults').html('');
   })
  });
+ $('#exporter_list').on('change',function(){
+    var val = $(this).val();
+    if(val == 'add_new'){
+        window.location.href='<?php echo url('customer/getaddexporters'); ?>';
+    }
+ })
+ function updateExporter(){
+    var val = $('select[name="export_country"] option:selected').val();
+    var csrf_token = '<?php echo csrf_token(); ?>';
+    var url = '<?php echo url("customer/getexporters"); ?>';
+    var urlports = '<?php echo url("customer/getdischargeports"); ?>';
+    $.ajax({
+        url:url,
+        method:'POST',
+        data:{"_token":csrf_token,"country_id":val},
+        success:function(data){
+            $('#exporter_list').html(data);
+        }
+    })
+    $.ajax({
+        url:urlports,
+        method:'POST',
+        data:{"_token":csrf_token,"country_id":val},
+        success:function(data){
+            $('#discharge_ports').html(data);
+        }
+    })
+ }
   function searchFirsNumbers(){
             var application_type = $('input[name="application_type"]:checked').val();
            if(application_type == 'revision'){

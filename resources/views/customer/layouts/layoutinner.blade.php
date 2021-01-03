@@ -1,4 +1,4 @@
-@extends('customer.layouts.lab')
+@extends('customer.layouts.customer')
 @section('maincontent')
 
 <body class="sb-nav-fixed">

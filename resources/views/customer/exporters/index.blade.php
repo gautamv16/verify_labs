@@ -1,46 +1,54 @@
-@extends('labuser.layouts.layoutinner')
+@extends('customer.layouts.layoutinner')
 @section('content')
-<div class="py-3 bg-light mt-auto mb-3">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-users"></i></span> Exporters</h4>
-            </div>
-            <div class="pull-right">
-                <a href="{{route('lab.getaddexporters')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Exporter</a>
-            </div>
+<div class="mt-auto mb-3">
+    <div class="d-flex justify-content-between">
+        <div class="shipment-hdr">Exporters</div>
+        <div class="pull-right">
+            <a href="{{route('customer.getaddexporters')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp;Add Exporter</a>
         </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="card mb-4 border-0">
-        <div class="card-body">
+<div>
+    <div class="mb-4 border-0">
+        <div>
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Contact Name</th>
                             <th>Email</th>
+                            <th>Location</th>
+                            <th>Approved Status</th>
                             <th>Status</th>
-                            <th style="width: 50px;">Action</th>
+                            <th style="width: 100px;">Action</th>
 
                         </tr>
                     </thead>
                     <tbody>
+                      @if(count($users) > 0)
                         @foreach($users as $user)
                         <tr>
                             <td>{{$user->name}}</td>
                             <td>{{$user->contact_name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{ucwords($user->status)}}</td>
-                            <td>
-                             <a href="{{ route('lab.exporters.edit',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>
+                            <td>{{ucwords(strtolower($user->countryName->name))}}</td>
+                            <td>{{ucwords($approved_farm[$user->approved_farm])}}</td>
+                            <td>{{ucwords($status[$user->status])}}</td>
+                            <td class="action_icons">
+                            <a href="{{ route('admin.exporter_detail',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="View user"><i class="fa fa-eye"></i></a>
+                             <a href="{{ route('admin.exporters.edit',['id'=>$user->id])}}" class="btn btn-sm btn-info text-white" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit user"><i class="fa fa-pen"></i></a>
                             <button onclick="ondelete({{$user->id}})" type="button" class="btn btn-sm btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Delete user"><i class="fa fa-trash"></i></button>
                         </td>
 
                         </tr>
-                        @endforeach </tbody>
+                        @endforeach
+                        @else
+                        <tr>
+                            <td colspan="7" style="text-align:center">No Record Exists</td>
+                        </tr>
+                        @endif
+                     </tbody>
                 </table>
             </div>
         </div>
@@ -53,7 +61,7 @@
    
 
     function ondelete(userId) {
-        var url = "{{ url('/lab/exporters/{}/delete') }}".replace("{}", userId);
+        var url = "{{ url('/customer/exporters/{}/delete') }}".replace("{}", userId);
         alertify.confirm('Confirm', 'Are you sure you want to delete user ? ',
             function() {
                 var html = '<form id="delete-form" method="post"  action="' + url + '" >@csrf<input type="hidden" name="_method" value="DELETE"></form>';
