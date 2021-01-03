@@ -10910,6 +10910,28 @@ button:focus{
   margin-bottom: 4px;
   cursor: pointer;
 }
+.search_results{
+  width: 98%;
+  position: absolute;
+  background: #fff8f8;
+  list-style-type: none;
+  cursor: pointer;
+  z-index: 1;
+}
+.shipment_firs_number{
+  list-style-type: none;
+  padding: 5px 0px;
+}
+
+.userName{
+  margin-left: 15px;
+  cursor: pointer;
+  max-width: 115px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
 @media (min-width: 1280px){
 .xl\:flex {
     display: flex;
@@ -11055,6 +11077,11 @@ p.letter-02{
   justify-content: space-between;
 }
 }
+@media (max-width: 440px){
+.userName{
+  max-width: 35px;
+}
+}
 @media (max-width: 360px){
 .search .search__input{
   width:11rem;
@@ -11074,15 +11101,3 @@ p.letter-02{
 }
 }
 
-.search_results{
-  width: 98%;
-  position: absolute;
-  background: #fff8f8;
-  list-style-type: none;
-  cursor: pointer;
-  z-index: 1;
-}
-.shipment_firs_number{
-  list-style-type: none;
-  padding: 5px 0px;
-}

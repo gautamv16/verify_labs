@@ -12,15 +12,6 @@
         <div class="d-flex align-items-center flex-column small">
             <div class="shipment-hdr font-24">Let’s create your account.</div>
             <p class="letter-02 text-center">Signing up to RACS is fast - Manage all UAE inspections in one place.
-             <p>Steps:</p>
-              <p>Create an account</p>
-
-                <p>Request an inspection</p>
-
-                <p>RACS team performs inspection and lab testing</p>
-
-                <p>Your Shipment is ready</p>
-            </p>
         </div>
         <div class="pad-vert-30">
           <div class="d-flex flex-column-mb justify-content-between text-center">
@@ -29,8 +20,8 @@
                     <img src="{{ asset('admin/assets/img/note.svg') }}" height="40">
                   </div>
                   <div>
-                    <h6>Just the basics</h6>
-                    <p>Tell us about your business so we can serve you better.</p>
+                    <h6>Create an Account</h6>
+                    <p>create new account and manage all UAE inspections.</p>
                   </div>
               </div>
               <div class="column pad-20">
@@ -38,17 +29,17 @@
                     <img src="{{ asset('admin/assets/img/shake-hands.svg') }}" height="40">
                   </div>
                   <div>
-                    <h6>No credit checks</h6>
-                    <p>We’ll need the last four numbers of your SSN to verify your identity.</p>
+                    <h6>Request an Inspection</h6>
+                    <p>RACS team performs inspection and lab testing.</p>
                   </div>
               </div>
               <div class="column">
                   <div class="icon mb-10">
-                    <img src="{{ asset('admin/assets/img/reader.svg') }}" height="40">
+                    <img src="{{ asset('admin/assets/img/truck.png') }}" height="40">
                   </div>
                   <div>
-                    <h6>Get your free magstripe reader</h6>
-                    <p>When you’re done, we’ll drop your free Square Reader for magstripe in the mail.</p>
+                    <h6>Your Shipment is Ready</h6>
+                    <p>When you’re done, shipment will be done in few hours.</p>
                   </div>
               </div>
           </div>
