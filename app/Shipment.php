@@ -10,7 +10,7 @@ class Shipment extends Model
     public $timestamps = false;
     protected $fillable = [
         'importer_id','exporter_id','user_id','record_id','port_id','uae_firs_number','registration_location_id','uploaded_packaging_list','uploaded_invoices','qr_code','record_id','created_date',
-        'zad_number','currency','shipment_method','shipment_method_type','export_country','discharge_port','arrival_date','products_type','amount','invoice_number','fob_value'
+        'zad_number','currency','shipment_method','shipment_method_type','export_country','discharge_port','arrival_date','products_type','amount','invoice_number','fob_value','status'
     ];
 
     public function shipment_user(){

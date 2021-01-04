@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Exporter;
 use App\Importer;
 use App\Location;
+use App\ShipmentPayment;
 
 class ShipmentController extends Controller
 {
@@ -29,7 +30,7 @@ class ShipmentController extends Controller
         $user = Auth::guard('admins')->user();
          $user_location = $user->office_location;
           $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
-          return view('customer.shipment.index',compact('shipments'));
+           return view('customer.shipment.index',compact('shipments'));
     }
 
     public function revisions(){
@@ -48,11 +49,9 @@ class ShipmentController extends Controller
           $failed_shipments = [];
           if(count($shipments_data) > 0){
             foreach($shipments_data as $k=>$d){
-                if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
                     if($d->shipment_test && $d->shipment_test_result && $d->shipment_test_result->result != 1){
                         $failed_shipments[] = $d;
                     }
-                }
             }
           }
           return view('customer.shipment.failed_shipments',compact('failed_shipments'));
@@ -66,16 +65,13 @@ class ShipmentController extends Controller
           $test_shipments = [];
           if(count($shipments_data) > 0){
             foreach($shipments_data as $k=>$d){
-                if($d->shipment_user && $d->shipment_user->office_location->id == $user_location->id){
                     if(!$d->shipment_test && !$d->exporter->approved_farm){
                         $sampling_shipments[] = $d;
-
                     }
                     
                     if($d->shipment_test && !$d->shipment_test_result && !$d->exporter->approved_farm){
                         $test_shipments[] = $d;
                     }
-                }
             }
           }
           return view('customer.shipment.pending_shipments',compact('sampling_shipments','test_shipments'));
@@ -307,6 +303,7 @@ class ShipmentController extends Controller
                 }
                 $payload['uploaded_packaging_list']=$uploaded_packaging_list;
             }
+            $payload['products_type'] = implode(",", $payload['products_type']); 
             if($payload['application_type'] == 'new'){  
                  
                 $location = Location::where('country_id','=',$payload['export_country'])->get(); 
@@ -324,19 +321,60 @@ class ShipmentController extends Controller
                 $payload['record_id'] = $record_id;  
                 $payload['qr_code'] = base64_encode($record_id);
                 $payload['created_date'] = date('Y-m-d');
+                $payload['status'] = 0;
                 $shipment = Shipment::create($payload);
-                return redirect()->to('/customer/pending_shipments')->with('success','Shipment created successfully!');
+                return redirect()->to('/customer/getpayments')->with(['shipment'=> $shipment,'type'=>'shipment']);
             }else{
                 $payload['entry_port'] = $payload['port_id'];  
+                $payload['status'] = 0;
                 $revision = Revision::create($payload);
-                return redirect()->to('/customer/pending_shipments')->with('success','Revision created successfully!');
-            }
-            
+                return redirect()->to('/customer/getpayments')->with(['revision'=> $revision,'type'=>'revision']);
+            }            
        
         }catch(\Exception $e){
             return redirect()->back()->with('error',$e->getMessage());
         }
     }
+    public function getshipment_payment(){
+        $type = session()->get('type');
+        if($type == 'shipment'){
+           $data = session()->get('shipment');       
+        }else if($type == 'revision'){
+            $data = session()->get('revision'); 
+        }
+        return view('customer.shipment.shipment_payment',compact('data','type'));
+    }
+     public function shipment_payment(Request $request){
+        try{
+            $payload = $request->all();
+            $validator = Validator::make($payload, [
+            'card_number' => 'required',
+            'expire_month' => 'required',
+            'expire_year' => 'required',
+            'cvv_number' => 'required',
+            'shipment_id' => 'required',
+            'record_id' => 'required',
+            'fees' => 'required',
+            'type'=>'required'
+           ],[]);
+           
+           if($validator->fails()){
+                return back()->withErrors($validator->errors())->withInput($request->all());
+            }
+            
+           $payload['status'] = 1;
+           $payment = ShipmentPayment::create($payload);
+           $shipment = Shipment::where('id','=',$payload['shipment_id'])->get();
+           if(count($shipment)){
+            $shipment[0]->status = 1;
+            $shipment[0]->update();
+           }
+           return redirect()->to('/customer/pending_shipments')->with('success','Shipment created Successfully.');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error',$e->getMessage());
+        }
+
+     }
 
     /**
      * Display the specified resource.

@@ -59,6 +59,8 @@ Route::group(['prefix' => 'customer'], function () {
 	Route::post('register', 'Customer\CustomerController@create')->name('customer.createcustomer');
 	Route::group(['middleware' => ['customer']], function () {
 		Route::get('dashboard', 'Customer\DashboardController@index')->name('customer.dashboard');
+		Route::post('getexporters','Customer\DashboardController@getExporters')->name('customer.getexporters');
+		Route::post('getdischargeports','Customer\DashboardController@getDischargePort')->name('customer.getdischargeports');
 		Route::get('shipments','Customer\ShipmentController@index')->name('customer.shipments');
 		
 		Route::get('revisions','Customer\ShipmentController@revisions')->name('customer.revisions');
@@ -66,6 +68,9 @@ Route::group(['prefix' => 'customer'], function () {
 		Route::get('failed_shipments','Customer\ShipmentController@failed_shipments')->name('customer.failed_shipments');
 		Route::get('getaddshipment','Customer\ShipmentController@create')->name('customer.getaddshipment');
 		Route::post('saveshipment','Customer\ShipmentController@store')->name('customer.saveshipment');
+		
+		Route::get('getpayments','Customer\ShipmentController@getshipment_payment')->name('customer.shipment.getpayments');
+		Route::post('payments','Customer\ShipmentController@shipment_payment')->name('customer.shipment.payments');
 
 		Route::get('shipment/detail/{record_id}','Customer\ShipmentController@show')->name('customer.shipment.show');
 		Route::get('shipment/view/{record_id}','Customer\ShipmentController@shipment_detail')->name('customer.shipment_detail');
@@ -76,6 +81,17 @@ Route::group(['prefix' => 'customer'], function () {
 		Route::post('shipments/step_three','Customer\ShipmentController@step_three')->name('customer.shipment.step_three');
 		Route::get('exporter_detail/{id}','Customer\ShipmentController@exporter_detail')->name('customer.exporter_detail');
 		Route::get('importer_detail/{id}','Customer\ShipmentController@importer_detail')->name('customer.importer_detail');
+
+
+		 // Exporters
+
+		 Route::get('exporters','Customer\ExporterController@index')->name('customer.exporters');
+		 Route::get('getaddexporters','Customer\ExporterController@create')->name('customer.getaddexporters');
+		 Route::post('saveexporter','Customer\ExporterController@store')->name('customer.saveexporter');
+		 Route::get('exporters/getedit/{id}','Customer\ExporterController@edit')->name('customer.exporters.edit');
+		 Route::post('exporters/update/{id}','Customer\ExporterController@update')->name('customer.exporters.update');
+		 Route::delete('exporters/{id}/delete','Customer\ExporterController@destroy')->name('customer.exporters.delete');
+		Route::get('exporters/detail/{id}','Customer\ExporterController@show')->name('customer.exporter_detail');
 	});
 });
 

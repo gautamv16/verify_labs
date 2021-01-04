@@ -9,7 +9,7 @@ class Revision extends Model
     protected $table = 'revisions';
     public $timestamps = false;
     protected $fillable = [
-        'importer_id','exporter_id','user_id','entry_port','uae_firs_number','uploaded_packaging_list','uploaded_invoices','qr_code',
+        'importer_id','exporter_id','user_id','entry_port','uae_firs_number','uploaded_packaging_list','uploaded_invoices','qr_code','status',
         'zad_number','currency','shipment_method','shipment_method_type','export_country','discharge_port','arrival_date','products_type','amount','invoice_number','fob_value'
     ];
 
