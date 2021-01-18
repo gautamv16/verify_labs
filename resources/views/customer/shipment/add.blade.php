@@ -200,7 +200,7 @@
 @stop
 @section('viewscripts')
 <script>
- $( "#arrival_date" ).datepicker();
+ $( "#arrival_date" ).datepicker({dateFormat: 'yy-mm-dd'});
  $('#create_inspection').attr('disabled','disabled');
  $(document).ready(function(){
      $('#shipment_form').submit(function(){
