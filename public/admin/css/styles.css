@@ -12149,6 +12149,13 @@ i.fag.fag-usa {
     background-image: url(../../admin/assets/img/usa.png);
     background-position: center center;
 }
+.hDRTXT{
+  color: #0063a8;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: right;
+  margin-left: 15px;
+}
 @media (min-width: 1200px){
 .no-gutters img{
     position: absolute;

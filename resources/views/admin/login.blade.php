@@ -69,7 +69,8 @@
       <div class="row justify-content-center">
         <div class="col-xl-10 d-flex align-items-center">
           <a href="index.html" class="logo mr-auto"><img src="assets/img/racs-logo-2.png"></a>
-          <nav class="nav-menu d-none d-lg-block">
+          <span class="hDRTXT">Inspection Services System</span>
+          <!--<nav class="nav-menu d-none d-lg-block">
             <ul>
               <li class="active"><a href="#header">Home</a></li>
               <li><a href="#about">About</a></li>
@@ -88,7 +89,7 @@
               <li><a href="#">Contact Us</a></li>
               <li><a href="#">Media</a></li>
             </ul>
-          </nav><!-- .nav-menu -->
+          </nav> --><!-- .nav-menu -->
         </div>
       </div>
 
