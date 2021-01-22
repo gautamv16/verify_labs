@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminUserController extends Controller
 {
+    private $customer_role_id = 5;
+    private $superadmin_id = 1;
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +20,12 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = AdminUser::with(['role','office_location'])->where('id','!=',1)->where('status','=',1)->get();
-         $status = ["1"=>"Active","0"=>'Inactive'];
-          return view('admin.adminusers.index',compact('users','status'));
+        $users = AdminUser::with(['role','office_location'])->where('role_id','!=',$this->customer_role_id)->where('id','!=',$this->superadmin_id)->where('status','=',1)->get();
+        $status = ["1"=>"Active","0"=>'Inactive'];
+        return view('admin.adminusers.index',compact('users','status'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

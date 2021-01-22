@@ -43,7 +43,7 @@ class AuthController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        //
+        return $this->guard()->check();
     }
 
     /**
@@ -79,11 +79,17 @@ class AuthController extends Controller
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
-
-        //$this->clearLoginAttempts($request);
-
-        return $this->authenticated($request, $this->guard()->user())
-                ?: ($this->guard()->user()->role->role_key == 'lab_officer') ?  redirect()->intended('/lab/dashboard') : ($this->guard()->user()->role->role_key == 'customer') ? redirect()->intended('/customer/dashboard'): redirect()->intended($this->redirectTo);
+        if($this->authenticated($request, $this->guard()->user())){
+            if($this->guard()->user()->role->role_key == 'lab_officer'){
+                return redirect()->intended('/lab/dashboard');
+            }else if($this->guard()->user()->role->role_key == 'customer'){
+                return redirect()->intended('/customer/dashboard');
+            }
+             return redirect()->intended($this->redirectTo);
+        }
+       return  redirect()->intended($this->logoutRedirectTo);
+        // return $this->authenticated($request, $this->guard()->user())
+        //         ? ($this->guard()->user()->role->role_key == 'lab_officer') ?  redirect()->intended('/lab/dashboard') : ($this->guard()->user()->role->role_key == 'customer') ? redirect()->intended('/customer/dashboard'): redirect()->intended($this->redirectTo): redirect()->intended($this->logoutRedirectTo);
     }
 
    
