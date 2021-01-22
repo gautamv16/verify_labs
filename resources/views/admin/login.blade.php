@@ -67,8 +67,8 @@
   </div>
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-xl-10 d-flex align-items-center">
-          <a href="index.html" class="logo mr-auto"><img src="assets/img/racs-logo-2.png"></a>
+        <div class="col-xl-10 d-flex align-items-center mbadjust">
+          <a href="index.html" class="logo"><img src="assets/img/racs-logo-2.png"></a>
           <span class="hDRTXT">Inspection Services System</span>
           <!--<nav class="nav-menu d-none d-lg-block">
             <ul>

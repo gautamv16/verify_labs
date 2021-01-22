@@ -12153,8 +12153,9 @@ i.fag.fag-usa {
   color: #0063a8;
   font-weight: 500;
   text-transform: uppercase;
-  text-align: right;
-  margin-left: 15px;
+  font-size: 28px;
+  margin-left: 28%;
+  letter-spacing: 2px;
 }
 @media (min-width: 1200px){
 .no-gutters img{
@@ -12168,5 +12169,16 @@ i.fag.fag-usa {
 @media (max-width: 991px){
   .very-top-header{
     display: none;
+  }
+}
+@media (max-width: 767px){
+  .mbadjust{
+    justify-content: space-between;
+  }
+  .hDRTXT{
+    font-size: 115%;
+    margin-left: 0px;
+    letter-spacing: 0px;
+    text-align: right;
   }
 }
