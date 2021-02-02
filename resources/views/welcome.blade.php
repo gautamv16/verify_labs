@@ -4,84 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Verify Lab</title>
+        <title>Inspection Service System</title>
 
-        <!-- Fonts
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        Styles 
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            .d-flex{
-                display:flex;
-            }
-            .align-items-center{
-                align-items: center;
-            }
-            .title img{
-                margin-right: 15px;
-            }
-            .title span{
-                margin-top: 20px;
-                color: #000;
-            }
-            @media (max-width: 520px){
-            .title img{
-               max-width: 80px
-            }
-            .title span{
-                font-size: 46px;
-            } 
-            }
-        </style> -->
         <link href="/admin/css/styles.css" rel="stylesheet" />
         <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/admin/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -93,26 +17,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
     </head>
     <body>
-        <!--<div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title d-flex align-items-center">
-                    <img src="{{ asset('admin/assets/img/lab-verification-logo.png') }}" width="100">
-                    <span>Verify Lab</span>
-                </div>
-            </div>
-        </div> -->
-
+       
         <!-- ======= Header ======= -->
   
   <header id="header" class="fixed-top">
@@ -141,6 +46,7 @@
                     <i class="fag fag-usa transparent-text-dark" aria-hidden="true"></i>
                   </a>
                 </li>
+                <li><a href="{{ route('login') }}">Login</a></li>
               </ul>
             </div>
           </div>
@@ -152,27 +58,7 @@
         <div class="col-xl-10 d-flex align-items-center mbadjust">
           <a href="index.html" class="logo"><img src="../../admin/assets/img/racs-logo-2.png"></a>
           <span class="hDRTXT">Inspection Services System</span>
-          <!--<nav class="nav-menu d-none d-lg-block">
-            <ul>
-              <li class="active"><a href="#header">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Sectors</a></li>
-              <li><a href="#">Open Data</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li class="drop-down"><a href="#">Directory</a>
-                <ul>
-                  <li><a href="#">Drop Down 1</a></li>
-                  <li><a href="#">Drop Down 2</a></li>
-                  <li><a href="#">Drop Down 3</a></li>
-                  <li><a href="#">Drop Down 4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="{{ route('login') }}">Login</a></li>
-            </ul>
-          </nav>--><!-- .nav-menu -->
-        </div>
+         </div>
       </div>
 
     </div>
