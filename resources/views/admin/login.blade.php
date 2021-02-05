@@ -32,7 +32,17 @@
 </div> -->
 
 <!-- ======= Header ======= -->
-  
+  <head>
+        <link href="/admin/css/styles.css" rel="stylesheet" />
+        <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/admin/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/admin/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="/admin/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+  </head>
   <header id="header" class="fixed-top">
     <div class="very-top-header">
     <div class="container-fluid">
@@ -435,4 +445,14 @@
         </div>
     </div>
   </footer><!-- End Footer -->
+  <!-- Vendor JS Files -->
+      <script src="/admin/assets/vendor/jquery/jquery.min.js"></script>
+      <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="/admin/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+      <script src="/admin/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+      <script src="/admin/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+      <script src="/admin/assets/vendor/aos/aos.js"></script>
+
+      <!-- Template Main JS File -->
+      <script src="../../admin/js/main.js"></script>
 @stop

@@ -12124,6 +12124,8 @@ section {
 .social-icons{
   margin-bottom: 0px;
   margin-top: 5px;
+  margin-left: 10px;
+  padding: 0px;
 }
 .social-icons li {
     display: inline-block;
@@ -12157,6 +12159,58 @@ i.fag.fag-usa {
   margin-left: 28%;
   letter-spacing: 2px;
 }
+.LoginLink{
+  position: relative;
+}
+.Login-text{
+  position: absolute;
+  font-size: 12px;
+  left: 10px;
+}
+.LoginLink a{
+  color: #fff;
+}
+.LoginLink .transparent-text-dark{
+  width: 50px;
+}
+.LoginLink:hover .transparent-text-dark{
+  background-color: #fff;
+}
+.LoginLink:hover a{
+  color:#0063a8;
+}
+.very-top-right{
+  display: flex;
+  align-items: center;
+}
+.signINUser a.nav-link{
+  padding: 0px 5px 0px;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid #fff;
+    height: 20px;
+    margin-top: -1px;
+    line-height: 17px;
+}
+.signINUser a.nav-link.Login{
+  line-height: 16px;
+  padding: 0px 10px;
+}
+.signINUser a.nav-link:hover{
+  background-color: #fff;
+  color: #0063a8;
+}
+.signINUser .dropdown:hover .dropdown-menu{
+  display: block;
+}
+.signINUser .dropdown .dropdown-menu{
+  padding: 0px;
+    font-size: 14px;
+    margin: 0px;
+    min-width: 110px;
+    border-radius: 2px;
+    background: #fdfdfd;
+}
 @media (min-width: 1200px){
 .no-gutters img{
     position: absolute;
@@ -12167,9 +12221,17 @@ i.fag.fag-usa {
   }
 }
 @media (max-width: 991px){
-  .very-top-header{
-    display: none;
-  }
+.services .section-title{
+  flex-direction: column;
+}
+.about-btn{
+  margin-top: 20px;
+}
+}
+@media (max-width: 860px){
+.hDRTXT{
+  font-size: 24px;
+}
 }
 @media (max-width: 767px){
   .mbadjust{
@@ -12180,5 +12242,8 @@ i.fag.fag-usa {
     margin-left: 0px;
     letter-spacing: 0px;
     text-align: right;
+  }
+  .mb-none{
+    display: none;
   }
 }

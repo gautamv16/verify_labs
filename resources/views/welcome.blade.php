@@ -27,7 +27,10 @@
           <div class="col-xl-10 d-flex align-items-center justify-content-between">
             <div class="very-top-left">Call Us<span> Today! +971 4 2388755 | info@racs.ae</span></div>
             <div class="very-top-right">
-              <ul class="social-icons">
+              <div class="signINUser">
+                <a class="nav-link Login" href="{{ route('login') }}">Login</a>
+              </div>
+              <ul class="social-icons mb-none">
                 <li>
                   <a href="#">
                     <span class="screen-reader-text">fa-sa</span>
@@ -46,7 +49,6 @@
                     <i class="fag fag-usa transparent-text-dark" aria-hidden="true"></i>
                   </a>
                 </li>
-                <li><a href="{{ route('login') }}">Login</a></li>
               </ul>
             </div>
           </div>

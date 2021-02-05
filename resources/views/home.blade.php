@@ -31,7 +31,26 @@
           <div class="col-xl-10 d-flex align-items-center justify-content-between">
             <div class="very-top-left">Call Us<span> Today! +971 4 2388755 | info@racs.ae</span></div>
             <div class="very-top-right">
-              <ul class="social-icons">
+                <div class="signINUser">
+                    <div class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                </div>
+              <ul class="social-icons mb-none">
                 <li>
                   <a href="#">
                     <span class="screen-reader-text">fa-sa</span>
@@ -73,25 +92,23 @@
     <div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-10">
-          <div class="row">
-            <div class="col-xl-5 col-md-6">
-              
-                    <div class="searchShipment flex-column">
-                        <div class="d-flex justify-content-center align-items-center searchuprLogo mb-20">
-                            <img src="{{ asset('admin/assets/img/lab-verification-logo.png') }}" height="60"> 
-                            <span>Search Shipment</span>
-                        </div>
-
-                        <div class="relative">
-                            <form method="post" action="{{route('searchreport')}}">
-                            @csrf
-                                <i class="fa fa-search"></i>
-                               <input type="text" placeholder="Enter FIRS No" name="fins_number"  class="form-control" />
-                               <button class="btn btn-search">Search</button>
-                            </form>
-                        </div>
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-md-9">
+                <div class="searchShipment flex-column">
+                    <div class="d-flex justify-content-center align-items-center searchuprLogo mb-20">
+                        <img src="{{ asset('admin/assets/img/lab-verification-logo.png') }}" height="60">
+                        <span>Search Shipment</span>
                     </div>
-             
+
+                    <div class="relative">
+                        <form method="post" action="{{route('searchreport')}}">
+                        @csrf
+                            <i class="fa fa-search"></i>
+                           <input type="text" placeholder="Enter FIRS No" name="fins_number"  class="form-control" />
+                           <button class="btn btn-search">Search</button>
+                        </form>
+                    </div>
+                </div>
             </div>
           </div>
         </div>

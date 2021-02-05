@@ -68,7 +68,7 @@
 .searchShipment{
 	display: flex;
   	min-width: 535px;
-  	margin-top:110px;
+  	margin-top:0px;
 }
 }
 .searchShipment input[type="text"]{
@@ -88,21 +88,23 @@
 	margin-left:15px;
 	margin-top:20px;
 	font-size:30px;
+	color: #fff;
 }
 .mb-20{
 	margin-bottom:20px;
 }
 .btn-search{
-	background-color: #005e98;
+	background-color: #005e98 !important;
     position: absolute;
-    color: #fff;
-    right: 3px;
+    color: #fff !important;
+    right: 2px;
     top: 2px;
-    border-radius: 20px;
-    padding: 6px 20px;
+    border-radius: 20px !important;
+    height: 37px;
+    padding: 0px 20px !important;
 }
 .btn-search:hover{
-	background-color:#016aab;
+	background-color:#016aab !important;
 }
 .shipLabel {
     background-color: #f5f5f5;
@@ -136,7 +138,7 @@
 }
 @media (min-width:576px) and (max-width: 767.98px){
 main .container, main .container-fluid {
-    padding-right: 0px;
-    padding-left: 0px;
+   /* padding-right: 0px;
+    padding-left: 0px;*/
 }
 }
