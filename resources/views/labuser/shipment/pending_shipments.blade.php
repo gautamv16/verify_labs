@@ -46,7 +46,7 @@
         </div>
     </div> 
     <div>
-        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Pending Lab Testing</h5>
+        <h5 class="mt-20 mb-10 text-center shipmentsHDR">Pending Lab Report</h5>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>

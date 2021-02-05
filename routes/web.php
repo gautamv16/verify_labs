@@ -91,7 +91,7 @@ Route::group(['prefix' => 'customer'], function () {
 		 Route::get('exporters/getedit/{id}','Customer\ExporterController@edit')->name('customer.exporters.edit');
 		 Route::post('exporters/update/{id}','Customer\ExporterController@update')->name('customer.exporters.update');
 		 Route::delete('exporters/{id}/delete','Customer\ExporterController@destroy')->name('customer.exporters.delete');
-		Route::get('exporters/detail/{id}','Customer\ExporterController@show')->name('customer.exporter_detail');
+		Route::get('exporters/detail/{id}','Customer\ExporterController@show')->name('customer.exporters.detail');
 	});
 });
 
