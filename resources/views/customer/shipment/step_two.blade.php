@@ -3,7 +3,7 @@
 @section('content')
 <div class="mt-auto mb-3">
     <div>
-        <div class="shipment-hdr">Inspection</div>
+        <div class="shipment-hdr">Sampling & Supervision</div>
     </div>
 </div>
 <div>

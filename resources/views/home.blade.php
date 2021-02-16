@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Verify Lab</title>
+        <title>Inspection Service System</title>
 
         <link href="/admin/css/styles.css" rel="stylesheet" />
         <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,15 +25,16 @@
         <!-- ======= Header ======= -->
   
   <header id="header" class="fixed-top">
-    <div class="very-top-header">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-xl-10 d-flex align-items-center justify-content-between">
-            <div class="very-top-left">Call Us<span> Today! +971 4 2388755 | info@racs.ae</span></div>
-            <div class="very-top-right">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 d-flex align-items-center mbadjust">
+          <a href="index.html" class="logo"><img src="../../admin/assets/img/racs-logo-2.png"></a>
+          <span class="hDRTXT">Inspection Verification System</span>
+        </div>
+        <div class="very-top-right">
                 <div class="signINUser">
-                    <div class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <div class="nav-item btn btn-primary dropdown">
+                        <a id="navbarDropdown" class="user-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
                         </a>
 
@@ -50,37 +51,6 @@
                         </div>
                     </div>
                 </div>
-              <ul class="social-icons mb-none">
-                <li>
-                  <a href="#">
-                    <span class="screen-reader-text">fa-sa</span>
-                    <i class="fag fag-sa transparent-text-dark" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="screen-reader-text">fa-gr</span>
-                    <i class="fag fag-gr transparent-text-dark" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="screen-reader-text">fa-usa</span>
-                    <i class="fag fag-usa transparent-text-dark" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-xl-10 d-flex align-items-center mbadjust">
-          <a href="index.html" class="logo"><img src="../../admin/assets/img/racs-logo-2.png"></a>
-          <span class="hDRTXT">Inspection Verification System</span>
-        </div>
       </div>
 
     </div>

@@ -29,8 +29,18 @@ class ShipmentController extends Controller
     {
         $user = Auth::guard('admins')->user();
          $user_location = $user->office_location;
-          $shipments = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
-           return view('customer.shipment.index',compact('shipments'));
+          $shipments_data = Shipment::with('importer','exporter','registrationLocation','shipment_test','shipment_test_result','shipment_user')->where('user_id','=',$user->id)->get();
+          $shipments = [];
+        if(count($shipments_data) > 0){
+          foreach($shipments_data as $k=>$d){
+                  if($d->exporter->approved_farm){
+                      $shipments[] = $d;
+                  }elseif($d->shipment_test && $d->shipment_test_result && $d->shipment_test_result->result == 1){
+                      $shipments[] = $d;
+                  }
+          }
+        }
+          return view('customer.shipment.index',compact('shipments'));
     }
 
     public function revisions(){

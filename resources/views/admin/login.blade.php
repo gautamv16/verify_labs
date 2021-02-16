@@ -1,35 +1,5 @@
 @extends('admin.layouts.admin')
 @section('maincontent')
-<!--<div class="login">
-    <div class="container">
-        <div class="block xl:grid grid-cols-2 gap-4">
-                
-                <div class="hidden xl:flex flex-col min-h-screen">
-                    <a href="" class="-intro-x flex items-center pt-5">
-                        <img alt="" src="{{ asset('admin/assets/img/logo-white.png') }}" class="admin-logo">
-                    </a>
-                    <div class="my-auto">
-                        <img alt="Midone Tailwind HTML Admin Template" class="-intro-x -mt-16" src="{{ asset('admin/assets/img/work.svg') }}">
-                        <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            A few more clicks to 
-                            <br>
-                            sign in to your account. 
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="h-screen flex">
-                    <div class="my-auto mx-auto bg-white loginArea">
-                        <h2 class="loginHeader">
-                            {{ __('Login') }}
-                        </h2>
-                        
-                    </div>
-                </div>
-               
-            </div>
-    </div>
-</div> -->
 
 <!-- ======= Header ======= -->
   <head>
@@ -44,62 +14,13 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
   </head>
   <header id="header" class="fixed-top">
-    <div class="very-top-header">
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-xl-10 d-flex align-items-center justify-content-between">
-          <div class="very-top-left">Call Us<span> Today! +971 4 2388755 | info@racs.ae</span></div>
-          <div class="very-top-right">
-            <ul class="social-icons">
-              <li>
-                <a href="#">
-                  <span class="screen-reader-text">fa-sa</span>
-                  <i class="fag fag-sa transparent-text-dark" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="screen-reader-text">fa-gr</span>
-                  <i class="fag fag-gr transparent-text-dark" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="screen-reader-text">fa-usa</span>
-                  <i class="fag fag-usa transparent-text-dark" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-xl-10 d-flex align-items-center mbadjust">
           <a href="index.html" class="logo"><img src="assets/img/racs-logo-2.png"></a>
           <span class="hDRTXT">Inspection Services System</span>
-          <!--<nav class="nav-menu d-none d-lg-block">
-            <ul>
-              <li class="active"><a href="#header">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Sectors</a></li>
-              <li><a href="#">Open Data</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li class="drop-down"><a href="#">Directory</a>
-                <ul>
-                  <li><a href="#">Drop Down 1</a></li>
-                  <li><a href="#">Drop Down 2</a></li>
-                  <li><a href="#">Drop Down 3</a></li>
-                  <li><a href="#">Drop Down 4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Media</a></li>
-            </ul>
-          </nav> --><!-- .nav-menu -->
+        
         </div>
       </div>
 

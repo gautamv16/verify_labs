@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">
-                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Inspection</h4>
+                <h4 class="mt-1"><span class="sb-nav-link-icon"><i class="fas fa-user"></i></span> Sampling & Supervision</h4>
             </div>
         </div>
     </div>

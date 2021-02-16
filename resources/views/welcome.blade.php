@@ -21,46 +21,17 @@
         <!-- ======= Header ======= -->
   
   <header id="header" class="fixed-top">
-    <div class="very-top-header">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-xl-10 d-flex align-items-center justify-content-between">
-            <div class="very-top-left">Call Us<span> Today! +971 4 2388755 | info@racs.ae</span></div>
-            <div class="very-top-right">
-              <div class="signINUser">
-                <a class="nav-link Login" href="{{ route('login') }}">Login</a>
-              </div>
-              <ul class="social-icons mb-none">
-                <li>
-                  <a href="#">
-                    <span class="screen-reader-text">fa-sa</span>
-                    <i class="fag fag-sa transparent-text-dark" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="screen-reader-text">fa-gr</span>
-                    <i class="fag fag-gr transparent-text-dark" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="screen-reader-text">fa-usa</span>
-                    <i class="fag fag-usa transparent-text-dark" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-xl-10 d-flex align-items-center mbadjust">
           <a href="index.html" class="logo"><img src="../../admin/assets/img/racs-logo-2.png"></a>
           <span class="hDRTXT">Inspection Services System</span>
          </div>
+         <div class="very-top-right">
+              <div class="signINUser">
+                <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+              </div>
+            </div>
       </div>
 
     </div>
